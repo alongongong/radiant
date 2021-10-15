@@ -63,17 +63,17 @@
         <div id="header">
             
             <div id="logo">
-                <a href="/radiant/"><img src="/radiant/img/logo.png" alt="logo"></a>
+                <a href="/radiant/main/index.do"><img src="/radiant/img/logo.png" alt="logo"></a>
             </div><!--logo-->
             <div id="icon">
-                <a href="/radiant/"><img src="/radiant/img/icon.png" alt="icon"></a>
+                <a href="/radiant/main/index.do"><img src="/radiant/img/icon.png" alt="icon"></a>
             </div>
 
             <div id="headNav">
                 <ul>
                     <c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
-                    	<li><a href="/radiant/member/writeForm.do">회원가입</a></li>
+                    	<li><a href="/radiant/member/write_agree.do">회원가입</a></li>
                     </c:if>
                     <c:if test="${sessionScope.memId != null }">
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
@@ -171,16 +171,6 @@
 						</tr>
 					</table>
 				</form>
-				<div class="form-group socialimage" id="kakaoBtn">
-					<a href="https://kauth.kakao.com/oauth/authorize?client_id=85f4a0fdfed755ce3d9b2b081af17f44&redirect_uri=http://localhost:8080/MS/kakaologin&response_type=code">
-						<img id="socialimage" alt="카카오" src="../img/logo-kakao.png" height="100%"/>
-					</a>
-				</div>
-				<%-- <div class="form-group socialimage" id="naverBtn">
-					<a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=BLxuRdNAKQL9y0hx6ugp&redirect_uri=http://localhost:8080/MS/naverlogin&state=<%= state %>">
-						<img src="${pageContext.request.contextPath}/images/logo-naver.png" height="100%"/>
-					</a>
-				</div> --%>
             </div><!--subNav-->
         </div><!--section-->
         <hr>

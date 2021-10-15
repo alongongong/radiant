@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Radiant 레디언트</title>
 </head>
 <body onload="location.href='/radiant/main/index.do'">
 

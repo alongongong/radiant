@@ -74,7 +74,7 @@
                 <ul>
                 	<c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
-                    	<li><a href="/radiant/member/writeForm.do">회원가입</a></li>
+                    	<li><a href="/radiant/member/write_agree.do">회원가입</a></li>
                     </c:if>
                     <c:if test="${sessionScope.memId != null }">
                     	<li>${sessionScope.memName }님 로그인</li>

@@ -71,17 +71,17 @@
         <div id="header">
             
             <div id="logo">
-                <a href="/radiant/"><img src="/radiant/img/logo.png" alt="logo"></a>
+                <a href="/radiant/main/index.do"><img src="/radiant/img/logo.png" alt="logo"></a>
             </div><!--logo-->
             <div id="icon">
-                <a href="/radiant/"><img src="/radiant/img/icon.png" alt="icon"></a>
+                <a href="/radiant/main/index.do"><img src="/radiant/img/icon.png" alt="icon"></a>
             </div>
 
             <div id="headNav">
                 <ul>
                 	<c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
-                    	<li><a href="#">회원가입</a></li>
+                    	<li><a href="/radiant/member/write_agree.do">회원가입</a></li>
                     </c:if>
                     <c:if test="${sessionScope.memId != null }">
                     	<li>${sessionScope.memName }님 로그인</li>
@@ -97,7 +97,7 @@
                 <li>
                     <div id="menu">
                         <a href="#">
-                            <img src="/radiant/img/menu.JPG" alt="menu">
+                            <img src="/radiant/img/menu.png" alt="menu">
                         </a>
                     </div>
                 </li>

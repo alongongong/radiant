@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
+<script type="text/javascript" src="/radiant/js/member.js"></script>
 <style type="text/css">
 *{margin: 0;padding: 0;box-sizing: border-box}
 ul>li{list-style: none}
@@ -44,7 +45,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                 <ul>
                 	<c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
-                    	<li><a href="/radiant/member/writeForm.do">회원가입</a></li>
+                    	<li><a href="/radiant/member/write_agree.do">회원가입</a></li>
                     </c:if>
                     <c:if test="${sessionScope.memId != null }">
                     	<li>${sessionScope.memName }님 로그인</li>
