@@ -88,7 +88,7 @@
                 <li>
                     <div id="menu">
                         <a href="#">
-                            <img src="/radiant/img/menu.JPG" alt="menu">
+                            <img src="/radiant/img/menu.png" alt="menu">
                         </a>
                     </div>
                 </li>

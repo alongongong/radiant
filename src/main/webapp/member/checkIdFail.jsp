@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Radiant 로그인</title>
+<title>Radiant 회원가입</title>
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <style type="text/css">
 #checkIdFail{
