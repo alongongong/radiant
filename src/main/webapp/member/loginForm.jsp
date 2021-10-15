@@ -73,7 +73,7 @@
                 <ul>
                     <c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
-                    	<li><a href="#">회원가입</a></li>
+                    	<li><a href="/radiant/member/writeForm.do">회원가입</a></li>
                     </c:if>
                     <c:if test="${sessionScope.memId != null }">
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
@@ -166,7 +166,7 @@
 						<tr>
 							<td align="center">
 								<a href="" id="loginFindIdPwd">아이디/비밀번호 찾기</a>
-								<a href="" id="loginWriteBtn">회원가입</a>
+								<a href="/radiant/member/writeForm.do" id="loginWriteBtn">회원가입</a>
 							</td>
 						</tr>
 					</table>
