@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Radiant 회원가입</title>
 </head>
 <body>
  <div id="wrap">
