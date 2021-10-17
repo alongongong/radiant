@@ -165,8 +165,8 @@
 						</tr>
 						<tr>
 							<td align="center">
-								<a href="" id="loginFindIdPwd">아이디/비밀번호 찾기</a>
-								<a href="/radiant/member/writeForm.do" id="loginWriteBtn">회원가입</a>
+								<a href="" id="loginFindIdPwd" onclick="findIdPwd()">아이디/비밀번호 찾기</a>
+								<a href="/radiant/member/write_agree.do" id="loginWriteBtn">회원가입</a>
 							</td>
 						</tr>
 					</table>

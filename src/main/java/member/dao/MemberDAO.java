@@ -179,5 +179,69 @@ public class MemberDAO {
 		
 		return memberDTO;
 	} // login
+
+	public String getFindId(MemberDTO memberDTO) {
+		String id = null;
+		String sql = "select id from radiantmember where name=? and tel1=? and tel2=? and tel3=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberDTO.getName());
+			pstmt.setString(2, memberDTO.getTel1());
+			pstmt.setString(3, memberDTO.getTel2());
+			pstmt.setString(4, memberDTO.getTel3());
+			
+			rs = pstmt.executeQuery(); // 실행
+			
+			if(rs.next())
+				id = rs.getString("id");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return id;
+	} // getFindId
+
+	public boolean getFindPwd(MemberDTO memberDTO) {
+		boolean exist = false;
+		String sql = "select * from radiantmember where id=? and name=? and tel1=? and tel2=? and tel3=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, memberDTO.getId());
+			pstmt.setString(2, memberDTO.getName());
+			pstmt.setString(3, memberDTO.getTel1());
+			pstmt.setString(4, memberDTO.getTel2());
+			pstmt.setString(5, memberDTO.getTel3());
+			
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				exist = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return exist;
+	} // getFindPwd()
 	
 }

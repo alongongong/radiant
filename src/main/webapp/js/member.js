@@ -100,4 +100,67 @@ function checkLogin() {
 function loginFail() {
 	document.getElementById("loginFailDiv").innerText="아이디와 비밀번호를 확인해주세요.";
 }
+
+// 아이디/비밀번호 찾기
+function findIdPwd() {
+	window.open("/radiant/member/findIdPwdForm.do", 
+				"findIdPwd", 
+				"width=500 height=450 top=200 left=600");
+}
+function idFind() {
+	console.log("id");
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findIdTable").innerHTML;
+	document.getElementById("findId").checked=true;
+}
+function pwdFind() {
+	console.log("pwd");
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findPwdTable").innerHTML;
+	document.getElementById("findPwd").checked=true;
+}
+
+// 아이디 찾기
+function findIdCheck() {
+	document.getElementById("findIdNameDiv").innerText="";
+	document.getElementById("findIdTelDiv").innerText="";
+	document.getElementById("findIdFailDiv").innerText="";
+	
+	if(document.getElementById("findIdName").value == "") {
+		document.getElementById("findIdNameDiv").innerText="이름을 입력해주세요.";
+		document.getElementById("findIdName").focus();
+	} else if(document.getElementById("findIdTel2").value=="") {
+		document.getElementById("findIdTelDiv").innerText="전화번호를 입력해주세요.";
+		document.getElementById("findIdTel2").focus();
+	} else if(document.getElementById("findIdTel3").value=="") {
+		document.getElementById("findIdTelDiv").innerText="전화번호를 입력해주세요.";
+		document.getElementById("findIdTel3").focus();
+	} else {
+		$('#findIdForm').submit();
+	}
+}
+
+// 비밀번호 찾기
+function findPwdCheck() {
+	document.getElementById("findPwdIdDiv").innerText="";
+	document.getElementById("findPwdNameDiv").innerText="";
+	document.getElementById("findPwdTelDiv").innerText="";
+	document.getElementById("findPwdFailDiv").innerText="";
+	
+	if(document.getElementById("findPwdId").value == "") {
+		document.getElementById("findPwdIdDiv").innerText="이름을 입력해주세요.";
+		document.getElementById("findPwdId").focus();
+	} else if(document.getElementById("findPwdName").value == "") {
+		document.getElementById("findPwdNameDiv").innerText="이름을 입력해주세요.";
+		document.getElementById("findPwdName").focus();
+	} else if(document.getElementById("findPwdTel2").value=="") {
+		document.getElementById("findPwdTelDiv").innerText="전화번호를 입력해주세요.";
+		document.getElementById("findPwdTel2").focus();
+	} else if(document.getElementById("findPwdTel3").value=="") {
+		document.getElementById("findPwdTelDiv").innerText="전화번호를 입력해주세요.";
+		document.getElementById("findPwdTel3").focus();
+	} else {
+		$('#findPwdForm').submit();
+	}
+}
 	
