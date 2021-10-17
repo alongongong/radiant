@@ -7,7 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Radiant 레디언트</title>
+    
+	<!-- 메인 -->    
+    <script type="text/javascript" src="/radiant/js/main.js"></script>
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
+    
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
     <script type="text/javascript" src="/radiant/js/member.js"></script>
 </head>
@@ -98,7 +102,7 @@
 	        		<tr>
 	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
 	        				<td>
-					       		<img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img">
+					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
 	        				</td>
 	        			</c:forEach>
 	        		</tr>
@@ -150,5 +154,6 @@
             </div>
         </div><!--footer-->
     </div><!--wrap-->
+    
 </body>
 </html>

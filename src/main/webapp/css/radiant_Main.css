@@ -209,5 +209,12 @@ a {
     margin: 10px 10px 0px 10px;
 }
 
+/*modal*/
+.modal-body{	
+	font-size: 20px;
+}
 
+.modal-dialog{
+
+}
 

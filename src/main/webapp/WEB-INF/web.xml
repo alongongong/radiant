@@ -7,7 +7,7 @@
   	<servlet-class>com.control.ControlServlet</servlet-class>
   	<init-param>
   		<param-name>propertyConfig</param-name>
-  		<param-value>C:/study/java_ee/workspace/radiant/src/main/webapp/WEB-INF/command.properties</param-value>
+  		<param-value>C:/Users/downc/git/repository/radiant/src/main/webapp/WEB-INF/command.properties</param-value>
   	</init-param>
   </servlet>
   <servlet-mapping>

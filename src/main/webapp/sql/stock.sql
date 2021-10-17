@@ -13,6 +13,7 @@ salerate number(5) default 0);
 create table radiantStock(
 clnum number(5),
 color varchar(30),
+clsize varchar(20) not null,
 buycount number(10),
 sellcount number(10),
 stockcount number(10),
