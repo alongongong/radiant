@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Radiant 회원가입</title>
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
 <script type="text/javascript" src="/radiant/js/member.js"></script>

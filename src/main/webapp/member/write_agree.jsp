@@ -5,10 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Radiant 회원가입</title>
+
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>	
 <script type="text/javascript" src="/radiant/js/member.js"></script>
+<script type="text/javascript" src="/radiant/bootstrap/js/bootstrap.js"></script>
+
 <style type="text/css">
 *{margin: 0;padding: 0;box-sizing: border-box}
 ul>li{list-style: none}
@@ -24,8 +28,8 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 .checkBox textarea{width: 96%;height: 200px; margin: 0 2%;background-color: #f7f7f7;color: #888; border: none;}
 .footBtwrap{margin-top: 15px;}
 .footBtwrap>li{float: left;width: 50%;height: 60px;}
-.footBtwrap>li>button{display: block; width: 50%;height: 70%; font-size: 20px;text-align: center;line-height: 30px;}
-.btn{margin-left: 300px; color: white; background: #39210D;font-size : 13px;align: center;}
+#write_agreeBtn{margin-left: 300px; color: white; background: #39210D; width: 50%;height: 70%; font-size: 20px;text-align: center;line-height: 30px;}
+
 
 
 </style>
@@ -102,20 +106,20 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
      
      <p align="center" style="color:#333; font-size:20pt;">회원가입</p><br>
 		<p align="center"><img src="../img/write_step1.PNG" width="500" alt="회원가입_스탭2"/></p>
-	<form action="" id="joinForm">
+	<form name="joinForm" id="joinForm" method="post" action="http://localhost:8080/radiant/member/writeForm.do" >
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
                         <li>이용약관, 개인정보처리방침에 모두 동의합니다.</li>
                         <li class="checkAllBtn">
-                            <input type="checkbox" name="chkAll" id="chk" class="chkAll">
+                            <input type="checkbox" name="chkAll" id="chkAll" class="chkAll">
                         </li>
                     </ul>
                 <li class="checkBox check03">
                     <ul class="clearfix">
                         <li>이용약관에 동의합니다.</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="chk">
+                            <input type="checkbox" name="chk1" id="chk1">
                         </li>
                     </ul>
  
@@ -358,7 +362,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 			                    <ul class="clearfix">
 			                        <li>개인정보처리방침에 동의합니다.</li>
 			                        <li class="checkBtn">
-			                            <input type="checkbox" name="chk">
+			                            <input type="checkbox" name="chk2" id="chk2">
 			                        </li>
 			                    </ul>
 			 
@@ -443,7 +447,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                 </li>
             </ul>
             <ul class="footBtwrap clearfix">
-                <li><button class="btn" onclick="">확인</button></li>
+                <li><button class="btn" id="write_agreeBtn" type="button" onclick="write_agree()">확인</button></li>
                	<li></li>
             </ul>
            
@@ -482,12 +486,11 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                 </ul>
                 <p>
                     대표 : *** 전화 : 1644-3225 팩스 : 02)2231-4995 주소 : 서울특별시 구로구 구로동 237-14 아뜨랑스<br>
-                    통신판매업 신고 : 2015-서울구로-1525 사업자등록번호 : 215-87-38531 [사업자정보확인] 개인정보보호책임자 : 정기열, 윤시영 (attrangs@naver.com)<br>
+                    통신판매업 신고 : 2015-서울구로-1525 사업자등록번호 : 215-87-38531 [사업자정보확인] 개인정보보호책임자 : 정기열, 윤시영 (radiant@naver.com)<br>
                 </p>
             </div>
         </div><!--footer-->
     </div><!--wrap-->
         
-<script type="text/javascript" src="/radiant/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

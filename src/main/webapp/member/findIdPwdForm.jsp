@@ -92,7 +92,7 @@ legend {
 
 
 <div id="findIdTable"><!-- 아이디찾기 테이블 --> 
-	<form id="findIdForm" name="findIdForm" action="/radiant/member/findId.do">
+	<form id="findIdForm" name="findIdForm"  method="post" action="/radiant/member/findId.do">
 		<table>
 			<tr>
 				<td>
@@ -123,7 +123,7 @@ legend {
 </div>
 
 <div id="findPwdTable"><!-- 비밀번호찾기 테이블 -->
-	<form id="findPwdForm" name="findPwdForm" action="/radiant/member/findPwd.do">
+	<form id="findPwdForm" name="findPwdForm" method="post" action="/radiant/member/findPwd.do">
 		<table>
 			<tr>
 				<td>

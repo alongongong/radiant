@@ -1,3 +1,19 @@
+//약관 동의 체크박스 확인
+function write_agree(){
+   
+   var chkAll = document.getElementById('chkAll').checked;
+   var chk1 = document.getElementById('chk1').checked;
+   var chk2 = document.getElementById('chk2').checked;
+   
+   if(!chkAll && (!chk1 || !chk2)){
+      alert("약관에 동의해주세요.");
+      return false;   
+   }else{   
+       document.joinForm.submit();
+   }
+    
+}   
+
 //회원가입 버튼 클릭시 유효성 체크
 function checkWrite(){
 	
@@ -79,6 +95,8 @@ function checkPhone(tel2, te13){
 	}
 	
 }
+
+//---------------------------------------------------------------------------로그인
 	
 //로그인 유효성 체크
 function checkLogin() {
@@ -165,6 +183,28 @@ function findPwdCheck() {
 	}
 }
 
+// 비밀번호 변경
+function changePwdCheck() {
+	document.getElementById("currentPwdDiv").innerText="";
+	document.getElementById("changePwd").innerText="";
+	document.getElementById("reChangePwd").innerText="";
+	
+	if(document.getElementById("currentPwd").value=="") {
+		document.getElementById("currentPwdDiv").innerText="현재 비밀번호를 입력해주세요";
+		document.getElementById("currentPwd").focus();
+	} else if(document.getElementById("changePwd").value=="") {
+		document.getElementById("changePwdDiv").innerText="새 비밀번호를 입력해주세요";
+		document.getElementById("changePwd").focus();
+	} else if(document.getElementById("changePwd").value!=document.getElementById("reChangePwd").value) {
+		document.getElementById("reChangePwdDiv").innerText="위의 비밀번호와 일치하지 않습니다.";
+		document.getElementById("reChangePwd").focus();
+	} else {
+		document.changePwdForm.submit();
+	}
+		
+}
+
+//---------------------------------------------------------------------------------------
 //index.jsp 
 //imgSlide
 var img = 0;

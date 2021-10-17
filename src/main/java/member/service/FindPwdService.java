@@ -31,9 +31,11 @@ public class FindPwdService implements CommandProcess {
 		boolean exist = memberDAO.getFindPwd(memberDTO);
 		
 		if(exist) {
+			request.setAttribute("id", id);
 			return "/member/changePwdForm.jsp";
 		} else {
-			return "";
+			request.setAttribute("findPwd", "aa");
+			return "/member/findIdPwdFail.jsp";
 		}
 	}
 
