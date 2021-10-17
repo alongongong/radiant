@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,75 +9,7 @@
     <title>Radiant 레디언트</title>
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
-    <script type="text/javascript" src="/radiant/js/board.js">
-    </script>
-    <style type="text/css">
-    #qnaWriteForm {
-    	margin: 5% 0 10% 20%;
-    }
-    #qnaWriteForm td {
-    	padding: 5px;
-    	height: 35px;
-    	font-size: 10pt;
-		color: #999;
-    }
-    #qnaWriteForm tr td:first-child {
-    	width: 80px;
-    }
-    #qnaWriteForm legend {
-    	font-size: 20pt;
-    }
-    #qnaSubject {
-    	padding-bottom: 3px;
-    	border: 0;
-    	border-bottom: 1px solid #999;
-    	font-size: 10pt;
-    } 
-    #qnaContent {
-    	border: 1px solid #999;
-    	font-size: 10pt;
-    }
-    #qnaSubject:focus, #qnaContent:focus, #qnaPwd:focus {
-    	outline: none;
-    }
-    #qnaSubjectDiv, #qnaContentDiv {
-    	font-size: 9pt;
-		font-weight: bold;
-		color: brown;
-    }
-    .filebox .upload-name {
-    	display: inline-block;
-    	padding: 0 10px;
-    	border: 0;
-    	border-bottom: 1px solid #999;
-    	vertical-align: middle;
-    }
-    .filebox label {
-    	display: inline-block;
-    	padding: 3px 15px;
-    	background: white;
-    	border: 1px solid;
-    	font-size: 9pt;
-    	vertical-align: top;
-    }
-    #qnaAttachedFile {
-    	width: 0;
-    	height: 0;
-    	padding: 0;
-    	overflow: hidden;
-    	border: 0;
-    }
-    #qnaPwd {
-    	border: 0;
-    	border-bottom: 1px solid #999;
-    }
-	#qnaWriteBtn, #qnaCancelBtn {
-		width: 150px;
-		height: 40px;
-		color: white;
-		background: #39210D;
-	}
-    </style>
+    <script type="text/javascript" src="/radiant/js/member.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -87,9 +20,9 @@
             </div><!--logo-->
             <div id="icon">
                 <a href="/radiant/main/index.do"><img src="/radiant/img/icon.png" alt="icon"></a>
-            </div>
+            </div><!-- icon -->
 
-            <div id="headNav">
+            <div id="headNav"><!-- 로그인, 회원가입, 로그아웃, 고객센터 -->
                 <ul>
                 	<c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
@@ -104,7 +37,7 @@
                 </ul>
             </div><!--headNav-->
         </div><!--header-->
-        <div id="mainNav">
+        <div id="mainNav"><!-- 메인 고정 메뉴 -->
             <ul>
                 <li>
                     <div id="menu">
@@ -143,56 +76,37 @@
                 <li><a href="#">전체상품보기</a></li>
             </ul>
         </div><!--mainNav-->
-        <hr>
-        <div id="section">
-            <div id="subNav">
-                
-                <form id="qnaWriteForm" name="qnaWriteForm" method="post" action="/radiant/board/qnaWrite.do">
-                	<legend>Q&A</legend>
-                	<br>
-                	<table>
-                		<tr>
-                			<td align="center">제목</td>
-                			<td>
-                				<input type="text" id="qnaSubject" name="qnaSubject" size="78">
-                				<div id="qnaSubjectDiv"></div>
-                			</td>
-                		</tr>
-                		<tr>
-                			<td align="center">내용</td>
-                			<td>
-                				<textarea id="qnaContent" name="qnaContent" rows="20" cols="80"></textarea>
-                				<div id="qnaContentDiv"></div>
-                			</td>
-                		</tr>
-                		<tr>
-                			<td align="center">첨부파일</td>
-                			<td class="filebox">
-                				<input class="upload-name" id="upload-name" placeholder="파일 첨부" size="62">
-                				<label class="btn" for="qnaAttachedFile">파일찾기</label>
-                				<input type="file" id="qnaAttachedFile" name="qnaAttachedFile" onchange="qnaAttachedFileName()">
-                			</td>
-                		</tr>
-                		<tr>
-                			<td align="center">비밀번호</td>
-                			<td>
-                				<input type="password" id="qnaPwd" name="qnaPwd" size="30">
-                			</td>
-                		</tr>
-                		<tr>
-                			<td>&emsp;</td>
-                		</tr>
-                		<tr>
-                			<td colspan="2" align="center"> &emsp;
-                				<button type="button" class="btn" id="qnaWriteBtn" name="qnaWriteBtn" onclick="qnaWriteCheck()">글쓰기</button>
-                				<button type="button" class="btn" id="qnaCancelBtn" action="qnaWriteCancel()">취소</button>
-                			</td>
-                		</tr>
-                	</table>
-                </form>
-                
-            </div><!--subNav-->
+        <hr id="mainNavAfter">
+        
+        <div id="section"> <!-- 페이지 내용 추가 -->
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
         </div><!--section-->
+        
         <hr>
         <div id="footer">
             <div id="footerLeft">

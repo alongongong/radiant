@@ -163,7 +163,7 @@ function findPwdCheck() {
 	} else {
 		$('#findPwdForm').submit();
 	}
-
+}
 
 //index.jsp 
 //imgSlide
@@ -174,5 +174,5 @@ function imgSlide(num) {
 	else {alert("이상함");}
 	
 	document.getElementById("imgList").setAttribute("style", "margin-left: " + img + "%;");
-	}
+	
 }

@@ -78,7 +78,7 @@
         </div><!--mainNav-->
         <hr id="mainNavAfter">
         
-	   	<div id="imgSlide">
+	   	<div id="imgSlideDiv">
 	   		<ul id="imgList">
 	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
 	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
@@ -114,6 +114,7 @@
 	        	</c:forEach>        	
         	</table>
         </div><!--section-->
+        
         <hr>
         <div id="footer">
             <div id="footerLeft">
