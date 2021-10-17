@@ -20,9 +20,9 @@
             </div><!--logo-->
             <div id="icon">
                 <a href="/radiant/main/index.do"><img src="/radiant/img/icon.png" alt="icon"></a>
-            </div>
+            </div><!-- icon -->
 
-            <div id="headNav">
+            <div id="headNav"><!-- 로그인, 회원가입, 로그아웃, 고객센터 -->
                 <ul>
                 	<c:if test="${sessionScope.memId == null}">
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
@@ -37,7 +37,7 @@
                 </ul>
             </div><!--headNav-->
         </div><!--header-->
-        <div id="mainNav">
+        <div id="mainNav"><!-- 메인 고정 메뉴 -->
             <ul>
                 <li>
                     <div id="menu">
@@ -77,7 +77,22 @@
             </ul>
         </div><!--mainNav-->
         <hr id="mainNavAfter">
+        
+	   	<div id="imgSlide">
+	   		<ul id="imgList">
+	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
+	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
+	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
+	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
+	   		</ul>
+	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
+	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
+	   		<label id="prev" for="prev"><</label>
+	   		<label id="next" for="next">></label>
+	  	</div><!-- imgSlide -->
+	  	
         <div id="section">
+        
             <table>
 	        	<c:forEach var="i" begin="0" end="3" step="1">
 	        		<tr>

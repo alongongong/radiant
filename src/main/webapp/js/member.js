@@ -31,6 +31,7 @@ function checkWrite(){
 	}
 	
 }
+
 //아이디 중복 체크
 function checkId(id){
 	
@@ -99,5 +100,16 @@ function checkLogin() {
 // 로그인 실패
 function loginFail() {
 	document.getElementById("loginFailDiv").innerText="아이디와 비밀번호를 확인해주세요.";
+}
+
+//index.jsp 
+//imgSlide
+var img = 0;
+function imgSlide(num) {
+	if(num == 0) {img = img - 100;}
+	else if(num == 1) {img = img + 100;}
+	else {alert("이상함");}
+	
+	document.getElementById("imgList").setAttribute("style", "margin-left: " + img + "%;");
 }
 	

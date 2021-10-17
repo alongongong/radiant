@@ -71,6 +71,7 @@ a {
     margin-bottom: 0;
     background: white;
     opacity: 0.8;
+
 }
 
 #mainNav #menu {
@@ -123,6 +124,56 @@ a {
 #mainNav > ul > li:hover .dropDownMenu {
     display: block;
 }
+
+/* imgSlide */
+#imgSlide {
+	text-align: center;
+	overflow: hidden;
+}
+
+#imgSlide input {
+	display: none;
+}
+
+#imgSlide ul {
+	width: 400%;
+	height: 100%;
+	transition: 1s;
+}
+
+#imgSlide ul:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#imgSlide li {
+	float: left;
+	width: 25%;
+	height: 100%;
+}
+
+#imgSlide label {
+	display: inline-block;
+	background-color: red;
+	/*vertical-align:middle;*/
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	
+	position: relative;
+	top: -400px;
+}
+
+#imgSlide #next {
+	margin-left: 625px;
+}
+
+#imgSlide #prev {
+	margin-right: 625px;
+}
+
+
 /*section*/
 #section {
     width: 1300px;
