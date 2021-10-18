@@ -1,22 +1,29 @@
 package stock.dao;
 
+import java.io.IOException;
+import java.io.Reader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import stock.bean.StockDTO;
+
 public class StockDAO {
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
-	
-	private DataSource ds;
 	
 	private static StockDAO instance;
+	private SqlSessionFactory sqlSessionFactory;
 	
 	// 싱글톤
 	public static StockDAO getInstance() {
@@ -31,12 +38,40 @@ public class StockDAO {
 	
 	public StockDAO() {
 		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
-		} catch (NamingException e) {
+			Reader reader = Resources.getResourceAsReader("radiant-config.xml");
+			
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	} // 생성자
+
+	public void write(StockDTO stockDTO) {
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		String seq = null;
+		if(stockDTO.getCategory().equals("상의")) {
+			seq = "seq_radianttop";
+		}else if(stockDTO.getCategory().equals("하의")) {
+			seq = "seq_radiantpants";
+		}else if(stockDTO.getCategory().equals("아우터")) {
+			seq = "seq_radiantouter";
+		}else {
+			System.out.println("카테고리에 이상한 값이 들어있어요");
+		}
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("seq", seq);
+		map.put("stockDTO", stockDTO);
+		sqlSession.insert("stockSQL.write", map);
+		
+		sqlSession.commit();
+		
+		sqlSession.close();
+		
+	}
 	
 	
 }

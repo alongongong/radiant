@@ -13,9 +13,8 @@ salerate number(5) default 0);
 create table radiantStock(
 clnum number(5),
 color varchar(30),
-buycount number(10),
-sellcount number(10),
-stockcount number(10),
+entercount number(10),
+outcount number(10),
 foreign key(clnum) references radiantInfo on delete set null);
 
 테이블3
@@ -23,9 +22,12 @@ foreign key(clnum) references radiantInfo on delete set null);
 create table radiantDetail(
 clnum number(5),
 cldetail varchar(300),
-like number(10),
+likecount number(10),
 foreign key(clnum) references radiantInfo on delete set null);
 
+CREATE SEQUENCE seq_radianttop start with 1  maxvalue 99 NOCACHE NOCYCLE;
+CREATE SEQUENCE seq_radiantpants start with 101  maxvalue 199 NOCACHE NOCYCLE;
+CREATE SEQUENCE seq_radiantouter start with 201  maxvalue 299 NOCACHE NOCYCLE;
 
 - 배송정보 테이블
 테이블1 (radiantmember)

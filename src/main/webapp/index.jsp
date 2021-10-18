@@ -87,8 +87,8 @@
 	   		</ul>
 	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
 	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prev" for="prev"><</label>
-	   		<label id="next" for="next">></label>
+	   		<label id="prevL" for="prev"><</label>
+	   		<label id="nextL" for="next">></label>
 	  	</div><!-- imgSlide -->
 	  	
         <div id="section">
