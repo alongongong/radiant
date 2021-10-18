@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class StockDTO {
+
 	private int clNum;
 	private String clName;
 	private String category;
@@ -14,4 +15,5 @@ public class StockDTO {
 	private int outCount;
 	private String clDetail;
 	private int likeCount;
+
 }

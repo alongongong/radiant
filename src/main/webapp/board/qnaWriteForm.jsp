@@ -185,7 +185,7 @@
                 		<tr>
                 			<td colspan="2" align="center"> &emsp;
                 				<button type="button" class="btn" id="qnaWriteBtn" name="qnaWriteBtn" onclick="qnaWriteCheck()">글쓰기</button>
-                				<button type="button" class="btn" id="qnaCancelBtn" action="qnaWriteCancel()">취소</button>
+                				<button type="button" class="btn" id="qnaCancelBtn" onclick="qnaWriteCancel()">취소</button>
                 			</td>
                 		</tr>
                 	</table>

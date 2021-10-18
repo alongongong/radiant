@@ -1,3 +1,19 @@
+//약관 동의 체크박스 확인
+function write_agree(){
+   
+   var chkAll = document.getElementById('chkAll').checked;
+   var chk1 = document.getElementById('chk1').checked;
+   var chk2 = document.getElementById('chk2').checked;
+   
+   if(!chkAll && (!chk1 || !chk2)){
+      alert("약관에 동의해주세요.");
+      return false;   
+   }else{   
+       document.joinForm.submit();
+   }
+    
+}   
+
 //회원가입 버튼 클릭시 유효성 체크
 function checkWrite(){
 	
@@ -79,6 +95,8 @@ function checkPhone(tel2, te13){
 	}
 	
 }
+
+//---------------------------------------------------------------------------로그인
 	
 //로그인 유효성 체크
 function checkLogin() {
@@ -109,19 +127,29 @@ function findIdPwd() {
 				"width=500 height=450 top=200 left=600");
 }
 function idFind() {
-	console.log("id");
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findIdTable").innerHTML;
+	document.getElementById("findIdFailDiv").innerText="";
+	document.getElementById("findId").checked=true;
+}
+function pwdFind() {
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findPwdTable").innerHTML;
+	document.getElementById("findPwdFailDiv").innerText="";
+	document.getElementById("findPwd").checked=true;
+}
+function idFindFail() {
 	document.getElementById("findTable").innerHTML="";
 	document.getElementById("findTable").innerHTML=document.getElementById("findIdTable").innerHTML;
 	document.getElementById("findId").checked=true;
 }
-function pwdFind() {
-	console.log("pwd");
+function pwdFindFail() {
 	document.getElementById("findTable").innerHTML="";
 	document.getElementById("findTable").innerHTML=document.getElementById("findPwdTable").innerHTML;
 	document.getElementById("findPwd").checked=true;
 }
 
-// 아이디 찾기
+// 아이디 찾기 유효성 검사
 function findIdCheck() {
 	document.getElementById("findIdNameDiv").innerText="";
 	document.getElementById("findIdTelDiv").innerText="";
@@ -141,7 +169,14 @@ function findIdCheck() {
 	}
 }
 
-// 비밀번호 찾기
+// 아이디 찾기 후 return
+function loginReturnId() {
+	var id=document.getElementById("returnId").innerText;
+	opener.document.getElementById("loginId").value = id;
+	self.close();
+}
+
+// 비밀번호 찾기 유효성 검사
 function findPwdCheck() {
 	document.getElementById("findPwdIdDiv").innerText="";
 	document.getElementById("findPwdNameDiv").innerText="";
@@ -165,6 +200,28 @@ function findPwdCheck() {
 	}
 }
 
+// 비밀번호 변경
+function changePwdCheck() {
+	document.getElementById("currentPwdDiv").innerText="";
+	document.getElementById("changePwd").innerText="";
+	document.getElementById("reChangePwd").innerText="";
+	
+	if(document.getElementById("currentPwd").value=="") {
+		document.getElementById("currentPwdDiv").innerText="현재 비밀번호를 입력해주세요";
+		document.getElementById("currentPwd").focus();
+	} else if(document.getElementById("changePwd").value=="") {
+		document.getElementById("changePwdDiv").innerText="새 비밀번호를 입력해주세요";
+		document.getElementById("changePwd").focus();
+	} else if(document.getElementById("changePwd").value!=document.getElementById("reChangePwd").value) {
+		document.getElementById("reChangePwdDiv").innerText="위의 비밀번호와 일치하지 않습니다.";
+		document.getElementById("reChangePwd").focus();
+	} else {
+		document.changePwdForm.submit();
+	}
+		
+}
+
+//---------------------------------------------------------------------------------------
 //index.jsp 
 //imgSlide
 var img = 0;

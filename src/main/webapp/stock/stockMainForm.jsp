@@ -7,7 +7,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Radiant 레디언트</title>
+    
+	<!-- 메인 -->    
+    <script type="text/javascript" src="/radiant/js/main.js"></script>
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
+    
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
     <script type="text/javascript" src="/radiant/js/member.js"></script>
 </head>
@@ -78,34 +82,19 @@
         </div><!--mainNav-->
         <hr id="mainNavAfter">
         
-        <div id="section"> <!-- 페이지 내용 추가 -->
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-        </div><!--section-->
+		   	<div id="stockTitle">
+		   		{제목들어오는 란]
+		  	</div><!-- imgSlide -->
+		  	
+	        <div id="stockDetail">
+	        <!-- 제품 상세페이지내역 -->
+	        	{이미지출력 및 사이드 제품 내용}
+	        </div><!--section-->
+	        
+	        <div id="stockReview">
+	        <!-- 리뷰 페이지 -->
+	        	{리뷰게시판}
+	        </div><!--section-->
         
         <hr>
         <div id="footer">
@@ -142,5 +131,6 @@
             </div>
         </div><!--footer-->
     </div><!--wrap-->
+    
 </body>
 </html>

@@ -240,8 +240,32 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		
 		return exist;
 	} // getFindPwd()
+
+	public void changePwd(String id, String currentPwd, String pwd) {
+		String sql = "update radiantmember set pwd=? where id=? and pwd=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, id);
+			pstmt.setString(3, currentPwd);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	} // changePwd()
 	
 }

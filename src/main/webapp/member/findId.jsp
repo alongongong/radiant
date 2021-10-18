@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-<form id="findIdSucForm" name="findIdSucForm" action="/radiant/member/findId.do">
+<form id="findIdSucForm" name="findIdSucForm"  method="post" action="/radiant/member/findId.do">
 	<legend>아이디/비밀번호 찾기</legend>
 	<br><br>
  
@@ -40,7 +40,7 @@
 		</tr>
 		<tr>
 			<td>
-				<a href="" onclick="loginReturnId()">${requestScope.id }</a>
+				<a href="" id="returnId" onclick="loginReturnId()">${requestScope.id }</a>
 			</td>
 		</tr>
 		<tr>
