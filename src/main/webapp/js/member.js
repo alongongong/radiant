@@ -226,7 +226,14 @@ function changePwdCheck() {
 //imgSlide
 var img = 0;
 function imgSlide(num) {
-	if(num == 0) {img = img - 100;}
+	if(num == 0) {
+		img = img - 100;
+		if(img == -400) {
+			document.getElementById("nextL").setAttribute("style", "display: none;");
+		}else {
+			document.getElementById("nextL").setAttribute("style", "");
+		}
+	}
 	else if(num == 1) {img = img + 100;}
 	else {alert("이상함");}
 	
