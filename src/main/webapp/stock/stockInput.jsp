@@ -96,6 +96,7 @@
 				<td>옷설명</td>
 				<td>
 					<input type="text" id="clDetail" name="clDetail">
+					<textarea rows="1" cols="3" id="clDetail" name="clDetail"></textarea>
 					<div id="clDetailDiv"></div>
 				</td>
 			</tr>

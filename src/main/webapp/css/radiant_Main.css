@@ -155,21 +155,21 @@ a {
 
 #imgSlideDiv label {
 	display: inline-block;
-	background-color: red;
-	/*vertical-align:middle;*/
-	width: 30px;
-	height: 30px;
+	width: 100px;
+	height: 100px;
 	cursor: pointer;
-	
 	position: relative;
-	top: -400px;
+	top: -450px;
+	font-family: "궁서B";
+	font-size: 50pt;
+	color: white;
 }
 
-#imgSlideDiv #next {
+#imgSlideDiv #nextL {
 	margin-left: 625px;
 }
 
-#imgSlideDiv #prev {
+#imgSlideDiv #prevL {
 	margin-right: 625px;
 }
 

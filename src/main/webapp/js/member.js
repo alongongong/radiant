@@ -229,12 +229,15 @@ function imgSlide(num) {
 	if(num == 0) {
 		img = img - 100;
 		if(img == -400) {
-			document.getElementById("nextL").setAttribute("style", "display: none;");
-		}else {
-			document.getElementById("nextL").setAttribute("style", "");
+			img = 0;
 		}
 	}
-	else if(num == 1) {img = img + 100;}
+	else if(num == 1) {
+		img = img + 100;
+		if(img == 100) {
+			img = -300;
+		}
+	}
 	else {alert("이상함");}
 	
 	document.getElementById("imgList").setAttribute("style", "margin-left: " + img + "%;");
