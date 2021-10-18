@@ -40,7 +40,7 @@
 		</tr>
 		<tr>
 			<td>
-				<a href="" onclick="loginReturnId()">${requestScope.id }</a>
+				<a href="" id="returnId" onclick="loginReturnId()">${requestScope.id }</a>
 			</td>
 		</tr>
 		<tr>

@@ -12,6 +12,7 @@ window.onload=function(){
 	alert("로그아웃");
 	location.href="/radiant/";
 }
+
 </script>
 </body>
 </html>

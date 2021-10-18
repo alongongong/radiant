@@ -75,16 +75,33 @@ legend {
 
 </style>
 </head>
-<c:if test="${findId != null }">
-<body onload="idFind()">
+<c:if test="${findId == 'aa' }">
+<body onload="idFindFail()">
 </c:if> <!-- Id 찾기 실패할 때 -->
+
+<c:if test="${findId == null }">
+<body onload="idFind()">
+</c:if> <!-- Id 찾기-->
  
-<c:if test="${findPwd != null }">
-<body onload="pwdFind()">
+<c:if test="${findPwd == 'aa' }">
+<body onload="pwdFindFail()">
 </c:if> <!-- Pwd 찾기 실패할 때 -->
+
+<c:if test="${findPwd == null }">
+<body onload="pwdFind()">
+</c:if> <!-- Pwd 찾기-->
 
 <legend>아이디/비밀번호 찾기</legend>
 <br><br>
+
+<!-- <script type="text/javascript">
+window.onload=function(){
+	alert("일치하는 정보가 없습니다.");
+	history.back();
+	/* location.href="/radiant/member/findIdPwdForm.do"; */
+}
+</script> -->
+
 <div>
 	<input type="radio" name="findId" id="findId" onclick="idFind()">
 	<label for="findId">아이디 찾기</label> &emsp;
@@ -162,7 +179,6 @@ legend {
 		</table>
 	</form>
 </div>
-
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/member.js"></script>

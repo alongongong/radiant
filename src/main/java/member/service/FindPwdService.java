@@ -34,6 +34,7 @@ public class FindPwdService implements CommandProcess {
 			request.setAttribute("id", id);
 			return "/member/changePwdForm.jsp";
 		} else {
+			request.setAttribute("findId", "bb");
 			request.setAttribute("findPwd", "aa");
 			return "/member/findIdPwdFail.jsp";
 		}

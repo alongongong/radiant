@@ -127,19 +127,29 @@ function findIdPwd() {
 				"width=500 height=450 top=200 left=600");
 }
 function idFind() {
-	console.log("id");
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findIdTable").innerHTML;
+	document.getElementById("findIdFailDiv").innerText="";
+	document.getElementById("findId").checked=true;
+}
+function pwdFind() {
+	document.getElementById("findTable").innerHTML="";
+	document.getElementById("findTable").innerHTML=document.getElementById("findPwdTable").innerHTML;
+	document.getElementById("findPwdFailDiv").innerText="";
+	document.getElementById("findPwd").checked=true;
+}
+function idFindFail() {
 	document.getElementById("findTable").innerHTML="";
 	document.getElementById("findTable").innerHTML=document.getElementById("findIdTable").innerHTML;
 	document.getElementById("findId").checked=true;
 }
-function pwdFind() {
-	console.log("pwd");
+function pwdFindFail() {
 	document.getElementById("findTable").innerHTML="";
 	document.getElementById("findTable").innerHTML=document.getElementById("findPwdTable").innerHTML;
 	document.getElementById("findPwd").checked=true;
 }
 
-// 아이디 찾기
+// 아이디 찾기 유효성 검사
 function findIdCheck() {
 	document.getElementById("findIdNameDiv").innerText="";
 	document.getElementById("findIdTelDiv").innerText="";
@@ -159,7 +169,14 @@ function findIdCheck() {
 	}
 }
 
-// 비밀번호 찾기
+// 아이디 찾기 후 return
+function loginReturnId() {
+	var id=document.getElementById("returnId").innerText;
+	opener.document.getElementById("loginId").value = id;
+	self.close();
+}
+
+// 비밀번호 찾기 유효성 검사
 function findPwdCheck() {
 	document.getElementById("findPwdIdDiv").innerText="";
 	document.getElementById("findPwdNameDiv").innerText="";
