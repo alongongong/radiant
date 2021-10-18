@@ -16,7 +16,7 @@ public class StockInputService implements CommandProcess {
 		String clName = request.getParameter("clName");
 		String category = request.getParameter("category");
 		int price = Integer.parseInt(request.getParameter("price"));
-		double salerate = Double.parseDouble(request.getParameter("salerate"));
+		int salerate = Integer.parseInt(request.getParameter("salerate"));
 		String color = request.getParameter("color");
 		int EnterCount = Integer.parseInt(request.getParameter("enterCount"));
 		String clDetail = request.getParameter("clDetail");

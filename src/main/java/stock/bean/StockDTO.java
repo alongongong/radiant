@@ -9,7 +9,7 @@ public class StockDTO {
 	private String clName;
 	private String category;
 	private int price;
-	private double salerate;
+	private int salerate;
 	private String color;
 	private int enterCount;
 	private int outCount;

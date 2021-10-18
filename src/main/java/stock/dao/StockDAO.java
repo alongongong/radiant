@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.naming.Context;
@@ -72,6 +73,36 @@ public class StockDAO {
 		sqlSession.close();
 		
 	}
+
+	public List<StockDTO> print() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		List<StockDTO> list = sqlSession.selectList("stockSQL.print"); 
+		System.out.println(list.size());
+		sqlSession.close();
+		
+		return list;
+	} // print()
+
+	public void update1(StockDTO stockDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("stockSQL.update1", stockDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	public void update2(StockDTO stockDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("stockSQL.update2", stockDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	public void update3(StockDTO stockDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("stockSQL.update3", stockDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	
 	
 	
 }

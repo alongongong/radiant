@@ -11,7 +11,23 @@
 		into radiantDetail(clnum, cldetail, likecount) values(${seq}.currval, '${stockDTO.getClDetail()}', 0)
 		select * from dual
 
-		
 	</insert>
 	
+	<select id="print" resultType="stock">
+		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
+		join radiantstock using(clnum) join radiantdetail using(clnum) 
+		order by clnum, color
+	</select>
+	
+	<update id="update1" parameterType="stock">
+		update radiantInfo set clname=#{clName}, category=#{category}, price=#{price}, salerate=#{salerate} where clnum=#{clNum}
+	</update>
+	
+	<update id="update2" parameterType="stock">
+		update radiantStock set color=#{color}, entercount=#{enterCount}, outcount=#{outCount} where clnum=#{clNum}
+	</update>
+	
+	<update id="update3" parameterType="stock">
+		update radiantdetail set cldetail=#{clDetail} where clnum=#{clNum}
+	</update>
  </mapper>
