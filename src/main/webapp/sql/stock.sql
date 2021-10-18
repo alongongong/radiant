@@ -35,12 +35,3 @@ CREATE SEQUENCE seq_radiantouter start with 201  maxvalue 299 NOCACHE NOCYCLE;
 
 테이블2 (배송정보) - 마이페이지에서 설정
 아이디, 우편번호, 주소1, 주소2
-
-
-- 게시판 테이블 (-> 검색기능)
-테이블1
-글번호, 아이디, 제목, 내용, 글비번, 첨부파일, 날짜, 
-
-테이블2
-
-- 리뷰 테이블
