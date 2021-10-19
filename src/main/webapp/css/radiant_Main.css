@@ -209,6 +209,17 @@ a {
     margin: 10px 10px 0px 10px;
 }
 
+#top {
+	position: fixed;
+	right: 50px;
+	bottom: 100px;
+}
+
+#bottom {
+	position: fixed;
+	right: 50px;
+	bottom: 60px;
+}
 /*modal*/
 .modal-body{	
 	font-size: 20px;

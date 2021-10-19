@@ -153,6 +153,9 @@
                 </p>
             </div>
         </div><!--footer-->
+        
+        <div id="top"><a href="#"><input type="button" value="top"/></a></div>
+        <div id="bottom"><a href="#footer"><input type="button" value="bottom"/></a></div>
     </div><!--wrap-->
     
 </body>
