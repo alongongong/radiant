@@ -111,6 +111,7 @@
 	        		</tr>
 	        	</c:forEach>        	
         	</table>
+        	
         </div><!--section-->
         
         <hr>
