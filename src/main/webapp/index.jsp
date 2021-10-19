@@ -55,26 +55,20 @@
                 <li><a href="#">가을신상15%</a></li>
             </ul>
             <ul>
+                <li><a href="#">원피스</a></li>
+                <li><a href="#">블라우스</a></li>
                 <li>
-                    <a href="#">원피스</a>
-                    <ul class="dropDownMenu">
+                	<a href="/radiant/mainNav/outer.do">아우터</a>
+                	<ul class="dropDownMenu">
                         <li><a href="#">이거</a></li>
                         <li><a href="#">하나만</a></li>
                         <li><a href="#">샘플로</a></li>
                         <li><a href="#">해봤어요</a></li>
                     </ul>
                 </li>
-                <li><a href="#">블라우스</a></li>
-                <li><a href="#">아우터</a></li>
                 <li><a href="#">니트/티셔츠</a></li>
                 <li><a href="#">스커트</a></li>
                 <li><a href="#">팬츠</a></li>
-                <li><a href="#">주얼리</a></li>
-                <li><a href="#">액세서리</a></li>
-                <li><a href="#">아슈즈우터</a></li>
-                <li><a href="#">가방</a></li>
-                <li><a href="#">언더웨어</a></li>
-                <li><a href="#">테마룩</a></li>
             </ul>
             <ul>
                 <li><a href="#">전체상품보기</a></li>

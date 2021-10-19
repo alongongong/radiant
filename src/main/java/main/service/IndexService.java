@@ -1,10 +1,6 @@
 package main.service;
 
 import java.io.File;
-import java.io.FileFilter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +13,7 @@ public class IndexService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		
 		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");
+
 		String[] fileList = path.list();
 		
 //		for (int i = 0; i < fileList.length; i++) {

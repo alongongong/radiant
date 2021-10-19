@@ -102,7 +102,25 @@ public class StockDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
-	
+
+	public void delete1(int clNum) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("stockSQL.delete1", clNum);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	public void delete2(int clNum) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("stockSQL.delete2", clNum);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+	public void delete3(int clNum) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("stockSQL.delete3", clNum);
+		sqlSession.commit();
+		sqlSession.close();
+	}
 	
 	
 }
