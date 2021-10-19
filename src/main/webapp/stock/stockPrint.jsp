@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>재고 테이블</title>
 <style type="text/css">
+<<<<<<< Updated upstream
 body{
 	margin: 20px;
 }
@@ -186,5 +187,48 @@ function clickBtn(btn, i){
 	document.stockPrintForm.submit();
 }
 </script>
+=======
+		</tr>
+		<c:forEach var="stockDTO" items="${list }">
+			<tr>
+				<td>
+					<input type="text" value="${stockDTO.clNum }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.clName }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.color }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.category }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.price }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.salerate }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.price *(1 - stockDTO.salerate) }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.price * stockDTO.salerate }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.enterCount }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.outCount }">
+				</td>
+				<td>
+					<input type="text" value="${stockDTO.enterCount - stockDTO.outCount }">
+				</td>
+			</tr>
+		</c:forEach>
+		
+	</table>
+</form> 
+>>>>>>> Stashed changes
 </body>
 </html>
