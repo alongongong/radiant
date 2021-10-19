@@ -30,4 +30,14 @@
 	<update id="update3" parameterType="stock">
 		update radiantdetail set cldetail=#{clDetail} where clnum=#{clNum}
 	</update>
+	
+	<delete id="delete1">
+		delete radiantInfo where clnum=#{clnum}
+	</delete>
+	<delete id="delete2">
+		delete radiantStock where clnum=#{clnum}
+	</delete>
+	<delete id="delete3">
+		delete radiantDetail where clnum=#{clnum}
+	</delete>
  </mapper>

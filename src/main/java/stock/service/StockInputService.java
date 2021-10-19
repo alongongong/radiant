@@ -32,7 +32,7 @@ public class StockInputService implements CommandProcess {
 		stockDTO.setClDetail(clDetail);
 
 		stockDAO.write(stockDTO);
-		return "/stock/stockInput.jsp";
+		return "/stock/stockPrint.do";
 	}
 
 }
