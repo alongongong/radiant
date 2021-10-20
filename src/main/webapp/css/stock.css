@@ -5,6 +5,7 @@ margin: 0;
 padding: 0;
 height: 100%;
 width: 100%;
+overflow: auto;
 }
 html{
 	overflow: scroll;
@@ -15,32 +16,168 @@ body, div, dl,dt,dd,ul,ol,li, h1,h2,h3,h4,h5,h6, form, fieldset, p, button {
 }
 .header {
 width: 100%;
-height: 15%;
-background: yellow;
+height: 10%;
+background: rgb(255, 255, 255);
 text-align: center;
 }
 .nav{
-width: 15%;
+width: 10%;
 height: 70%;
 float: left;
-background: orange;
-}
-.section {
-width: 70%;
-height: 70%;
-float: left;
-background: olivedrab;
+background: rgb(255, 255, 255);
 }
 .aside {
-width: 15%;
+width: 10%;
 height: 70%;
-float: left;
-background: orange;
+float: right;
+background: rgb(255, 255, 255);
+}
+.section {
+width: 80%;
+height: 800px;
+display: inline-block;
+text-align: center;
+background: olivedrab;
+
+
+border: 10px solid #000;
 }
 .footer {
-width: 100%;
+width: 80%;
 height: 15%;
+margin: 0 auto;
 /* clear: both; */
 display: flex;
+text-align: center;
 background: plum;
 }
+.image{
+	width: 50%;
+	height: 100%;
+	margin: 0 auto;    
+	float: left;
+	border: 1px solid #ff0;
+}
+/* 아이디값들은 jsp로 넘기자 */
+#img-main{
+	width: 100%;
+	height: 80%;
+
+	margin: 0 auto;
+	
+	background-color: yellow;
+	
+}
+#img-main > img{
+	width:100%;
+    height:100%;
+    padding: 10px;
+    object-fit:cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border:1px solid black;
+}
+#img-slide{
+	width:100%;
+    height:20%;
+	margin: 0 auto;
+	padding: 10px;
+	display: inline-block;
+	background-color: black;
+}
+.stock-detail{
+	width: 50%;
+	height: 100%;
+	padding: 10px;
+	float: right;
+	box-sizing: border-box;
+	
+	border: 1px solid #0ff
+}
+#stock-title{
+	width: 100%;
+	height: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	
+	border: 1px solid #0ff
+}
+#stock-list{
+	width: 100%;
+	height: 60%;
+	
+	
+	
+	border: 1px solid #ff0;
+}
+#stock-color{
+	height: 40%;
+}
+#stock-index-color{
+	width: 20%;
+	height: 100%;
+	padding: 0 auto;
+	margin: 0 auto;
+	float: left;
+	
+	border: 1px solid #ff0;
+}
+#color-index-list{
+	width: 80%;
+	height: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	float: right;
+	
+	border: 1px solid #0ff
+}
+#color-index-list > div{
+	display: inline-block;
+}
+#stock-size{
+	width: 100%;
+	height: 40%;
+	display: inline-block;
+	border: 1px solid #ff0;
+}
+#stock-index-size{
+	width: 20%;
+	height: 100%;
+	padding: 0 auto;
+	margin: 0 auto;
+	float: left;
+	
+	
+	border: 1px solid #ff0;
+}
+#size-index-list{
+	width: 80%;
+	height: 100%;
+	padding: 10px;
+	float: right;
+	box-sizing: border-box;
+	
+	border: 1px solid #0ff
+}
+#size-index-list > div{
+	display: inline-block;
+}
+.like-buy-mycart{
+	width: 100%;
+	height: 20%;
+	padding: 20px 0;
+	display: inline-block;
+	text-align: center;
+	box-sizing: border-box;
+	
+	border: 1px solid #00f
+}
+.like-buy-mycart > input{
+	margin-right: 50px;
+	width: 150px;
+	height: 100px;
+	
+}
+
+
