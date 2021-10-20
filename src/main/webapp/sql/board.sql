@@ -10,16 +10,19 @@ CREATE TABLE radiantboard(
  );
 
  create table radiantcomment(
- 	commentSeq number(10) primary key, -- 댓글 번호
- 	boardSeq number(10) not null, -- 게시글 번호
- 	commentId varchar(20) not null, -- 댓글 작성자 
+ 	commentSeq number primary key, 		-- 댓글 번호
+ 	boardSeq number not null, 			-- 게시글 번호
+ 	commentId varchar(20) not null, 	-- 댓글 작성자 
  	commentText varchar(1000) not null, -- 댓글 내용
- 	commentDate date default sysdate, -- 댓글 작성 시간
+ 	commentDate date default sysdate, 	-- 댓글 작성 시간
+ 	commentParent number, 				-- 대댓글의 부모댓글번호
  	foreign key(boardseq) references radiantboard on delete cascade -- 게시글 번호 외래키. 
  ); -- on delete cascade 부모키 삭제되면 내용도 삭제되게!
  
  CREATE SEQUENCE seq_radiantboard  NOCACHE NOCYCLE;
-
+ 
+ create sequence seq_radiantcomment nocache nocycle;
+ 
  - 게시판 테이블 (-> 검색기능)
 테이블1 --> 
 글번호, 아이디, 제목, 내용, 글비번, 첨부파일, 날짜, 

@@ -13,7 +13,7 @@ public class OuterService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");
+		File path = new File("C:/study/java_ee/workspace/radiant/src/main/webapp/img/clothes");
 
 		String[] fileList = path.list();
 		

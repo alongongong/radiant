@@ -37,6 +37,12 @@
    		padding: 5px 50px;
    		
    	}
+   	.qnaComment1 {
+   		display: none;
+   	}
+   	.qnaComment2 {
+   		visibility: visible;
+   	}
     #qnaWriteBtn {
     	float: right;
     	width: 80px;
@@ -163,6 +169,36 @@
 			                		</tr>
 			                		<tr class="qnaContent1">
 			                			<td colspan="5">${boardDTO.content }</td>
+			                		</tr>
+			                		<tr class="qnaComment1">
+			                			<td colspan="5">
+			                					<ul>
+			                						<c:forEach var="commentDTO" items="${commentList }">
+			                				<c:if test="${boardDTO.seq == commentDTO.boardSeq }">
+			                						<li>
+			                							<div>
+			                								${commentDTO.commentId } &emsp;&emsp; 
+			                								<c:if test="${commentDTO.commentId == sessionScope.memId }">
+			                								<a href="">수정</a>
+			                								<a href="">삭제</a>
+			                								</c:if>
+			                								<br>
+			                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
+			                							</div>
+			                							<div>
+			                								${commentDTO.commentText}<br>
+			                								<a href="">댓글달기</a>
+			                							</div>
+			                							<hr>
+			                						</li>
+			                				</c:if>
+			                						</c:forEach>
+			                						<li>
+			                							<textarea name="commentText${boardDTO.seq }" rows="4" cols="70"></textarea>
+			                							<input type="button" value="댓글달기">
+			                						</li>
+			                					</ul>
+			                			</td>
 			                		</tr>
 		                		</c:forEach>
 	                		</tbody>

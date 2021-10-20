@@ -71,30 +71,40 @@
             </ul>
         </div><!--mainNav-->
         <hr id="mainNavAfter">
-        
+
 		<div id="section"> <!-- 페이지 내용 추가 -->
             <table>
-	        	<c:forEach var="i" begin="0" end="${list.size() / 4 }" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[j] }" alt="${list[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${list[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
+	        	<c:forEach var="i" begin="0" end="${list.size() -1 }" step="1">
+       				<c:if test="${i%4==0 }">
+       					<tr>
+       						<td>
+					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+		       					<p>${list[i] }</p>
+		       					<p>50000원</p>
+		       				</td>
+       				</c:if>
+       				<c:if test="${i%4 ==3 }">
+		       				<td>
+					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+		       					<p>${list[i] }</p>
+		       					<p>50000원</p>
+		       				</td>
+       					</tr>
+					</c:if>
+					<c:if test="${i%4 !=0 && i%4 !=3 }">
+	       				<td>
+				       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+	       					<p>${list[i] }</p>
+	       					<p>50000원</p>
+	       				</td>
+					</c:if>
+					<c:if test="${i == list.size() -1 }">
+						</tr>
+					</c:if>
+	        	</c:forEach>
         	</table>
         </div><!--section-->
-        
+
         <hr>
         <div id="footer">
             <div id="footerLeft">

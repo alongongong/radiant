@@ -37,9 +37,13 @@ $(function(){
 		if($(this).parent().parent().next().hasClass('qnaContent1')) {
 			$(this).parent().parent().next().removeClass('qnaContent1');
 			$(this).parent().parent().next().addClass('qnaContent2');
+			$(this).parent().parent().next().next().removeClass('qnaComment1');
+			$(this).parent().parent().next().next().addClass('qnaComment2');
 		} else {
 			$(this).parent().parent().next().removeClass('qnaContent2');
 			$(this).parent().parent().next().addClass('qnaContent1');
+			$(this).parent().parent().next().next().removeClass('qnaComment2');
+			$(this).parent().parent().next().next().addClass('qnaComment1');
 		}
 		return false;
 	});

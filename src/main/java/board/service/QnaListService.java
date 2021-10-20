@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.control.CommandProcess;
 
 import board.bean.BoardDTO;
+import board.bean.CommentDTO;
 import board.dao.BoardDAO;
+import board.dao.CommentDAO;
 
 public class QnaListService implements CommandProcess {
 
@@ -30,6 +32,14 @@ public class QnaListService implements CommandProcess {
 		request.setAttribute("list", list);
 		request.setAttribute("totalP", totalP);
 		request.setAttribute("pg", pg);
+		
+		// DB
+				CommentDAO commentDAO = CommentDAO.getInstance();
+//				commentDAO.commentWrite(commentId, commentText);
+				List<CommentDTO> commentList = commentDAO.commentList();
+				
+				request.setAttribute("commentList", commentList);
+				
 		
 		return "/board/qnaList.jsp";
 	}

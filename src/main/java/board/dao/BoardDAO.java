@@ -45,8 +45,8 @@ public class BoardDAO {
 	} // 생성자
 	
 	public void qnaWrite(BoardDTO boardDTO) {
-		String sql = "insert into radiantboard(seq, id, name, subject, content, ref) "
-				+ "values(seq_radiantboard.nextval,?,?,?,?,seq_radiantboard.currval)";
+		String sql = "insert into radiantboard(boardseq, id, name, subject, content) "
+				+ "values(seq_radiantboard.nextval,?,?,?,?)";
 		
 		try {
 			conn = ds.getConnection();
@@ -75,7 +75,7 @@ public class BoardDAO {
 		
 		String sql = "select * from "
 				+ "(select rownum rn, tt.* from "
-				+ "(select * from radiantboard order by ref desc, step asc) tt) "
+				+ "(select * from radiantboard order by boardseq desc) tt) "
 				+ "where rn>=? and rn<=?";
 		
 		try {
@@ -88,15 +88,11 @@ public class BoardDAO {
 			
 			while(rs.next()) {
 				BoardDTO boardDTO = new BoardDTO();
-				boardDTO.setSeq(rs.getInt("seq"));
+				boardDTO.setSeq(rs.getInt("boardseq"));
 				boardDTO.setId(rs.getString("id"));
 				boardDTO.setName(rs.getString("name"));
 				boardDTO.setSubject(rs.getString("subject"));
 				boardDTO.setContent(rs.getString("content").replace("\n", "<br>").replace(" ","&emsp;"));
-				boardDTO.setRef(rs.getInt("ref"));
-				boardDTO.setLev(rs.getInt("lev"));
-				boardDTO.setStep(rs.getInt("step"));
-				boardDTO.setPseq(rs.getInt("pseq"));
 				boardDTO.setReply(rs.getInt("reply"));
 				boardDTO.setHit(rs.getInt("hit"));
 				boardDTO.setLogtime(sdf.format(rs.getDate("logtime")));
