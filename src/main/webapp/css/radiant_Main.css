@@ -107,7 +107,7 @@ a {
 #mainNav > ul > li {
     position: relative;
     display: inline-block;
-    margin: 0 35px;
+    padding: 0 35px;
     font-size: 10pt;
 }
 
@@ -119,6 +119,13 @@ a {
 .dropDownMenu {
     position: absolute;
     display: none;
+    width: 100%;
+    left: 0;
+    padding-top : 7px;
+}
+
+.dropDownMenu li {
+	padding: 4px 0;
 }
 
 #mainNav > ul > li:hover .dropDownMenu {

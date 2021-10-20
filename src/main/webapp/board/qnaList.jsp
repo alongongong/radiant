@@ -51,7 +51,7 @@
    	.qnaComment2 .commentView a {
    		padding-left: 5px;
    	}
-   	#commentBtn {
+   	.commentBtn {
    		float: right;
     	width: 80px;
 		height:60px;
@@ -203,17 +203,22 @@
 					                							</div>
 					                							<div>
 					                								${commentDTO.commentText}<br>
-					                								<a href="">댓글달기</a>
 					                							</div>
 					                							<hr>
 					                						</li>
 				                						</c:if>
 			                						</c:forEach>
 			                						<li>
-			                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" ></textarea>
-			                							<input type="button" id="commentBtn" class="btn" value="댓글달기">
-			                							<input type="hidden" id="boardSeq" value="${boardDTO.boardSeq }">
-			                							
+			                							<c:if test="${sessionScope.memId != null }">
+				                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" ></textarea>
+				                							<input type="button" class="commentBtn" class="btn" value="댓글달기">
+				                							<input type="hidden" name="boardSeq" value="${boardDTO.boardSeq }">
+			                							</c:if>
+			                							<c:if test="${sessionScope.memId == null }">
+				                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" placeholder="로그인을 해주세요" readonly></textarea>
+				                							<input type="button" class="commentBtn" class="btn" value="댓글달기" disabled>
+				                							<input type="hidden" name="boardSeq" value="${boardDTO.boardSeq }">
+			                							</c:if>
 			                						</li>
 			                					</ul>
 			                			</td>

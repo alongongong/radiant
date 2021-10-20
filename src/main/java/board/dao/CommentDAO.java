@@ -40,7 +40,7 @@ public class CommentDAO {
 
 	public void commentWrite(CommentDTO commentDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		sqlSession.insert("commentSQL.coometWrite", commentDTO);
+		sqlSession.insert("commentSQL.commentWrite", commentDTO);
 		sqlSession.commit();
 		sqlSession.close();
 	}

@@ -16,18 +16,30 @@ public class CommentWriteService implements CommandProcess {
 		// 데이터
 		HttpSession session = request.getSession();
 		String commentId = (String) session.getAttribute("memId");
-		String commentText = request.getParameter("commentText");
 		int boardSeq = Integer.parseInt(request.getParameter("boardSeq"));
+		String commentText = request.getParameter("commentText"+boardSeq);
 		CommentDTO commentDTO = new CommentDTO();
 		commentDTO.setCommentId(commentId);
 		commentDTO.setCommentText(commentText);
 		commentDTO.setBoardSeq(boardSeq);
-
+		
+		System.out.println("확인");
+		System.out.println(commentId);
+		System.out.println(boardSeq);
+		System.out.println(commentText);
+		System.out.println("-------------------------------");
+		System.out.println();
+		
 		// DB
 		CommentDAO commentDAO = CommentDAO.getInstance();
 		commentDAO.commentWrite(commentDTO);
 		
-		return null;
+//		String commentReturn = "commentId="+commentId+"&commentText="+commentText+"boardSeq="+boardSeq; 
+//		return commentReturn;
+		
+//		return "/radiant/board/qnaList.do?pg=1";
+		
+		return "OK";
 	}
 
 }

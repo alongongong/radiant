@@ -47,20 +47,27 @@ $(function(){
 		}
 		return false;
 	});
-});
+	
+	$('.commentBtn').click(function(){
+		alert("qsasf");
+		$.ajax({
+			url: '/radiant/board/commentWrite.do',
+			type: 'post',
+			data: $('#qnaListForm').serialize(),
+			dataType: 'text',
+			success: function(data){
+    var jsonData = $.parseJSON(data);
+        alert(jsonData.msg);
+			},
+			error:function(request,status,error){
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			},
+			statusCode: { 404: function() { //to do 
+				location.href="/radiant/board/qnaList.do?pg=1";
+			} 
+			}
 
-$('#commentBtn').click(function(){
-	$(this).serialize();
-	$.ajax({
-		url: '/radiant/board/commentWrite.do',
-		type: 'post',
-		data: 'text',
-		dataType: '',
-		success: function(data){
-			
-		},
-		error: function(err){
-			console.log(err)
-		}
+		});
 	});
+
 });

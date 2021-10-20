@@ -45,7 +45,7 @@
             <ul>
                 <li>
                     <div id="menu">
-                        <a href="#">
+                        <a href="#" id="allMenuBtn">
                             <img src="/radiant/img/menu.png" alt="menu">
                         </a>
                     </div>
@@ -55,20 +55,47 @@
                 <li><a href="#">가을신상15%</a></li>
             </ul>
             <ul>
-                <li><a href="#">원피스</a></li>
+                <li><a href="#">원피스</a>
+                	<ul class="dropDownMenu">
+                		<li><a href="">니트</a></li>
+                		<li><a href="">플레어</a></li>
+                		<li><a href="">머메이드</a></li>
+                		<li><a href="">롱</a></li>
+                	</ul>
+                </li>
                 <li><a href="#">블라우스</a></li>
                 <li>
                 	<a href="/radiant/mainNav/outer.do">아우터</a>
                 	<ul class="dropDownMenu">
-                        <li><a href="#">이거</a></li>
-                        <li><a href="#">하나만</a></li>
-                        <li><a href="#">샘플로</a></li>
-                        <li><a href="#">해봤어요</a></li>
+                        <li><a href="#">가디건</a></li>
+                        <li><a href="#">자켓</a></li>
+                        <li><a href="#">코트</a></li>
+                        <li><a href="#">니트</a></li>
                     </ul>
                 </li>
-                <li><a href="#">니트/티셔츠</a></li>
-                <li><a href="#">스커트</a></li>
-                <li><a href="#">팬츠</a></li>
+                <li><a href="#">니트/티셔츠</a>
+                	<ul class="dropDownMenu">
+                		<li><a href="">니트</a></li>
+                		<li><a href="">티셔츠</a></li>
+                	</ul>
+                </li>
+                <li><a href="#">스커트</a>
+                	<ul class="dropDownMenu">
+                		<li><a href="">데님</a></li>
+                		<li><a href="">니트</a></li>
+                		<li><a href="">플리츠</a></li>
+                		<li><a href="">롱</a></li>
+                	</ul>
+                </li>
+                <li><a href="#">팬츠</a>
+                	<ul class="dropDownMenu">
+                		<li><a href="">반바지</a></li>
+                		<li><a href="">슬랙스</a></li>
+                		<li><a href="">스키니</a></li>
+                		<li><a href="">레깅스</a></li>
+                		<li><a href="">니트</a>
+                	</ul>
+                </li>
             </ul>
             <ul>
                 <li><a href="#">전체상품보기</a></li>

@@ -5,10 +5,10 @@
  <mapper namespace="commentSQL">
  
  	<insert id="commentWrite" parameterType="comment">
- 		insert into radiantcomment(commentseq, boardseq, commentId, commenttext) values(seq_radiantcomment.next_val, #boardSeq, #{commentId}, #{commentText})
+ 		insert into radiantcomment values(seq_radiantcomment.nextval, #{boardSeq}, #{commentId}, #{commentText}, sysdate, 0)
  	</insert>
  	
  	<select id="commentList" resultType="comment">
- 		select boardSeq, commentid, commenttext, commentdate from radiantcomment
+ 		select commentSeq, boardSeq, commentid, commenttext, commentdate from radiantcomment order by commentSeq 
  	</select>
  </mapper>
