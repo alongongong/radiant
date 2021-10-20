@@ -5,6 +5,7 @@
  <configuration>
  	<typeAliases>
  		<typeAlias type="stock.bean.StockDTO" alias="stock"/>
+ 		<typeAlias type="board.bean.CommentDTO" alias="comment"/>
  	</typeAliases>
  
  	<environments default="development">
@@ -21,6 +22,7 @@
  	
  	<mappers>
  		<mapper resource="stock/dao/stockMapper.xml"/>
+ 		<mapper resource="board/dao/commentMapper.xml"/>
  	</mappers>
  	
  </configuration>

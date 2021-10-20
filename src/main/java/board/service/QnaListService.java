@@ -34,11 +34,10 @@ public class QnaListService implements CommandProcess {
 		request.setAttribute("pg", pg);
 		
 		// DB
-				CommentDAO commentDAO = CommentDAO.getInstance();
-//				commentDAO.commentWrite(commentId, commentText);
-				List<CommentDTO> commentList = commentDAO.commentList();
-				
-				request.setAttribute("commentList", commentList);
+		CommentDAO commentDAO = CommentDAO.getInstance();
+		List<CommentDTO> commentList = commentDAO.commentList();
+		
+		request.setAttribute("commentList", commentList);
 				
 		
 		return "/board/qnaList.jsp";

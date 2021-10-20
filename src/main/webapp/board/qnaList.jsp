@@ -43,6 +43,22 @@
    	.qnaComment2 {
    		visibility: visible;
    	}
+   	.qnaComment2 ul {
+   		margin: 10px 30px;
+   		padding: 5px 15px; 
+   		font-size: 9pt;
+   	}
+   	.qnaComment2 .commentView a {
+   		padding-left: 5px;
+   	}
+   	#commentBtn {
+   		float: right;
+    	width: 80px;
+		height:60px;
+		color: white;
+		background: #39210D;
+		font-size: 9pt;
+   	}
     #qnaWriteBtn {
     	float: right;
     	width: 80px;
@@ -159,7 +175,7 @@
 	                		<tbody>
 	                			<c:forEach var="boardDTO" items="${requestScope.list }">
 			                		<tr>
-			                			<td>${boardDTO.seq }</td>
+			                			<td>${boardDTO.boardSeq }</td>
 			                			<td>
 			                				<a href="" class="qnaSubject">${boardDTO.subject }</a>
 			                			</td>
@@ -174,28 +190,30 @@
 			                			<td colspan="5">
 			                					<ul>
 			                						<c:forEach var="commentDTO" items="${commentList }">
-			                				<c:if test="${boardDTO.seq == commentDTO.boardSeq }">
-			                						<li>
-			                							<div>
-			                								${commentDTO.commentId } &emsp;&emsp; 
-			                								<c:if test="${commentDTO.commentId == sessionScope.memId }">
-			                								<a href="">수정</a>
-			                								<a href="">삭제</a>
-			                								</c:if>
-			                								<br>
-			                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
-			                							</div>
-			                							<div>
-			                								${commentDTO.commentText}<br>
-			                								<a href="">댓글달기</a>
-			                							</div>
-			                							<hr>
-			                						</li>
-			                				</c:if>
+				                						<c:if test="${boardDTO.boardSeq == commentDTO.boardSeq }">
+					                						<li>
+					                							<div class="commentView">
+					                								${commentDTO.commentId } &emsp;&emsp; 
+					                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
+					                								<%-- <c:if test="${commentDTO.commentId == sessionScope.memId }"> --%>
+					                								&emsp;
+					                								<a href="">수정</a>
+					                								<a href="">삭제</a>
+					                								<%-- </c:if> --%>
+					                							</div>
+					                							<div>
+					                								${commentDTO.commentText}<br>
+					                								<a href="">댓글달기</a>
+					                							</div>
+					                							<hr>
+					                						</li>
+				                						</c:if>
 			                						</c:forEach>
 			                						<li>
-			                							<textarea name="commentText${boardDTO.seq }" rows="4" cols="70"></textarea>
-			                							<input type="button" value="댓글달기">
+			                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" ></textarea>
+			                							<input type="button" id="commentBtn" class="btn" value="댓글달기">
+			                							<input type="hidden" id="boardSeq" value="${boardDTO.boardSeq }">
+			                							
 			                						</li>
 			                					</ul>
 			                			</td>

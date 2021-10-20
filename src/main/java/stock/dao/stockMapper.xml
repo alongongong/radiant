@@ -10,15 +10,17 @@
 		into radiantStock(clnum, color, entercount, outcount) values(${seq}.currval, '${stockDTO.getColor()}', ${stockDTO.getEnterCount()}, 0) 
 		into radiantDetail(clnum, cldetail, likecount) values(${seq}.currval, '${stockDTO.getClDetail()}', 0)
 		select * from dual
-
-	</insert>
+	</insert> <!-- 재고입력 -->
+	
 	
 	<select id="print" resultType="stock">
 		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
 		join radiantstock using(clnum) join radiantdetail using(clnum) 
 		order by clnum, color
-	</select>
+	</select> <!-- 재고테이블 출력 -->
 	
+	
+	<!-- 재고수정 -->
 	<update id="update1" parameterType="stock">
 		update radiantInfo set clname=#{clName}, category=#{category}, price=#{price}, salerate=#{salerate} where clnum=#{clNum}
 	</update>
@@ -31,6 +33,8 @@
 		update radiantdetail set cldetail=#{clDetail} where clnum=#{clNum}
 	</update>
 	
+	
+	<!-- 재고삭제 -->
 	<delete id="delete1">
 		delete radiantInfo where clnum=#{clnum}
 	</delete>
@@ -40,4 +44,5 @@
 	<delete id="delete3">
 		delete radiantDetail where clnum=#{clnum}
 	</delete>
+	
  </mapper>

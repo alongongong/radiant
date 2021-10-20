@@ -52,7 +52,6 @@ public class BoardDAO {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getId());
-			pstmt.setString(2, boardDTO.getName());
 			pstmt.setString(3, boardDTO.getSubject());
 			pstmt.setString(4, boardDTO.getContent());
 			
@@ -88,9 +87,8 @@ public class BoardDAO {
 			
 			while(rs.next()) {
 				BoardDTO boardDTO = new BoardDTO();
-				boardDTO.setSeq(rs.getInt("boardseq"));
+				boardDTO.setBoardSeq(rs.getInt("boardseq"));
 				boardDTO.setId(rs.getString("id"));
-				boardDTO.setName(rs.getString("name"));
 				boardDTO.setSubject(rs.getString("subject"));
 				boardDTO.setContent(rs.getString("content").replace("\n", "<br>").replace(" ","&emsp;"));
 				boardDTO.setReply(rs.getInt("reply"));
@@ -156,15 +154,10 @@ public class BoardDAO {
 			
 			if(rs.next()) {
 				boardDTO = new BoardDTO();
-				boardDTO.setSeq(rs.getInt("seq"));
+				boardDTO.setBoardSeq(rs.getInt("boardseq"));
 				boardDTO.setId(rs.getString("id"));
-				boardDTO.setName(rs.getString("name"));
 				boardDTO.setSubject(rs.getString("subject"));
 				boardDTO.setContent(rs.getString("content"));
-				boardDTO.setRef(rs.getInt("ref"));
-				boardDTO.setLev(rs.getInt("lev"));
-				boardDTO.setStep(rs.getInt("step"));
-				boardDTO.setPseq(rs.getInt("pseq"));
 				boardDTO.setReply(rs.getInt("reply"));
 				boardDTO.setHit(rs.getInt("hit"));
 				boardDTO.setLogtime(sdf.format(rs.getDate("logtime")));

@@ -17,13 +17,11 @@ public class QnaWriteService implements CommandProcess {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memId");
-		String name = (String) session.getAttribute("memName");
 		String subject = request.getParameter("qnaSubject");
 		String content = request.getParameter("qnaContent");
 		
 		BoardDTO boardDTO = new BoardDTO();
 		boardDTO.setId(id);
-		boardDTO.setName(name);
 		boardDTO.setSubject(subject);
 		boardDTO.setContent(content);
 		

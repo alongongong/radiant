@@ -15,14 +15,12 @@ public class CommentService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-//		// 데이터
-//		HttpSession session = request.getSession();
-//		String commentId = (String) session.getAttribute("memId");
-//		String commentText = request.getParameter("commentText");
-//		
+
+		
+		
 		// DB
 		CommentDAO commentDAO = CommentDAO.getInstance();
-//		commentDAO.commentWrite(commentId, commentText);
+//		commentDAO.commentWrite(commentDTO);
 		List<CommentDTO> commentList = commentDAO.commentList();
 		
 		return "/board/qnaView.jsp";

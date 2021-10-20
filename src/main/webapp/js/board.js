@@ -48,3 +48,19 @@ $(function(){
 		return false;
 	});
 });
+
+$('#commentBtn').click(function(){
+	$(this).serialize();
+	$.ajax({
+		url: '/radiant/board/commentWrite.do',
+		type: 'post',
+		data: 'text',
+		dataType: '',
+		success: function(data){
+			
+		},
+		error: function(err){
+			console.log(err)
+		}
+	});
+});
