@@ -188,7 +188,7 @@
 			                		</tr>
 			                		<tr class="qnaComment1">
 			                			<td colspan="5">
-			                					<ul>
+			                					<ul id="comment_list${boardDTO.boardSeq }">
 			                						<c:forEach var="commentDTO" items="${commentList }">
 				                						<c:if test="${boardDTO.boardSeq == commentDTO.boardSeq }">
 					                						<li>

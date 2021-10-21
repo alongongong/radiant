@@ -10,6 +10,6 @@ public class CommentDTO {
 	private int boardSeq;
 	private String commentId;
 	private String commentText;
-	private Date commentDate;
+	private String commentDate;
 	private int commentParent;
 }

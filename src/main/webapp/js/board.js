@@ -54,10 +54,19 @@ $(function(){
 			url: '/radiant/board/commentWrite.do',
 			type: 'post',
 			data: $('#qnaListForm').serialize(),
-			dataType: 'text',
+			dataType: 'xml',
 			success: function(data){
-    var jsonData = $.parseJSON(data);
-        alert(jsonData.msg);
+			/*var result = eval($(data).find('result').text());
+			  
+			
+			var commentSeq = $(data).fint('commentnum').text();
+			var boardSeq = $(data).find('boardnum').text();
+			var writer = $(data).find('writer').text();
+			var content = $(data).find('content').text();
+			var datetime = $(data).find('datetime').text();
+			  
+			addComment(commentSeq, boardSeq, writer, content, datetime);*/
+
 			},
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -71,3 +80,32 @@ $(function(){
 	});
 
 });
+/*
+function addComment(commentSeq, boardSeq, writer, content, datetime) {
+	var new_li = $('<li>');
+	new_li.attr('data-num', commentSeq);
+	new_li.addClass('comment_item');
+	
+	var writer_p = $('<p>');
+	writer_p.addClass('writer');
+	var name_span = $('<span>');
+	name_span.addClass('name');
+	name_span.html(writer);
+	
+	var date_span = $('<span>');
+	date_span.html(' / ' + datetime + ' ');
+	
+	var del_input = $('<input>');
+	del_input.attr({
+		'type': 'button',
+		'value': '삭제하기'
+	})
+	del_input.addClass('delete_btn');
+	
+	var content_p = $('<p>');
+	content_p.html(content);
+	
+	writer_p.append(name_span).append(date_span).append(del_input);
+	new_li.append(writer_p).append(content_p);
+	$('#comment_list'+boardSeq).append(new_li);
+}*/

@@ -51,4 +51,11 @@ public class CommentDAO {
 		sqlSession.close();
 		return commentList;
 	}
+
+	public List getBoardSeq() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List list = sqlSession.selectList("commentSQL.getBoardSeq");
+		sqlSession.close();
+		return list;
+	}
 }

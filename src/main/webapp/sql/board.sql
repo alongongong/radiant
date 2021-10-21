@@ -3,7 +3,7 @@ CREATE TABLE radiantboard(
      id VARCHAR2(20) NOT NULL,          -- 아이디
      subject VARCHAR2(255) NOT NULL,    -- 제목
      content VARCHAR2(4000) NOT NULL,   -- 내용 
-     boardPwd varchar(20) not null,		-- 게시글 비밀번호
+     boardPwd varchar(20),		-- 게시글 비밀번호
      reply NUMBER DEFAULT 0 NOT NULL,   -- 댓글수
      hit NUMBER DEFAULT 0,              -- 조회수
      logtime DATE DEFAULT SYSDATE		-- 게시글 작성 시간

@@ -45,15 +45,15 @@ public class BoardDAO {
 	} // 생성자
 	
 	public void qnaWrite(BoardDTO boardDTO) {
-		String sql = "insert into radiantboard(boardseq, id, name, subject, content) "
-				+ "values(seq_radiantboard.nextval,?,?,?,?)";
+		String sql = "insert into radiantboard(boardseq, id, subject, content) "
+				+ "values(seq_radiantboard.nextval,?,?,?)";
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getId());
-			pstmt.setString(3, boardDTO.getSubject());
-			pstmt.setString(4, boardDTO.getContent());
+			pstmt.setString(2, boardDTO.getSubject());
+			pstmt.setString(3, boardDTO.getContent());
 			
 			pstmt.executeUpdate();
 			

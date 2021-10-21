@@ -9,6 +9,10 @@
  	</insert>
  	
  	<select id="commentList" resultType="comment">
- 		select commentSeq, boardSeq, commentid, commenttext, commentdate from radiantcomment order by commentSeq 
+ 		select commentSeq, boardSeq, commentid, commenttext, to_char(commentdate, 'yyyy-mm-dd hh:mi:ss') as commentdate from radiantcomment order by commentSeq 
+ 	</select>
+ 	
+ 	<select id="getBoardSeq" resultType="int">
+ 		select boardSeq from radiantcomment
  	</select>
  </mapper>
