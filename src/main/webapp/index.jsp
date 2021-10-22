@@ -37,6 +37,8 @@
                     	<li>${sessionScope.memName }님 로그인</li>
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
                     	<li><a href="#">마이페이지</a></li>
+                    	<li><a href="/radiant/member/updateForm.do">정보수정</a></li>
+                    	<li><a href="/radiant/member/deleteForm.do">탈퇴</a></li>
                     </c:if>
                     <li><a href="/radiant/board/qnaList.do?pg=1">고객센터</a></li>
                     <c:if test="${sessionScope.memId == 'admin' }">

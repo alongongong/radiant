@@ -277,8 +277,10 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
+			
 			if(rs.next()) {
-				memberDTO.setId(rs.getString("id"));
+				memberDTO =  new MemberDTO();
+				memberDTO.setId(id);
 				memberDTO.setName(rs.getString("name"));
 				memberDTO.setTel1(rs.getString("tel1"));
 				memberDTO.setTel2(rs.getString("tel2"));
@@ -329,5 +331,27 @@ public class MemberDAO {
 			}
 		}
 	} // update()
+
+	public void delete(String id, String pwd) {
+		String sql = "delete radiantmember where id=? and pwd=?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pwd);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+	} // delete()
 	
 }

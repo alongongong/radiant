@@ -221,6 +221,19 @@ function changePwdCheck() {
 		
 }
 
+
+// 회원탈퇴 유효성검사
+function checkDelete() {
+	
+	var pwd = document.getElementById("deletePwd").value;
+	if(pwd=="") {
+		document.getElementById("deletePwdDiv").innerText="비밀번호를 입력하세요.";
+		document.getElementById("deletePwd").focus();
+	} else {
+		document.deleteForm.submit();
+	}
+}
+
 //---------------------------------------------------------------------------------------
 //index.jsp 
 //imgSlide
