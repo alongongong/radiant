@@ -14,9 +14,8 @@
 	<!-- 메인 -->    
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     <link rel="stylesheet" href="/radiant/css/stock.css">
-    
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
-    <script type="text/javascript" src="/radiant/js/member.js"></script>
+    
     
 </head>
 <body>
@@ -131,55 +130,64 @@
 			
 			
 			
-				<%-- <div id="img-slide">
-					<div id="arrow-left" class="arrow"></div>
-						<div class="slide slide1" id="img-main"><img alt="${mainFileList }" src="../img/clothes/${mainFileList }"/></div><!-- 메인 이미지 출력부 -->
-					    <div class="slide slide2"></div>
-					    <div class="slide slide3"></div>
-					    <div class="slide slide4"></div>
-				    <div id="arrow-right" class="arrow"></div>
-				</div><!-- 이미지슬라이드 -->
-			</div><!-- 이미지 들어오는곳 --> --%>
+			
 			
 			<div class="stock-detail">
 				<div id="stock-title">
 					<h4>
 						<span>[레디언트]ts2866 1+1 레이어드 하기 좋은 베이직 속기모 하이넥 티 tee</span>
 					</h4><br>
+					<h6>
+						<span style="color: #A98B59"><b>#데일리룩 #편안하고예쁘게 #러블리룩</b></span>
+					</h6><br><br>
 					<h3>
-						<span>21% 18,900원</span> <del>24,000원</del>
+						<span style="color: #B9062F">21%&nbsp;&nbsp;&nbsp;</span>18,900원 &nbsp;<del>24,000원</del>
 					</h3>
 				</div><!-- 상세정보 제목부 -->
 				
 				<div id="stock-list">
 					<div id="stock-color">
 						<div id="stock-index-color">
-							<p>색상<p>
+							<p><b>색상</b><p>
 						</div>
 						
 						<div id="color-index-list">
-							<div id="img-color1">색사진1</div>
-							<div id="img-color2">색사진2</div>
+							<select name="select-color" id="colorSelect" class="color selected">
+							  <option value="">==  [필수] 색상 선택  ==</option>
+						      <option value="black">BLACK</option>
+						      <option value="white">WHITE</option>
+						      <option value="blue">BLUE</option>
+						    </select>
+						   &nbsp;&nbsp;
+						   <div class="show-color" style="background-color: white; border: 5px solid black;"></div>
 						</div>
 					</div><!-- 색상정보 -->
 					
 					<div id="stock-size">
 						<div id="stock-index-size">
-							<p>사이즈<p>
+							<p><b>사이즈</b><p>
 						</div>
 						
 						<div id="size-index-list">
-							<div id="img-size1">사이즈사진1</div>
-							<div id="img-size2">사이즈사진2</div>
+							<select name="select-size" class="size selected">
+						      <option value="none">==  [필수] 사이즈 선택  ==</option>
+						      <option value="smal">S</option>
+						      <option value="medium">M</option>
+						      <option value="large">L</option>
+						      <option value="xlarge">XL</option>
+						   </select>
 						</div>
 					</div><!-- 사이즈정보 -->
+					<div class="stock-detail-para">
+						<p>이곳에 상품 상세설명</p>
+					</div>
 					
 				</div>
 				
 				<div class="like-buy-mycart">
-					<input type="button" id="likeBtn" value="찜하기"/>
-					<input type="button" id="buyBtn" value="구매하기"/>
-					<input type="button" id="mycartBtn" value="장바구니"/>
+					<input type="button" id="likeBtn" class="like button" value="찜하기"/>
+					<input type="button" id="buyBtn" class="buy button" value="구매하기"/>
+					<input type="button" id="mycartBtn" class="mycart button" value="장바구니"/>
 				</div>
 				
 			</div><!-- 제품 상세페이지 -->
@@ -191,7 +199,7 @@
 	<footer class="footer"><!-- 리뷰게시판 -->
 		게시판
 	</footer><!-- footer -->
-	<script type="text/javascript" src="/radiant/js/stock.js"></script>
+	
 
        
        
@@ -255,5 +263,8 @@
         </div><!--footer-->
     </div><!--wrap-->
 
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/radiant/js/member.js"></script>
+    <script type="text/javascript" src="/radiant/js/stock.js"></script>
 </body>
 </html>
