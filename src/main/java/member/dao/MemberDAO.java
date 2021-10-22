@@ -267,5 +267,67 @@ public class MemberDAO {
 			}
 		}
 	} // changePwd()
+
+	public MemberDTO getMember(String id) {
+		String sql = "select * from radiantmember where id=?";
+		MemberDTO memberDTO = null;
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				memberDTO.setId(rs.getString("id"));
+				memberDTO.setName(rs.getString("name"));
+				memberDTO.setTel1(rs.getString("tel1"));
+				memberDTO.setTel2(rs.getString("tel2"));
+				memberDTO.setTel3(rs.getString("tel3"));
+				memberDTO.setEmail1(rs.getString("email1"));
+				memberDTO.setEmail2(rs.getString("email2"));
+				memberDTO.setEmailTF(rs.getString("emailtf"));
+				memberDTO.setYy(rs.getInt("yy"));
+				memberDTO.setMm(rs.getInt("mm"));
+				memberDTO.setDd(rs.getInt("dd"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return memberDTO;
+	} // getMember()
+
+	public void update(MemberDTO memberDTO) {
+		String sql = "update radiantmember set tel1=?, tel2=?, tel3=?, email1=?, email2=?, emailTF=? where id=?";
+		try {
+			conn = ds.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getTel1());
+			pstmt.setString(2, memberDTO.getTel2());
+			pstmt.setString(3, memberDTO.getTel3());
+			pstmt.setString(4, memberDTO.getEmail1());
+			pstmt.setString(5, memberDTO.getEmail2());
+			pstmt.setString(6, memberDTO.getEmailTF());
+			pstmt.setString(7, memberDTO.getId());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	} // update()
 	
 }
