@@ -7,6 +7,5 @@
 <title>Radiant 레디언트</title>
 </head>
 <body onload="location.href='/radiant/main/index.do'">
-
 </body>
 </html>

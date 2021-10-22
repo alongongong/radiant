@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+#section h3 {
+	text-align: center;
+}
+#section > div {
+	text-align: center;
+	margin: 40px 80px;
+	height: 200px;
+
+}
+
+/* #member */
+#section #member > div {
+	float: left;
+	width: 510px;
+	height: 150px;
+	margin: 30px;
+	padding: 30px;
+}
+
+#section #member > div:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#section #memberL > div {
+	float: left;
+}
+
+#section #memberL #memberImg {
+	width: 100px;
+	height: 100px;
+}
+
+#section #mamberL #memberGrade {
+	width: 600px;
+	height: 100px;
+}
+
+#section #memberL > div:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#section #memberR > table td {
+	padding: 30px;
+	padding-top: 0;
+}
+
+/* #order */
+#section #order {
+	background-color: rgb(252, 250, 255);
+	padding: 30px;
+}
+
+#section #order #shipping > span {
+	margin-right: 20px;
+}
+
+
+#section #order #shipping, span, #section #order #info {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#section #order #shipping > table td {
+	width: 100px;
+}
+
+#section #order #info > table td {
+	width: 100px;
+}
+
+#memberDeail
+#section #memberDetail {
+	background-color: blue; 
+}
+
+#section #memberDetail > div {
+	display: inline-block;
+	width: 250px;
+	height: 250px;
+	margin: 0 5px;
+	vertical-align: top;
+}
+
