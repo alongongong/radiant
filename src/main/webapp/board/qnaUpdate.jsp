@@ -7,6 +7,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Radiant 레디언트</title>
+    <style type="text/css">
+    #qnaUpdateSucForm {
+    	margin: 15% 0 15% 35%;
+    }
+    #qnaUpdateSucForm td {
+    	padding: 5px;
+    	height: 40px;
+    	font-size: 20pt;
+    }
+    #qnaListBtn{
+    	width: 200px;
+		height: 40px;
+		color: white;
+		background: #39210D;
+    }
+    </style>
     
 	<!-- 메인 -->    
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
@@ -171,43 +187,24 @@
 	            </ul>
 	        </div>
         </div><!--mainNav-->
-        
-	   	<div id="imgSlideDiv">
-	   		<ul id="imgList">
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
-	   		</ul>
-	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
-	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prevL" for="prev"><</label>
-	   		<label id="nextL" for="next">></label>
-	  	</div><!-- imgSlide -->
 	  	
         <div id="section">
-        
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
-        	</table>
-        	
+        	<form id="qnaUpdateSucForm" name="qnaUpdateSucForm">
+           		<table>
+           			<tr>
+           				<td align="center"> 질문이 수정되었습니다.</td>
+           			</tr>
+           			<tr>
+           				<td>&emsp;</td>
+           			</tr>
+           			<tr>
+           				<td align="center">
+           					<button type="button" class="btn" id="qnaListBtn" onclick="location.href='/radiant/board/qnaList.do?pg=1'">글목록</button>
+           				</td>
+           			</tr>
+           		</table>
+           	</form>
+      
         </div><!--section-->
         
         <hr>

@@ -140,15 +140,15 @@ public class BoardDAO {
 		return totalA;
 	} // getTotalA()
 
-	public BoardDTO qnaView(int seq) {
+	public BoardDTO qnaView(int boardSeq) {
 		BoardDTO boardDTO = null;
 		
-		String sql = "select * from radiantboard where seq=?";
+		String sql = "select * from radiantboard where boardSeq=?";
 		
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, seq);
+			pstmt.setInt(1, boardSeq);
 			
 			rs = pstmt.executeQuery();
 			
@@ -172,9 +172,56 @@ public class BoardDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		} // qnaView()
 		
 		return boardDTO;
 	} // qnaView()
+
+	public void qnaDelete(int boardSeq) {
+		String sql = "delete radiantboard where boardSeq=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardSeq);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	} // qnaDelete()
+
+	public void qnaUpdate(BoardDTO boardDTO) {
+		String sql = "update radiantboard set subject=?, content=? where boardseq=?";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, boardDTO.getSubject());
+			pstmt.setString(2, boardDTO.getContent());
+			pstmt.setInt(3, boardDTO.getBoardSeq());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	} // qnaUpdate()
 
 }

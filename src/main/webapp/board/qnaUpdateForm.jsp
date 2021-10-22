@@ -7,6 +7,73 @@
 <head>
     <meta charset="UTF-8">
     <title>Radiant 레디언트</title>
+    <style type="text/css">
+    #qnaUpdateForm {
+    	margin: 5% 0 10% 20%;
+    }
+    #qnaUpdateForm td {
+    	padding: 5px;
+    	height: 35px;
+    	font-size: 10pt;
+		color: #999;
+    }
+    #qnaUpdateForm tr td:first-child {
+    	width: 80px;
+    }
+    #qnaUpdateForm legend {
+    	font-size: 20pt;
+    }
+    #qnaSubject {
+    	padding-bottom: 3px;
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    	font-size: 10pt;
+    } 
+    #qnaContent {
+    	border: 1px solid #999;
+    	font-size: 10pt;
+    }
+    #qnaSubject:focus, #qnaContent:focus, #qnaPwd:focus {
+    	outline: none;
+    }
+    #qnaSubjectDiv, #qnaContentDiv {
+    	font-size: 9pt;
+		font-weight: bold;
+		color: brown;
+    }
+    .filebox .upload-name {
+    	display: inline-block;
+    	padding: 0 10px;
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    	vertical-align: middle;
+    }
+    .filebox label {
+    	display: inline-block;
+    	padding: 3px 15px;
+    	background: white;
+    	border: 1px solid;
+    	font-size: 9pt;
+    	vertical-align: top;
+    }
+    #qnaAttachedFile {
+    	width: 0;
+    	height: 0;
+    	padding: 0;
+    	overflow: hidden;
+    	border: 0;
+    }
+    #qnaPwd {
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    }
+	#qnaUpdateBtn, #qnaCancelBtn {
+		width: 150px;
+		height: 40px;
+		color: white;
+		background: #39210D;
+	}
+    </style>
     
 	<!-- 메인 -->    
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
@@ -172,42 +239,52 @@
 	        </div>
         </div><!--mainNav-->
         
-	   	<div id="imgSlideDiv">
-	   		<ul id="imgList">
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
-	   		</ul>
-	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
-	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prevL" for="prev"><</label>
-	   		<label id="nextL" for="next">></label>
-	  	</div><!-- imgSlide -->
-	  	
+	  
         <div id="section">
-        
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
-        	</table>
-        	
+        	<form id="qnaUpdateForm" name="qnaUpdateForm" method="post" action="/radiant/board/qnaUpdate.do?boardSeq=${boardDTO.boardSeq }">
+               	<legend>Q&A</legend>
+               	<br>
+               	<table>
+               		<tr>
+               			<td align="center">제목</td>
+               			<td>
+               				<input type="text" id="qnaSubject" name="qnaSubject" size="78" value="${subject }">
+               				<div id="qnaSubjectDiv"></div>
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">내용</td>
+               			<td>
+               				<textarea id="qnaContent" name="qnaContent" rows="20" cols="80">${content }</textarea>
+               				<div id="qnaContentDiv"></div>
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">첨부파일</td>
+               			<td class="filebox">
+               				<input class="upload-name" id="upload-name" placeholder="파일 첨부" size="62">
+               				<label class="btn" for="qnaAttachedFile">파일찾기</label>
+               				<input type="file" id="qnaAttachedFile" name="qnaAttachedFile" onchange="qnaAttachedFileName()">
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">비밀번호</td>
+               			<td>
+               				<input type="password" id="qnaPwd" name="qnaPwd" size="30">
+               			</td>
+               		</tr>
+               		<tr>
+               			<td>&emsp;</td>
+               		</tr>
+               		<tr>
+               			<td colspan="2" align="center"> &emsp;
+               				<button type="button" class="btn" id="qnaUpdateBtn" name="qnaUpdateBtn" onclick="qnaUpdateCheck()">수정하기</button>
+               				<button type="button" class="btn" id="qnaCancelBtn" onclick="qnaUpdateCancel()">취소</button>
+               			</td>
+               		</tr>
+               	</table>
+            </form>
+           
         </div><!--section-->
         
         <hr>

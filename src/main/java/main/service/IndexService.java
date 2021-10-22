@@ -18,7 +18,8 @@ public class IndexService implements CommandProcess {
       throws Throwable {
 
     File path =
-        new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
+        // new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
+    	new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
     String[] fileList = path.list();
 
     // for (int i = 0; i < fileList.length; i++) {
