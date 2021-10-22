@@ -37,6 +37,20 @@ input[type="text"] {
 #stockTable tr:last-child td {
 	border-bottom: 0;
 }
+#main {
+	border : 1px solid;
+	text-decoration: none;
+	color: white;
+	background: #39210D;
+	position: fixed;
+	width: 90px;
+	height: 30px;
+	text-align: center;
+	padding-top: 5px;
+	left: 1300px;
+	top: 50px;
+	border-radius: 5px;
+}
 
 </style>
 </head>
@@ -154,6 +168,8 @@ input[type="text"] {
 			</td>
 		</tr>
 	</table>
+	<br><br>
+	<a href="/radiant/main/index.do" id="main">메인화면</a>
 </form>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -187,48 +203,5 @@ function clickBtn(btn, i){
 	document.stockPrintForm.submit();
 }
 </script>
-=======
-		</tr>
-		<c:forEach var="stockDTO" items="${list }">
-			<tr>
-				<td>
-					<input type="text" value="${stockDTO.clNum }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.clName }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.color }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.category }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.price }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.salerate }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.price *(1 - stockDTO.salerate) }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.price * stockDTO.salerate }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.enterCount }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.outCount }">
-				</td>
-				<td>
-					<input type="text" value="${stockDTO.enterCount - stockDTO.outCount }">
-				</td>
-			</tr>
-		</c:forEach>
-		
-	</table>
-</form> 
->>>>>>> Stashed changes
 </body>
 </html>

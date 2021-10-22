@@ -184,28 +184,9 @@
 	  	</div><!-- imgSlide -->
 	  	
         <div id="section">
-        
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
-        	</table>
-        	
+        	<form name="updateForm" id="updateForm">
+        		
+        	</form>
         </div><!--section-->
         
         <hr>

@@ -245,10 +245,25 @@ function imgSlide(num) {
 }
 
 // 전체메뉴토글
-$(function(){$('#allMenuBtn').click(function(){
-	$('#allMenu').prop('id','allMenuToggle');
-	$('.dropDownMenu').parent().hover(function(){
-	});
-	$('#allMenu').toggleClass('allMenuToggle');
+$(function(){
+	$('#allMenuBtn').click(function(){
+		$('#allMenu').prop('id','allMenuToggle');
+		$('#allMenuToggle').slideToggle(200);
+		if($('#allMenuValue').val() == 'visible'){
+			$('#allMenuValue').val('hidden');
+			$('#menuImage').prop('src','/radiant/img/menuclose.png');
+			$('.dropDownMenu').parent().hover(function(){
+				$('.dropDownMenu').prop('style', 'display: none;');
+			});
+			
+		} else if($('#allMenuValue').val() == 'hidden') {
+			$('#allMenuValue').val('visible');
+			$('#menuImage').prop('src','/radiant/img/menu.png');
+			$('.dropDownMenu').parent().hover(function(){
+				$(this).find('.dropDownMenu').prop('style', 'display: block;');
+			}, function(){
+				$(this).find('.dropDownMenu').prop('style', 'display: none;');
+			});
+		} // if
 	});
 });
