@@ -33,9 +33,8 @@
     .qnaContent2 {
     	visibility: visible;
     }
-   	.qnaContent2 td {
-   		padding: 5px 50px;
-   		
+   	.qnaContent2, .qnaContent2 td {
+   		padding: 20px 30px;   		
    	}
    	.qnaComment1 {
    		display: none;
@@ -44,12 +43,23 @@
    		visibility: visible;
    	}
    	.qnaComment2 ul {
-   		margin: 10px 30px;
-   		padding: 5px 15px; 
+   		margin: 10px 30px 0 30px;
+   		padding: 0 10px; 
    		font-size: 9pt;
    	}
    	.qnaComment2 .commentView a {
    		padding-left: 5px;
+   	}
+   	.qnaComment2 .commentView {
+   		border-top: 1px dotted #999;
+   		border-collapse: collapse;   	
+   		padding : 15px 0;	
+   	}  	
+   	.qnaComment2 .commentView:first-child {
+   		border-top: 0;
+   	}
+   	.commentWriteLi {
+   		padding-bottom : 10px;
    	}
    	.commentBtn {
    		float: right;
@@ -58,6 +68,14 @@
 		color: white;
 		background: #39210D;
 		font-size: 9pt;
+   	}
+   	.commentDeleteBtn {
+   		border: 0;
+   		background: none;
+   		color: blue;
+   	}
+   	.commentDeleteBtn:hover {
+   		text-decoration: underline;
    	}
     #qnaWriteBtn {
     	float: right;
@@ -184,49 +202,50 @@
 			                			<td>${boardDTO.hit }</td>
 			                		</tr>
 			                		<tr class="qnaContent1">
-			                			<td colspan="5">${boardDTO.content }</td>
+			                			<td colspan="5">${boardDTO.content }<br><br><br><br></td>
 			                		</tr>
 			                		<tr class="qnaComment1">
 			                			<td colspan="5">
-			                					<ul id="comment_list${boardDTO.boardSeq }">
-			                						<c:forEach var="commentDTO" items="${commentList }">
-				                						<c:if test="${boardDTO.boardSeq == commentDTO.boardSeq }">
-					                						<li>
-					                							<div class="commentView">
-					                								${commentDTO.commentId } &emsp;&emsp; 
-					                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
-					                								<%-- <c:if test="${commentDTO.commentId == sessionScope.memId }"> --%>
-					                								&emsp;
-					                								<a href="">수정</a>
-					                								<a href="">삭제</a>
-					                								<%-- </c:if> --%>
-					                							</div>
-					                							<div>
-					                								${commentDTO.commentText}<br>
-					                							</div>
-					                							<hr>
-					                						</li>
-				                						</c:if>
-			                						</c:forEach>
-			                						<li>
-			                							<c:if test="${sessionScope.memId != null }">
-				                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" ></textarea>
-				                							<input type="button" class="commentBtn" class="btn" value="댓글달기">
-				                							<input type="hidden" name="boardSeq" value="${boardDTO.boardSeq }">
-			                							</c:if>
-			                							<c:if test="${sessionScope.memId == null }">
-				                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" placeholder="로그인을 해주세요" readonly></textarea>
-				                							<input type="button" class="commentBtn" class="btn" value="댓글달기" disabled>
-				                							<input type="hidden" name="boardSeq" value="${boardDTO.boardSeq }">
-			                							</c:if>
-			                						</li>
-			                					</ul>
+		                					<ul id="comment_list${boardDTO.boardSeq }">
+		                						<li class="commentWriteLi">
+		                							<c:if test="${sessionScope.memId != null }">
+			                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" ></textarea>
+			                							<input type="button" class="commentBtn" value="댓글달기">
+			                							<input type="hidden" class="boardSeq${boardDTO.boardSeq }" value="${boardDTO.boardSeq }">
+		                							</c:if>
+		                							<c:if test="${sessionScope.memId == null }">
+			                							<textarea name="commentText${boardDTO.boardSeq }" rows="3" cols="103" placeholder="로그인을 해주세요" readonly></textarea>
+			                							<input type="button" class="commentBtn"  value="댓글달기" disabled>
+			                							<input type="hidden" class="boardSeq${boardDTO.boardSeq }" value="${boardDTO.boardSeq }">
+		                							</c:if>
+		                							
+		                						</li>
+		                						<c:forEach var="commentDTO" items="${commentList }">
+			                						<c:if test="${boardDTO.boardSeq == commentDTO.boardSeq }">
+				                						<li class="commentView" value="${commentDTO.commentSeq }">
+				                							<div>
+				                								${commentDTO.commentId } &emsp;&emsp; 
+				                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
+				                								<c:if test="${commentDTO.commentId == sessionScope.memId }">
+				                								&emsp;
+				                								<input type="button" class="commentDeleteBtn" value="삭제">
+				                								</c:if>
+				                							</div>
+				                							<div>
+				                								${commentDTO.commentText}<br>
+				                							</div>
+				                						</li>
+			                						</c:if>
+		                						</c:forEach>
+		                					</ul>
 			                			</td>
 			                		</tr>
 		                		</c:forEach>
 	                		</tbody>
 	                	</table>
                 	</c:if>
+	               	<input type="hidden" id="boardSeq" name="boardSeq" value="">
+                	
                 	
                 	<c:if test="${sessionScope.memId != null }">
                 		<button type="button" class="btn" id="qnaWriteBtn" onclick="location.href='/radiant/board/qnaWriteForm.do'">글쓰기</button>

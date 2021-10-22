@@ -52,10 +52,18 @@ public class CommentDAO {
 		return commentList;
 	}
 
-	public List getBoardSeq() {
+	public int getCommentSeq(CommentDTO commentDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		List list = sqlSession.selectList("commentSQL.getBoardSeq");
+		int commentSeq = sqlSession.selectOne("commentSQL.getCommentSeq", commentDTO);
 		sqlSession.close();
-		return list;
+		return commentSeq;
 	}
+
+	public void commentDelete(int commentSeq) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("commentSQL.commentDelete", commentSeq);
+		sqlSession.commit();
+		sqlSession.close();		
+	}
+
 }

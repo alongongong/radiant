@@ -11,19 +11,19 @@ import com.control.CommandProcess;
 import board.bean.CommentDTO;
 import board.dao.CommentDAO;
 
-public class CommentService implements CommandProcess {
+public class CommentDeleteService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-
+		// 데이터
+		int commentSeq = Integer.parseInt(request.getParameter("commentSeq"));
 		
 		
 		// DB
 		CommentDAO commentDAO = CommentDAO.getInstance();
-//		commentDAO.commentWrite(commentDTO);
-		List<CommentDTO> commentList = commentDAO.commentList();
+		commentDAO.commentDelete(commentSeq);
 		
-		return "/board/qnaView.jsp";
+		return "/board/commentDelete.jsp";
 	}
 
 }

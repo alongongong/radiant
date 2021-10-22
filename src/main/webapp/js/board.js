@@ -48,24 +48,26 @@ $(function(){
 		return false;
 	});
 	
+	// 댓글달기 버튼
 	$('.commentBtn').click(function(){
-		alert("qsasf");
+		var boardSeq = $(this).next().val();
+		$('#boardSeq').val(boardSeq);
 		$.ajax({
 			url: '/radiant/board/commentWrite.do',
 			type: 'post',
 			data: $('#qnaListForm').serialize(),
 			dataType: 'xml',
 			success: function(data){
-			/*var result = eval($(data).find('result').text());
+			var result = eval($(data).find('result').text());
 			  
 			
-			var commentSeq = $(data).fint('commentnum').text();
+			var commentSeq = $(data).find('commentnum').text();
 			var boardSeq = $(data).find('boardnum').text();
 			var writer = $(data).find('writer').text();
 			var content = $(data).find('content').text();
 			var datetime = $(data).find('datetime').text();
 			  
-			addComment(commentSeq, boardSeq, writer, content, datetime);*/
+			addComment(commentSeq, boardSeq, writer, content, datetime);
 
 			},
 			error:function(request,status,error){
@@ -73,18 +75,34 @@ $(function(){
 			},
 			statusCode: { 404: function() { //to do 
 				location.href="/radiant/board/qnaList.do?pg=1";
-			} 
+				} 
 			}
 
-		});
+		}); // ajax
+	}); // click 이벤트
+	
+	// 댓글 삭제 버튼
+	$(document).on('click', '.commentDeleteBtn', function(){
+		if(confirm('선택하신 댓글을 삭제하시겠습니까?')){
+			var commentSeq = $(this).parents('.commentView').val();
+			var target = $(this).parents('.commentView');
+			
+			var url = "/radiant/board/commentDelete.do";
+			$.post(url, {'commentSeq': commentSeq}, function(){
+				target.remove();
+			}).fail(function(){
+				alert("댓글을 삭제하는데 실패했습니다. 잠시 후에 다시 시도해주세요.")
+			});
+		}
 	});
 
 });
-/*
+
 function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var new_li = $('<li>');
 	new_li.attr('data-num', commentSeq);
-	new_li.addClass('comment_item');
+	new_li.attr('style', 'border-top: 1px dotted #999; border-collapse: collapse;')
+	new_li.addClass('commentView');
 	
 	var writer_p = $('<p>');
 	writer_p.addClass('writer');
@@ -92,12 +110,12 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	name_span.addClass('name');
 	name_span.html(writer);
 	
-	var date_span = $('<span>');
-	date_span.html(' / ' + datetime + ' ');
+	var date_span = $('<font size="2" color="lightgray">');
+	date_span.html('&emsp;&emsp;' + datetime + '&emsp;');
 	
-	var del_input = $('<input>');
+	var del_input = $('<a>');
 	del_input.attr({
-		'type': 'button',
+		'href': '',
 		'value': '삭제하기'
 	})
 	del_input.addClass('delete_btn');
@@ -108,4 +126,4 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	writer_p.append(name_span).append(date_span).append(del_input);
 	new_li.append(writer_p).append(content_p);
 	$('#comment_list'+boardSeq).append(new_li);
-}*/
+}

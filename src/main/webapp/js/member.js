@@ -243,3 +243,12 @@ function imgSlide(num) {
 	document.getElementById("imgList").setAttribute("style", "margin-left: " + img + "%;");
 	
 }
+
+// 전체메뉴토글
+$(function(){$('#allMenuBtn').click(function(){
+	$('#allMenu').prop('id','allMenuToggle');
+	$('.dropDownMenu').parent().hover(function(){
+	});
+	$('#allMenu').toggleClass('allMenuToggle');
+	});
+});

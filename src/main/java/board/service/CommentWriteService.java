@@ -15,7 +15,6 @@ import board.bean.CommentDTO;
 import board.dao.CommentDAO;
 
 public class CommentWriteService implements CommandProcess {
-	int commentSeq=30;
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 데이터
@@ -28,23 +27,9 @@ public class CommentWriteService implements CommandProcess {
 		SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String commentDate = sd.format(date);
 		
-		
-		// DB
-		CommentDAO commentDAO = CommentDAO.getInstance();
-		List boardSeqList = commentDAO.getBoardSeq();
-		Iterator it = boardSeqList.iterator();
-		while(it.hasNext()) {
-			if(it.next().equals(boardSeq+"")) {
-				commentSeq = 1;
-				break;
-			} else {
-				commentSeq++;
-			}
-		}
-		
+
 		// 데이터
 		CommentDTO commentDTO = new CommentDTO();
-		commentDTO.setCommentSeq(commentSeq);
 		commentDTO.setCommentId(commentId);
 		commentDTO.setCommentText(commentText);
 		commentDTO.setBoardSeq(boardSeq);
@@ -57,11 +42,10 @@ public class CommentWriteService implements CommandProcess {
 		System.out.println();
 		
 		// DB
+		CommentDAO commentDAO = CommentDAO.getInstance();
 		commentDAO.commentWrite(commentDTO);
-		
-//		String commentReturn = "commentId="+commentId+"&commentText="+commentText+"boardSeq="+boardSeq; 
-//		return commentReturn;
-		
+		int commentSeq = commentDAO.getCommentSeq(commentDTO);
+
 //		return "/radiant/board/qnaList.do?pg=1";
 		
 		request.setAttribute("commentSeq", commentSeq);
@@ -70,7 +54,7 @@ public class CommentWriteService implements CommandProcess {
 		request.setAttribute("commentText", commentText);
 		request.setAttribute("commentDate", commentDate);
 		
-		return "OK";
+		return "/board/commentAppend.jsp";
 	}
 
 }

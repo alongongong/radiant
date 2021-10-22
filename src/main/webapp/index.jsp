@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
 </head>
 <body>
@@ -55,7 +56,7 @@
                 <li><a href="#">가을신상15%</a></li>
             </ul>
             <ul>
-                <li><a href="#">원피스</a>
+                <li><a href="#" >원피스</a>
                 	<ul class="dropDownMenu">
                 		<li><a href="">니트</a></li>
                 		<li><a href="">플레어</a></li>
@@ -63,7 +64,7 @@
                 		<li><a href="">롱</a></li>
                 	</ul>
                 </li>
-                <li><a href="#">블라우스</a></li>
+                <li class="dropHidden"><a href="#">블라우스</a></li>
                 <li>
                 	<a href="/radiant/mainNav/outer.do">아우터</a>
                 	<ul class="dropDownMenu">
@@ -100,8 +101,70 @@
             <ul>
                 <li><a href="#">전체상품보기</a></li>
             </ul>
+            
+	        <hr id="mainNavAfter">
+	        
+	        <div id="allMenu">
+	        	 <ul class="hiddenMenu">
+	                <li>
+	                    <div id="menuClose">
+	                        <a href="#" id="MenuCloseBtn">
+	                            <img src="/radiant/img/menu.png" alt="menu">
+	                        </a>
+	                    </div>
+	                </li>
+	                <li><a href="#">오늘의 할인</a></li>
+	                <li><a href="#">베스트아이템</a></li>
+	                <li><a href="#">가을신상15%</a></li>
+	            </ul>
+	            <ul id="visibleMenu">
+	                <li><a href="#">원피스</a>
+	                	<ul class="dropDownMenu1">
+	                		<li><a href="">니트</a></li>
+	                		<li><a href="">플레어</a></li>
+	                		<li><a href="">머메이드</a></li>
+	                		<li><a href="">롱</a></li>
+	                	</ul>
+	                </li>
+	                <li><a href="#">블라우스</a></li>
+	                <li>
+	                	<a href="/radiant/mainNav/outer.do">아우터</a>
+	                	<ul class="dropDownMenu1">
+	                        <li><a href="#">가디건</a></li>
+	                        <li><a href="#">자켓</a></li>
+	                        <li><a href="#">코트</a></li>
+	                        <li><a href="#">니트</a></li>
+	                    </ul>
+	                </li>
+	                <li><a href="#">니트/티셔츠</a>
+	                	<ul class="dropDownMenu1">
+	                		<li><a href="">니트</a></li>
+	                		<li><a href="">티셔츠</a></li>
+	                	</ul>
+	                </li>
+	                <li><a href="#">스커트</a>
+	                	<ul class="dropDownMenu1">
+	                		<li><a href="">데님</a></li>
+	                		<li><a href="">니트</a></li>
+	                		<li><a href="">플리츠</a></li>
+	                		<li><a href="">롱</a></li>
+	                	</ul>
+	                </li>
+	                <li><a href="#">팬츠</a>
+	                	<ul class="dropDownMenu1">
+	                		<li><a href="">반바지</a></li>
+	                		<li><a href="">슬랙스</a></li>
+	                		<li><a href="">스키니</a></li>
+	                		<li><a href="">레깅스</a></li>
+	                		<li><a href="">니트</a>
+	                	</ul>
+	                </li>
+	            </ul>
+	            <ul class="hiddenMenu">
+	                <li><a href="#">전체상품보기</a></li>
+	            </ul>
+	        </div>
         </div><!--mainNav-->
-        <hr id="mainNavAfter">
         
 	   	<div id="imgSlideDiv">
 	   		<ul id="imgList">
