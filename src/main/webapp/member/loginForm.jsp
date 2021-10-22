@@ -38,9 +38,6 @@
 		color: #999;
 	}
 	#loginBtn {
-	/* 	border: 0;
-		font-size: 13pt;
-		*/
 		width: 500px;
 		height: 40px;
 		color: white; 

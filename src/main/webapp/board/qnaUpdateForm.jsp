@@ -6,95 +6,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Radiant 회원정보수정</title>
-<style type="text/css">
-#updateForm {
-	margin: 15% 25%;
-}
-#updateForm table {
-	margin: 0 auto;
-	font-size: 10pt;
-}
-#updateForm td {
-	padding: 15px 10px;
-	height: 40px;
-}
-#updateForm legend {
-	font-size: 18pt;
-	padding-left: 60px;
-}
-#updateTel1, #updateTel2, #updateTel3, #updateEmail1, #updateEmail2, #updateEmailTF, #updateYy, #updateMm, #updateDd {
-	border: 0;
-	font-size: 10pt;
-	border-bottom: 1px solid #999;
-}
-#updateName, #updateId {
-	border: 0;
-	font-size: 10pt;
-}
-#updateName:focus, #updateId:focus, #updateTel1:focus, #updateTel2:focus, #updateTel3:focus, #updateEmail1:focus, #updateEmail2:focus, #updateEmailTF:focus, #updateYy:focus, #updateMm:focus, #updateDd:focus {
-	outline: 0;
-}
-#updateTel1, #updateYy, #updateMm, #updateDd {
-	width: 80px;
-}
-#updateYy, #updateMm, #updateDd {
-	background: #eee;
-	border-bottom: 0;
-}
-#updateEmailT, #updateEmailF {
-	font-size: 10pt;
-	color: #999;
-}
-#birthDiv {
-	margin-top: -20px;
-	padding-bottom: 20px;
-	padding-left: 10px;
-	font-size: 10pt;
-	font-weight: bold;
-	color: #555;
-}
-#updateBtn {
-	width: 150px;
-	height: 40px;
-	color: white; 
-	background: #39210D;
-}
-#updateResetBtn {
-	width: 150px;
-	height: 40px;
-	color: white; 
-	background: #39210D;
-}
-
-</style>
+    <title>Radiant 레디언트</title>
+    <style type="text/css">
+    #qnaUpdateForm {
+    	margin: 5% 0 10% 20%;
+    }
+    #qnaUpdateForm td {
+    	padding: 5px;
+    	height: 35px;
+    	font-size: 10pt;
+		color: #999;
+    }
+    #qnaUpdateForm tr td:first-child {
+    	width: 80px;
+    }
+    #qnaUpdateForm legend {
+    	font-size: 20pt;
+    }
+    #qnaSubject {
+    	padding-bottom: 3px;
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    	font-size: 10pt;
+    } 
+    #qnaContent {
+    	border: 1px solid #999;
+    	font-size: 10pt;
+    }
+    #qnaSubject:focus, #qnaContent:focus, #qnaPwd:focus {
+    	outline: none;
+    }
+    #qnaSubjectDiv, #qnaContentDiv {
+    	font-size: 9pt;
+		font-weight: bold;
+		color: brown;
+    }
+    .filebox .upload-name {
+    	display: inline-block;
+    	padding: 0 10px;
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    	vertical-align: middle;
+    }
+    .filebox label {
+    	display: inline-block;
+    	padding: 3px 15px;
+    	background: white;
+    	border: 1px solid;
+    	font-size: 9pt;
+    	vertical-align: top;
+    }
+    #qnaAttachedFile {
+    	width: 0;
+    	height: 0;
+    	padding: 0;
+    	overflow: hidden;
+    	border: 0;
+    }
+    #qnaPwd {
+    	border: 0;
+    	border-bottom: 1px solid #999;
+    }
+	#qnaUpdateBtn, #qnaCancelBtn {
+		width: 150px;
+		height: 40px;
+		color: white;
+		background: #39210D;
+	}
+    </style>
     
-	<!-- 메인 -->
+	<!-- 메인 -->    
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
-    <script type="text/javascript">
-    function updateOnload() {
-    	document.updateForm.updateName.value = '${memberDTO.name}';
-    	document.updateForm.updateId.value = '${memberDTO.id}';
-    	document.updateForm.updateTel1.value = '${memberDTO.tel1}';
-    	document.updateForm.updateTel2.value = '${memberDTO.tel2}';
-    	document.updateForm.updateTel3.value = '${memberDTO.tel3}';
-    	document.updateForm.updateEmail1.value = '${memberDTO.email1}';
-    	document.updateForm.updateEmail2.value = '${memberDTO.email2}';
-    	document.updateForm.updateEmailTF.value = '${memberDTO.emailTF}';
-    	document.updateForm.updateYy.value = '${memberDTO.yy}';
-    	document.updateForm.updateMm.value = '${memberDTO.mm}';
-    	document.updateForm.updateDd.value = '${memberDTO.dd}';
-    }
-    function updateChange() {
-    	document.getElementById("updateBtn").disabled = false; 
-    }
-    </script>
 </head>
-<body onload="updateOnload()">
+<body>
     <div id="wrap">
         <div id="header">
             
@@ -115,7 +103,10 @@
                     	<li>${sessionScope.memName }님 로그인</li>
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
                     	<li><a href="#">마이페이지</a></li>
+                    	<li><a href="/radiant/member/updateForm.do">정보수정</a></li>
+                    	<li><a href="/radiant/member/deleteForm.do">탈퇴</a></li>
                     </c:if>
+                    <li><a href="/radiant/mypage/mypage.do">마이페이지</a></li>
                     <li><a href="/radiant/board/qnaList.do?pg=1">고객센터</a></li>
                     <c:if test="${sessionScope.memId == 'admin' }">
                     	<li><a href="/radiant/stock/stockPrint.do">재고관리</a></li>
@@ -247,86 +238,53 @@
 	            </ul>
 	        </div>
         </div><!--mainNav-->
-	  	
+        
+	  
         <div id="section">
-        	<form name="updateForm" id="updateForm" method="post" onchange="updateChange()" action="/radiant/member/update.do">
-        		<legend>회원 정보 수정</legend>
-        		<br>
-        		<table>
-        			<tr>
-        				<td width="180px">이름</td>
-        				<td>
-        					<input type="text" id="updateName" name="updateName" readonly>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>아이디</td>
-        				<td>
-        					<input type="text" id="updateId" name="updateId" readonly>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>휴대폰 번호</td>
-        				<td>
-        					<select id="updateTel1" name="updateTel1">
-        						<option value="010">010</option>
-        						<option value="011">011</option>
-        						<option value="019">019</option>
-        					</select>&emsp;
-        					<input type="text" id="updateTel2" name="updateTel2" size="13">&emsp;
-        					<input type="text" id="updateTel3" name="updateTel3" size="13">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>이메일</td>
-        				<td>
-        					<input type="text" id="updateEmail1" name="updateEmail1" size="21">@
-        					<input type="text" id="updateEmail2" name="updateEmail2" size="21">
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>메일수신여부</td>
-        				<td>
-        					<input type="radio" id="updateEmailT" name="updateEmailTF" value="yes" checked>
-        					<label for="updateEmailT">예</label>&emsp;&emsp;
-        					<input type="radio" id="updateEmailF" name="updateEmailTF" value="no">
-        					<label for="updateEmailF">아니오</label>
-        				</td>
-        			</tr>
-        			<tr>
-        				<td>생년월일</td>
-        				<td>
-        					<select name="updateYy" id="updateYy" disabled>
-        						<c:forEach var="yy" begin="1950" end="2021" step="1">
-        							<option value="${yy }">${yy }</option>
-        						</c:forEach>
-        					</select> 년&emsp;
-        					<select name="updateMm" id="updateMm" disabled>
-        						<c:forEach var="mm" begin="1" end="12" step="1">
-        							<option value="${mm }">${mm }</option>
-        						</c:forEach>
-        					</select> 월&emsp;
-        					<select name="updateDd" id="updateDd" disabled>
-        						<c:forEach var="dd" begin="1" end="31" step="1">
-        							<option value="${dd }">${dd }</option>
-        						</c:forEach>
-        					</select> 일 
-        				</td>
-        			</tr>
-        			<tr>
-        				<td></td>
-        				<td>
-							<div id="birthDiv">생년월일은 변경이 불가능합니다.</div>
-						</td>
-        			</tr>
-        			<tr>
-        				<td colspan="2" align="center">
-        					<input type="submit" class="btn" id="updateBtn" value="정보 수정" disabled>
-        					<input type="button" class="btn" id="updateResetBtn" value="취소" onclick='location.href="/radiant/member/updateForm.do"'>
-        				</td>
-        			</tr>
-        		</table>
-        	</form>
+        	<form id="qnaUpdateForm" name="qnaUpdateForm" method="post" action="/radiant/board/qnaUpdate.do?boardSeq=${boardDTO.boardSeq }">
+               	<legend>Q&A</legend>
+               	<br>
+               	<table>
+               		<tr>
+               			<td align="center">제목</td>
+               			<td>
+               				<input type="text" id="qnaSubject" name="qnaSubject" size="78" value="${subject }">
+               				<div id="qnaSubjectDiv"></div>
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">내용</td>
+               			<td>
+               				<textarea id="qnaContent" name="qnaContent" rows="20" cols="80">${content }</textarea>
+               				<div id="qnaContentDiv"></div>
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">첨부파일</td>
+               			<td class="filebox">
+               				<input class="upload-name" id="upload-name" placeholder="파일 첨부" size="62">
+               				<label class="btn" for="qnaAttachedFile">파일찾기</label>
+               				<input type="file" id="qnaAttachedFile" name="qnaAttachedFile" onchange="qnaAttachedFileName()">
+               			</td>
+               		</tr>
+               		<tr>
+               			<td align="center">비밀번호</td>
+               			<td>
+               				<input type="password" id="qnaPwd" name="qnaPwd" size="30">
+               			</td>
+               		</tr>
+               		<tr>
+               			<td>&emsp;</td>
+               		</tr>
+               		<tr>
+               			<td colspan="2" align="center"> &emsp;
+               				<button type="button" class="btn" id="qnaUpdateBtn" name="qnaUpdateBtn" onclick="qnaUpdateCheck()">수정하기</button>
+               				<button type="button" class="btn" id="qnaCancelBtn" onclick="qnaUpdateCancel()">취소</button>
+               			</td>
+               		</tr>
+               	</table>
+            </form>
+           
         </div><!--section-->
         
         <hr>

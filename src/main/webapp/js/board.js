@@ -30,6 +30,32 @@ function qnaWriteCancel() {
 	}
 }
 
+// Q&A 수정하기 유효성 검사
+function qnaUpdateCheck() {
+	document.getElementById("qnaSubjectDiv").innerText="";
+	document.getElementById("qnaContentDiv").innerText="";
+	
+	if(document.qnaUpdateForm.qnaSubject.value == "") {
+		document.getElementById("qnaSubjectDiv").innerText="제목을 입력해주세요.";
+		document.getElementById("qnaSubject").focus();
+	} else if(document.qnaUpdateForm.qnaContent.value == "") {
+		document.getElementById("qnaContentDiv").innerText="내용을 입력해주세요.";
+		document.getElementById("qnaContent").focus();
+	} else {
+		document.qnaUpdateForm.submit();
+	}
+}
+
+// Q&A 수정하기 취소 버튼
+function qnaUpdateCancel() {
+	cancel = confirm("정말 종료하시겠습니까?");
+	if(!cancel) {
+		return false;
+	} else {
+		location.href="/radiant/board/qnaList.do?pg=1";
+	}
+}
+
 
 // Q&A 제목 누르면 글 내용 나오게.(제이쿼리)
 $(function(){
@@ -48,6 +74,18 @@ $(function(){
 		return false;
 	});
 	
+	// 게시글 삭제
+	$('.boardDeleteBtn').click(function(){
+		var boardSeq = $(this).parents('tr').prev().find('td:eq(0)').text();
+		var url = "/radiant/board/qnaDelete.do";
+		$.get(url, {'boardSeq':boardSeq}, function(data){
+			alert("게시글이 삭제되었습니다.");
+			location.href="/radiant/board/qnaList.do?pg=1";
+		}).fail(function(){
+			alert("오류가 발생했습니다. 잠시 후에 다시 시도해주세요.");
+		});
+	})
+	
 	// 댓글달기 버튼
 	$('.commentBtn').click(function(){
 		var boardSeq = $(this).next().val();
@@ -58,17 +96,18 @@ $(function(){
 			data: $('#qnaListForm').serialize(),
 			dataType: 'xml',
 			success: function(data){
-			var result = eval($(data).find('result').text());
-			  
-			
-			var commentSeq = $(data).find('commentnum').text();
-			var boardSeq = $(data).find('boardnum').text();
-			var writer = $(data).find('writer').text();
-			var content = $(data).find('content').text();
-			var datetime = $(data).find('datetime').text();
-			  
-			addComment(commentSeq, boardSeq, writer, content, datetime);
-
+				var result = eval($(data).find('result').text());
+				  
+				
+				var commentSeq = $(data).find('commentnum').text();
+				var boardSeq = $(data).find('boardnum').text();
+				var writer = $(data).find('writer').text();
+				var content = $(data).find('content').text();
+				var datetime = $(data).find('datetime').text();
+				  
+				addComment(commentSeq, boardSeq, writer, content, datetime);
+				
+				$('textarea[name="commentText'+boardSeq+'"]').val('');
 			},
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -98,6 +137,7 @@ $(function(){
 
 });
 
+// 새 댓글 추가
 function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var new_li = $('<li>');
 	new_li.attr('data-num', commentSeq);
@@ -113,12 +153,12 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var date_span = $('<font size="2" color="lightgray">');
 	date_span.html('&emsp;&emsp;' + datetime + '&emsp;');
 	
-	var del_input = $('<a>');
+	var del_input = $('<input>');
 	del_input.attr({
-		'href': '',
-		'value': '삭제하기'
+		'type' : 'button',
+		'value': '삭제'
 	})
-	del_input.addClass('delete_btn');
+	del_input.addClass('commentDeleteBtn');
 	
 	var content_p = $('<p>');
 	content_p.html(content);
