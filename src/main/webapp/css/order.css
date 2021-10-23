@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+#section > div {
+	float: left;
+	margin: 10px 20px;
+}
+
+#section:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* sideNav */
+#section #sideNav {
+	border: solid;
+	padding: 10px;
+}
+
+#section #sideNav > ul > li{
+	margin: 0 10px;
+}
+
+
+
+/* #order */
+#section #order {
+	background-color: rgb(252, 250, 255);
+	width: 80%;
+	padding: 30px;
+}
+
+#section #order #shipping > span {
+	margin-right: 20px;
+}
+
+
+#section #order #shipping, span, #section #order #info {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#section #order #shipping > table td {
+	width: 100px;
+}
+
+#section #order img {
+	width: 700px;
+}
+
+#section #order #info > table td {
+	width: 100px;
+}
