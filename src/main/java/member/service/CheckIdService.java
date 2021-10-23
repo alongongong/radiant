@@ -2,6 +2,7 @@ package member.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -15,20 +16,22 @@ public class CheckIdService implements CommandProcess {
 
 		//데이터
 		String id=request.getParameter("id");
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId(id);
+		System.out.println("================my id============ : "+id);
 		
 		//DB 
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		boolean exist = memberDAO.isCheckId(id);//호출
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("memId", id);
 		
 		if(!exist) {
 			return "/member/checkIdOk.jsp";
 		}else {
 			return "/member/checkIdFail.jsp";
 		}
-		
-		
+	
 	}
+		
 
 }

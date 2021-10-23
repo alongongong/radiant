@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Radiant 회원가입</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
 <script type="text/javascript" src="/radiant/js/member.js"></script>
@@ -66,10 +66,10 @@ input:focus{
 
             <div id="headNav">
                 <ul>
-                	<c:if test="${sessionScope.memId == null}">
+                	<%-- <c:if test="${sessionScope.memId == null}"> --%>
                     	<li><a href="/radiant/member/loginForm.do">로그인</a></li>
                     	<li><a href="/radiant/member/write_agree.do">회원가입</a></li>
-                    </c:if>
+                   <%--  </c:if> --%>
                     <c:if test="${sessionScope.memId != null }">
                     	<li>${sessionScope.memName }님 로그인</li>
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
@@ -184,15 +184,16 @@ input:focus{
 			<tr>
 				<td align="left">휴대폰 번호 <font color="red">*</font></td>
 				<td>
-					<select name="writeTel1" style="width: 70px; height : 23px; border : none; border-bottom: 1px solid #999;">
-						<option value="010" seleted>010</option>
+					<select name="writeTel1" id="writeTel1"  onkeydown="inputPhoneChk()" style="width: 70px; height : 23px; border : none; border-bottom: 1px solid #999;">
+						<option value="010" selected>010</option>
 						<option value="011">011</option>
 						<option value="011">019</option>
 					</select>
-					<input type="text" name="writeTel2" id="writeTel2" size="7" maxlength="4" style="border : none; border-bottom: 1px solid #999">
-					<input type="text" name="writeTel3" id="writeTel3" size="7" maxlength="4" style="border : none; border-bottom: 1px solid #999">&nbsp;&nbsp;&nbsp;&nbsp;
-<!-- 					<button type="button" class="btn" id="writePhoneBtn" style=" color: black; background: white; border: 1px solid #999;font-size : 8pt;">휴대폰 인증</button> -->
+					<input type="text" name="writeTel2" id="writeTel2" size="7" maxlength="4" onkeydown="inputPhoneChk()" style="border : none; border-bottom: 1px solid #999">
+					<input type="text" name="writeTel3" id="writeTel3" size="7" maxlength="4" onkeydown="inputPhoneChk()" style="border : none; border-bottom: 1px solid #999">&nbsp;&nbsp;&nbsp;&nbsp;
+ 					<button type="button" class="btn" id="writePhoneBtn" onclick="checkPhone()" style=" color: black; background: white; border: 1px solid #999;font-size : 8pt;">휴대폰 중복체크</button> 
 					<div id="writePhoneDiv"></div>
+					<input type="hidden" id="writePhoneDuplication" name="writePhoneDuplication" value="phoneUnCheck">
 				</td>
 			</tr>
 			
