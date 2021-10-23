@@ -109,8 +109,8 @@ public class MemberDAO {
 		return exist;
 	} // isCheckId
 	
-	public String[] isCheckPhone(String tel1, String tel2, String tel3 ) {
-		String[] arr = new String[3]; 
+	public MemberDTO isCheckPhone(String tel1, String tel2, String tel3) {
+		MemberDTO memberDTO = null; 
 		
 		String sql = "select * from radiantMember where tel1=? and tel2=? and tel3=?";
 		
@@ -121,12 +121,16 @@ public class MemberDAO {
 			pstmt.setString(2, tel2);
 			pstmt.setString(3, tel3);
 			
-			rs= pstmt.executeQuery();//실행
+			rs= pstmt.executeQuery();
 			
 			if(rs.next()) {
-				arr[0] = rs.getString("tel1");
-				arr[1] = rs.getString("tel2");
-				arr[2] = rs.getString("tel3");
+				
+				memberDTO = new MemberDTO();
+				
+				memberDTO.setTel1(rs.getString("tel1"));
+				memberDTO.setTel2(rs.getString("tel2"));
+				memberDTO.setTel3(rs.getString("tel3"));
+			
 			}
 			
 		} catch (SQLException e) {
@@ -140,9 +144,8 @@ public class MemberDAO {
 				e.printStackTrace();
 			}	
 	}
-		return arr;
+		return memberDTO;
 	} // isCheckPhone
-	
 	public MemberDTO login(String id, String pwd) {
 		MemberDTO memberDTO = null;
 		String sql = "select * from radiantmember where id=? and pwd=?";
