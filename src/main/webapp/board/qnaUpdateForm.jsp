@@ -81,6 +81,7 @@
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
+    <script type="text/javascript" src="/radiant/js/board.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -108,7 +109,7 @@
                     </c:if>
                     <li><a href="/radiant/mypage/mypage.do">마이페이지</a></li>
                     <li><a href="/radiant/board/qnaList.do?pg=1">고객센터</a></li>
-                    <c:if test="${sessionScope.memId == 'admin' }">
+                    <c:if test="${sessionScope.memId == '관리자' }">
                     	<li><a href="/radiant/stock/stockPrint.do">재고관리</a></li>
                     </c:if>
                 </ul>

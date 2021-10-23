@@ -1,21 +1,9 @@
-//약관 동의 체크박스 확인
-function write_agree(){
-   
-   var chkAll = document.getElementById('chkAll').checked;
-   var chk1 = document.getElementById('chk1').checked;
-   var chk2 = document.getElementById('chk2').checked;
-   
-   if(!chkAll && (!chk1 || !chk2)){
-      alert("약관에 동의해주세요.");
-      return false;   
-   }else{   
-       document.joinForm.submit();
-   }
-    
-}   
-
 //회원가입 버튼 클릭시 유효성 체크
 function checkWrite(){
+	
+	//4~12자의 영문 대소문자와 숫자로만 입력 - id, password유효성 검사 정규식
+	var RegExp = /^[a-zA-Z0-9]{4,12}$/;
+	
 	
 	document.getElementById("writeNameDiv").innerText="";
 	document.getElementById("writeIdDiv").innerText="";
@@ -28,41 +16,70 @@ function checkWrite(){
 		document.getElementById("writeNameDiv").innerText="이름을 입력하세요";
 	}else if(document.writeForm.writeId.value==""){
 		document.getElementById("writeIdDiv").innerText="아이디를 입력하세요";
+	}else if(!RegExp.test(document.writeForm.writeId.value)){
+		document.getElementById("writeIdDiv").innerText="아이디는 4~12자의 영문 대소문자와 숫자로만 입력해주세요";
 	}else if(document.writeForm.writePwd.value ==""){
 		document.getElementById("writePwdDiv").innerText="비밀번호를 입력하세요";
+	}else if(!RegExp.test(document.writeForm.writePwd.value)){
+		document.getElementById("writePwdDiv").innerText="비밀번호는 4~12자의 영문 대소문자와 숫자로만 입력해주세요";
 	}else if(document.writeForm.writeRepwd.value !=document.writeForm.writePwd.value){
 		document.getElementById("writeRepwdDiv").innerText="비밀번호가 다릅니다.";
 	}else if(document.writeForm.writeTel2.value==""){
-		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요"
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요";
 	}else if(document.writeForm.writeTel3.value==""){
-		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요"
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요";
 	}else if(document.writeForm.writeEmail1.value==""){
 		document.getElementById("writeEmailDiv").innerText="이메일을 입력하세요";
 	}else if(document.writeForm.writeEmail2.value==""){
 		document.getElementById("writeEmailDiv").innerText="이메일을 입력하세요";
 	}else if(document.writeForm.writeIdDuplication.value!="idCheck"){
-		document.getElementById("writeEmailDiv").innerText="아이디 중복체크를 해주세요";
+		document.getElementById("writeIdDiv").innerText="아이디 중복체크를 해주세요";
+	}else if(document.writeForm.writePhoneDuplication.value!="phoneCheck"){
+		document.getElementById("writePhoneDiv").innerText="핸드폰 중복체크를 해주세요";
 	}else{
 		document.writeForm.submit();
 	}
 	
 }
-
 //아이디 중복 체크
 function checkId(id){
+	
+	//4~12자의 영문 대소문자와 숫자로만 입력 - id, password유효성 검사 정규식
+	var RegExp = /^[a-zA-Z0-9]{4,12}$/;
 	
 	var id=document.getElementById("writeId").value;
 	
 	document.getElementById("writeIdDiv").innerText="";
 	
-	if(document.writeForm.writeId.value==""){
+	if(id==""){
 		document.getElementById("writeIdDiv").innerText="아이디를 입력하세요.";
+	}else if(!RegExp.test(document.writeForm.writeId.value)){
+		document.getElementById("writeIdDiv").innerText="아이디는 4~12자의 영문 대소문자와 숫자로만 입력해주세요";
 	}else{
 		window.open("http://localhost:8080/radiant/member/checkId.do?id="+id,
 					"writeCheckId",//창 중복 방지
 					"width=400 height=150 top=200 left=600");
+					
+		
 	}
 	
+}
+//아이디 중복체크 창에서 아이디 체크
+function check_idFail(){
+	
+	//4~12자의 영문 대소문자와 숫자로만 입력 - id 유효성 검사 정규식
+	var RegExp = /^[a-zA-Z0-9]{4,12}$/;
+	var id=document.getElementById("checkIdFail_id").value;
+	
+	document.getElementById("checkIdFailDiv").innerText="";
+	
+	if(id==""){
+		document.getElementById("checkIdFailDiv").innerText="아이디를 입력하세요.";
+	}else if(!RegExp.test(document.checkIdFailForm.checkIdFail_id.value)){
+		document.getElementById("checkIdFailDiv").innerText="아이디는 4~12자의 영문 대소문자와 숫자로만 입력해주세요";
+	}else{
+		document.checkIdFailForm.submit();
+	}
 }
 //아이디 중복체크 후 결과 넘기기
 function closeIdCheck(){
@@ -76,25 +93,87 @@ function inputIdChk(){
 	document.writeForm.writeIdDuplication.value="idUncheck";
 	console.log("check");
 }
+
 //핸드폰 중복체크
-function checkPhone(tel2, te13){
+function checkPhone(){
 	
+	var tel1 =document.getElementById("writeTel1").value;
 	var tel2 =document.getElementById("writeTel2").value;
-	var tel3 =document.getElementById("writeTel2").value;
+	var tel3 =document.getElementById("writeTel3").value;
 	
 	document.getElementById("writePhoneDiv").innerText="";
 	
 	if(document.writeForm.writeTel2.value==""){
-		document.getElementById("writeIdDiv").innerText="휴대폰 번호를 입력하세요";
-	}else if(document.writeForm.writeTel2.value==""){
-		document.getElementById("writeIdDiv").innerText="휴대폰 번호를 입력하세요";
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요";
+	}else if(document.writeForm.writeTel3.value==""){
+		document.getElementById("writePhoneDiv").innerText="휴대폰 번호를 입력하세요";
 	}else{
-		window.open("http://localhost:8080/radiant/member/checkPhone.do?tel2="+te12,
-					"writeCheckId",//창 중복 방지
-					"width=400 height=150 top=200 left=600");
+		window.open("http://localhost:8080/radiant/member/checkPhone.do?tel1="+tel1+"&tel2="+tel2+"&tel3="+tel3,
+		"writePhoneId",//창 중복 방지
+		"width=400 height=150 top=200 left=600");
+
 	}
 	
 }
+
+//아이디 중복체크 후 결과 넘기기
+function closePhoneCheck(){
+	opener.document.writeForm.writePhoneDuplication.value="phoneCheck";
+	window.close();
+	opener.writeForm.focus();
+}
+
+function inputPhoneChk(){
+	document.writeForm.writePhoneDuplication.value="phoneUnCheck";
+	console.log("check");
+}
+
+
+//약관 동의 체크박스 확인
+function write_agree(){
+	
+	var chkAll = document.getElementById('chkAll').checked;
+	var chk1 = document.getElementById('chk1').checked;
+	var chk2 = document.getElementById('chk2').checked;
+	
+	
+	if(!chkAll && (!chk1 || !chk2)){
+		alert("약관에 동의해주세요.");
+		return false;	
+	}else{	
+		 document.joinForm.submit();
+	}
+	 
+}	
+
+// 체크박스 전체 선택
+$(".join_Form").on("click", "#chkAll", function () {
+    $(this).parents(".join_Form").find('input').prop("checked", $(this).is(":checked"));
+
+});
+
+// 체크박스 개별 선택
+$(".join_Form").on("click", ".normal", function() {
+    var is_checked = true;
+
+    $(".join_Form .normal").each(function(){
+        is_checked = is_checked && $(this).is(":checked");
+    });
+
+    $("#chkAll").prop("checked", is_checked);
+});
+/*
+// 체크박스 개별 선택
+$(".checkbox_group").on("click", ".normal", function() {
+    var is_checked = true;
+
+    $(".checkbox_group .normal").each(function(){
+        is_checked = is_checked && $(this).is(":checked");
+    });
+
+    $("#check_all").prop("checked", is_checked);
+});	*/
+
 
 //---------------------------------------------------------------------------로그인
 	

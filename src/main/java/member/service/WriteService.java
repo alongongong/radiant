@@ -2,6 +2,7 @@ package member.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -61,8 +62,17 @@ public class WriteService implements CommandProcess {
 		
 		memberDAO.write(memberDTO);
 	
-			//응답
-			return "/member/write.jsp";
+		
+		//세션
+		
+		request.setAttribute("memName", name);
+		request.setAttribute("memId", id);
+		request.setAttribute("memTel1", tel1);
+		request.setAttribute("memTel2", tel2);
+		request.setAttribute("memTel3", tel3);
+					
+		//응답
+		return "/member/write.jsp";
 		
 	}
 

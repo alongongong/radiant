@@ -212,7 +212,7 @@
 			                		</tr>
 			                		<tr class="qnaContent1">
 			                			<td colspan="5">
-			                				<c:if test="${commentDTO.commentId == sessionScope.memId || sessionScope.memId == 'admin' }">
+			                				<c:if test="${boardDTO.id == sessionScope.memId || sessionScope.memId == '관리자' }">
 				                				<div align="right">
 					                				<a class="boardUpdateBtn" href="/radiant/board/qndUpdateForm.do?boardSeq=${boardDTO.boardSeq }">수정</a> &emsp;
 					                				<input type="button" class="boardDeleteBtn" value="삭제" > &emsp;&emsp;&emsp;&emsp;

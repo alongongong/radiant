@@ -47,7 +47,7 @@ input[type="text"] {
 	height: 30px;
 	text-align: center;
 	padding-top: 5px;
-	left: 1300px;
+	left: 1400px;
 	top: 50px;
 	border-radius: 5px;
 }
@@ -79,13 +79,13 @@ input[type="text"] {
 					<input type="text" name="clNum${i.count }" id="clNum${i.count }" value="${stockDTO.clNum }" size="7" readonly>
 				</td>
 				<td>
-					<input type="text" name="clName${i.count }" id="clName${i.count }" value="${stockDTO.clName }" size="10">
+					<input type="text" name="clName${i.count }" id="clName${i.count }" value="${stockDTO.clName }" size="30">
 				</td>
 				<td>
-					<input type="text" name="color${i.count }" id="color${i.count }" value="${stockDTO.color }" size="10">
+					<input type="text" name="color${i.count }" id="color${i.count }" value="${stockDTO.color }" size="7">
 				</td>
 				<td>
-					<input type="text" name="category${i.count }" id="category${i.count }" value="${stockDTO.category }" size="10">
+					<input type="text"  name="category${i.count }" id="category${i.count }" value="${stockDTO.category }" size="8">
 				</td>
 				<td>
 					<input type="text" name="price${i.count }" id="price${i.count }" value="${stockDTO.price }" size="10">
@@ -131,13 +131,13 @@ input[type="text"] {
 				<input type="text" name="clNum" size="7" readonly>
 			</td>
 			<td>
-				<input type="text" name="clName" size="10">
+				<input type="text" name="clName" size="30">
 			</td>
 			<td>
-				<input type="text" name="color" size="10">
+				<input type="text" name="color" size="7">
 			</td>
 			<td>
-				<input type="text" name="category" size="10">
+				<input type="text" name="category" size="8">
 			</td>
 			<td>
 				<input type="text" name="price" size="10">
