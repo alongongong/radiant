@@ -7,8 +7,8 @@
   	<servlet-class>com.control.ControlServlet</servlet-class>
   	<init-param>
   		<param-name>propertyConfig</param-name>
-  		<!--아라언니 <param-value>C:\study\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> -->
-  		<param-value>D:/java_ee/workspace/radiant/src/main/webapp/WEB-INF/command.properties</param-value><!--현정  -->
+  		<param-value>C:\study\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value>
+  		<!-- <param-value>D:/java_ee/workspace/radiant/src/main/webapp/WEB-INF/command.properties</param-value> --><!--현정  -->
   	</init-param>
   </servlet>
   <servlet-mapping>
