@@ -29,14 +29,15 @@
 	float: left;
 }
 
-#section #memberL #memberImg {
-	width: 100px;
+#section #memberL #memberImg > img {
+	width: 150px;
 	height: 100px;
 }
 
 #section #mamberL #memberGrade {
 	width: 600px;
 	height: 100px;
+	padding-left: 50px;
 }
 
 #section #memberL > div:after {
