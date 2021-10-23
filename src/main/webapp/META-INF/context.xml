@@ -6,7 +6,7 @@
 	<Resource name="jdbc/oracle"
 			  type="javax.sql.DataSource"
 			  driverClassName="oracle.jdbc.driver.OracleDriver"
-			  url="jdbc:oracle:thin:@localhost:1521:xe"
+			  url="jdbc:oracle:thin:@221.148.138.221:1521:xe"
 			  username="c##java"
 			  password="bit"
 			  maxActive="20"

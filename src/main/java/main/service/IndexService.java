@@ -13,7 +13,7 @@ public class IndexService implements CommandProcess {
 
     File path =
 
-        new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
+        new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes");
     String[] fileList = path.list();
 
     // for (int i = 0; i < fileList.length; i++) {
