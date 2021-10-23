@@ -7,7 +7,7 @@
 <title>20,30대 여성 대표쇼핑몰 레디언트</title>
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <style type="text/css">
-#checkIdOk{
+#checkPhoneOk{
 	color:#333;
 	margin-left:55px;
 	margin-top : 35px;
@@ -18,21 +18,19 @@
 </style>
 </head>
 <body>
-<table id="checkIdOk" cellpadding="15">
+<table id="checkPhoneOk" cellpadding="15">
 		<tr align="center">
 			<td style="border-bottom:1px solid #999;">
-				<strong id="useid">${param.id }</strong>는 사용 가능한 아이디 입니다.
-
-			</td>
+				사용 가능한 번호 입니다.
+			</td>	
 		</tr>
-		
+			
 		<tr align="center">
 			<td>
-				<input type="button" value="사용하기" class="btn" id="checkUserId" name="checkUserId" onclick="closeIdCheck()" style=" color: white; background: #39210D;font-size : 10pt; align : center;">
+				<input type="button" value="사용하기" class="btn" id="checkUserPhone" name="checkUserPhone" onclick="closePhoneCheck()" style=" color: white; background: #39210D;font-size : 10pt; align : center;"/>
 			</td>
 		</tr>
-</table>		
-
+</table>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="../js/member.js"></script>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Radiant 회원가입</title>
+<title>20,30대 여성 대표쇼핑몰 레디언트</title>
 
 <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
@@ -106,7 +106,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
      
      <p align="center" style="color:#333; font-size:20pt;">회원가입</p><br>
 		<p align="center"><img src="../img/write_step1.PNG" width="500" alt="회원가입_스탭2"/></p>
-	<form name="joinForm" id="joinForm" method="post" action="http://localhost:8080/radiant/member/writeForm.do" >
+	<form name="joinForm" id="joinForm" class="join_Form" method="post" action="http://localhost:8080/radiant/member/writeForm.do" >
             <ul class="join_box">
                 <li class="checkBox check01">
                     <ul class="clearfix">
@@ -119,7 +119,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                     <ul class="clearfix">
                         <li>이용약관에 동의합니다.</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="chk1" id="chk1">
+                            <input type="checkbox" name="chk1" id="chk1"  class="normal">
                         </li>
                     </ul>
  
@@ -362,7 +362,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 			                    <ul class="clearfix">
 			                        <li>개인정보처리방침에 동의합니다.</li>
 			                        <li class="checkBtn">
-			                            <input type="checkbox" name="chk2" id="chk2">
+			                            <input type="checkbox" name="chk2" id="chk2" class="normal">
 			                        </li>
 			                    </ul>
 			 
@@ -447,7 +447,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                 </li>
             </ul>
             <ul class="footBtwrap clearfix">
-                <li><button class="btn" id="write_agreeBtn" type="button" onclick="write_agree()">확인</button></li>
+                <li><button class="btn" id="write_agreeBtn" type="button" onclick="write_agree()" readonly}>확인</button></li>
                	<li></li>
             </ul>
            
