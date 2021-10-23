@@ -21,7 +21,8 @@ public class QnaUpdateFormService implements CommandProcess {
 		
 		// 응답
 		request.setAttribute("subject", boardDTO.getSubject());
-		request.setAttribute("content", boardDTO.getContent().replace("\n", "<br>"));
+		request.setAttribute("content", boardDTO.getContent());
+		request.setAttribute("boardDTO", boardDTO);
 		
 		return "/board/qnaUpdateForm.jsp";
 	}
