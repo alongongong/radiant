@@ -242,7 +242,7 @@
         
 	  
         <div id="section">
-        	<form id="qnaUpdateForm" name="qnaUpdateForm" method="post" action="/radiant/board/qnaUpdate.do?boardSeq=${boardDTO.boardSeq }">
+        	<form id="qnaUpdateForm" name="qnaUpdateForm" method="post" action="/radiant/board/qndUpdate.do?boardSeq=${boardDTO.boardSeq }">
                	<legend>Q&A</legend>
                	<br>
                	<table>

@@ -12,7 +12,7 @@ import com.control.CommandProcess;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
-public class OuterService implements CommandProcess {
+public class TopService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -25,14 +25,14 @@ public class OuterService implements CommandProcess {
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));
 			System.out.println("temp = " + temp);
-			if(temp > 100 && temp < 200) {
+			if(temp > 0 && temp < 100) {
 				list.add(data);
 			}
 		}
 		
 		// DB
 		StockDAO stockDAO = StockDAO.getInstance();
-		List<StockDTO> stockList = stockDAO.getStockList("아우터");
+		List<StockDTO> stockList = stockDAO.getStockList("상의");
 		
 		
 //		for (int i = 0; i < fileList.length; i++) {
@@ -41,7 +41,7 @@ public class OuterService implements CommandProcess {
 		request.setAttribute("list", list);
 		request.setAttribute("stockList", stockList);
 		
-		return "/mainNav/outer.jsp";
+		return "/mainNav/top.jsp";
 	}
 
 }

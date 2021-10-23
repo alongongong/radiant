@@ -117,9 +117,9 @@
 	                        </a>
 	                    </div>
 	                </li>
-	                <li><a href="#">오늘의 할인</a></li>
-	                <li><a href="#">베스트아이템</a></li>
-	                <li><a href="#">가을신상15%</a></li>
+	                <li><a href="/radiant/mainNav/allProduct.do">오늘의 할인</a></li>
+	                <li><a href="/radiant/mainNav/allProduct.do">베스트아이템</a></li>
+	                <li><a href="/radiant/mainNav/allProduct.do">가을신상15%</a></li>
 	            </ul>
 	            <ul id="visibleMenu">
 	                <li><a href="/radiant/mainNav/top.do">원피스</a>
@@ -169,43 +169,38 @@
 	            </ul>
 	        </div>
         </div><!--mainNav-->
-        
-	   	<div id="imgSlideDiv">
-	   		<ul id="imgList">
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
-	   		</ul>
-	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
-	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prevL" for="prev"><</label>
-	   		<label id="nextL" for="next">></label>
-	  	</div><!-- imgSlide -->
-	  	
+        	  	
         <div id="section">
-        
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
+			<table>
+	        	<c:forEach var="i" begin="0" end="${list.size() -1 }" step="1">
+       				<c:if test="${i%4==0 }">
+       					<tr>
+       						<td>
+					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+		       					<p>${stockList[i].clName }</p>
+		       					<p>${stockList[i].price }</p>
+		       				</td>
+       				</c:if>
+       				<c:if test="${i%4 ==3 }">
+		       				<td>
+					       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+		       					<p>${stockList[i].clName }</p>
+		       					<p>${stockList[i].price }</p>
+		       				</td>
+       					</tr>
+					</c:if>
+					<c:if test="${i%4 !=0 && i%4 !=3 }">
+	       				<td>
+				       		<a class="modal_show" href="/radiant/stock/stockMainForm.do"><img src="/radiant/img/clothes/${list[i] }" alt="${list[i] }" class="img"></a>
+	       					<p>${stockList[i].clName }</p>
+		       				<p>${stockList[i].price }</p>
+	       				</td>
+					</c:if>
+					<c:if test="${i == list.size() -1 }">
+						</tr>
+					</c:if>
+	        	</c:forEach>
         	</table>
-        	
         </div><!--section-->
         
         <hr>

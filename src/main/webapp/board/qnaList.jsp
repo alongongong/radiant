@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
     <script type="text/javascript" src="/radiant/js/member.js"></script>
     <style type="text/css">
+    p {
+    	margin-bottom: 0;
+    }
     #qnaListForm {
     	margin: 5% 0 15% 15%;
     	width: 65%;
@@ -243,7 +246,7 @@
 				                							<div>
 				                								${commentDTO.commentId } &emsp;&emsp; 
 				                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
-				                								<c:if test="${commentDTO.commentId == sessionScope.memId || sessionScope.memId == 'admin' }">
+				                								<c:if test="${commentDTO.commentId == sessionScope.memId || sessionScope.memId == '관리자' }">
 				                								&emsp;
 				                								<input type="button" class="commentDeleteBtn" value="삭제">
 				                								</c:if>
