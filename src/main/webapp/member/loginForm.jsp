@@ -8,6 +8,7 @@
     <title>Radiant 로그인</title>
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
     <style type="text/css">
     #loginForm {
