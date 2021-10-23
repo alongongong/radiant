@@ -121,6 +121,13 @@ public class StockDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	}
+
+	public List<StockDTO> getStockList(String category) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<StockDTO> stockList = sqlSession.selectList("stockSQL.getStockList", category);
+		sqlSession.close();
+		return stockList;
+	}
 	
 	
 }
