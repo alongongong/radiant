@@ -1,5 +1,6 @@
 /build/
 
-/web.xml
+/WEB-INF/
 
-/indexService.java
+indexService.java
+

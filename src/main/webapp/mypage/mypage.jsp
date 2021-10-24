@@ -170,11 +170,11 @@
         	<h3>마이페이지</h3>
         	<div id="member">
         		<div id="memberL">
-        			<div id="memberImg">이미지</div>
+        			<div id="memberImg"><img src="/radiant/img/my.png" alt="my.png"></div>
 					<div id="memberGrade">
 						<span>[10월]</span><br/>
-	        			<span>김건휘님의 회원등급은</span><br/>
-	        			<span>Member 입니다</span><br/>
+	        			<span>${memName }님의 회원등급은</span><br/>
+	        			<span>${memGrade } 입니다</span><br/>
 					</div>
         		</div>
         		<div id="memberR">
@@ -184,8 +184,8 @@
         					<td>적립금</td>
         				</tr>
         				<tr>
-        					<td>주문내역</td>
-        					<td>적립금</td>
+        					<td>0건</td>
+        					<td>2000원</td>
         				</tr>
         			</table>
         		</div>
@@ -231,7 +231,7 @@
         		<div id="management">
         			<ul>
         				<li><strong>주문관리</strong></li>
-        				<li><a href="">주문/배송조회</a></li>
+        				<li><a href="/radiant/order/order.do">주문/배송조회</a></li>
         				
         			</ul>
         		</div>
@@ -245,7 +245,7 @@
         		<div id="activity">
         			<ul>
         				<li><strong>나의활동</strong></li>
-        				<li><a href="">1:1문의</a></li>
+        				<li><a href="/radiant/board/qnaList.do?pg=1">1:1문의</a></li>
         				<li><a href="">적립금</a></li>
         			</ul>
         		</div>

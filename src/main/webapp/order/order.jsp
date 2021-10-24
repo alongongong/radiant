@@ -10,7 +10,7 @@
     
 	<!-- 메인 -->    
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
-    
+    <link rel="stylesheet" href="/radiant/css/order.css">
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
@@ -18,7 +18,6 @@
 <body>
     <div id="wrap">
         <div id="header">
-            
             <div id="logo">
                 <a href="/radiant/main/index.do"><img src="/radiant/img/logo.png" alt="logo"></a>
             </div><!--logo-->
@@ -169,45 +168,67 @@
 	            </ul>
 	        </div>
         </div><!--mainNav-->
-        
-	   	<div id="imgSlideDiv">
-	   		<ul id="imgList">
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
-	   		</ul>
-	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
-	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prevL" for="prev"><</label>
-	   		<label id="nextL" for="next">></label>
-	  	</div><!-- imgSlide -->
-	  	
+       
         <div id="section">
-        
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
-        	</table>
+        	<div id="sideNav">
+        		<h5>마이페이지</h5>
+        		<span><strong>주문관리</strong></span>
+        		<ul>
+        			<li><a href="">주문/배송조회</a></li>
+        		</ul>
+        		
+        		<span><strong>나의레디</strong></span>
+        		<ul>
+        			<li><a href="">장바구니</a></li>
+        		</ul>
+        		
+        		<span><strong>나의활동</strong></span>
+        		<ul>
+        			<li><a href="">적립금</a></li>
+        			<li><a href="">1:1문의</a></li>
+        		</ul>
+        		
+        		<span><strong>정보관리</strong></span>
+        		<ul>
+        			<li><a href="">회원정보 수정</a></li>
+        		</ul>
+        	</div><!-- sideNav -->
         	
+        	<div id="order">
+        		<div id="shipping">
+	           		<table>
+	        			<tr>
+							<td colspan="6" style="padding: 0 10px;">
+			        			<img alt="order" src="/radiant/img/order.PNG">						
+							</td>        			
+	        			</tr>
+	        			<tr>
+	        				<td>주문접수</td>
+	        				<td>결제완료</td>
+	        				<td>상품준비중</td>
+	        				<td>출고시작</td>
+	        				<td>배송중</td>
+	        				<td>거래완료</td>
+	        			</tr>
+	        		</table>
+        		</div>
+        		<div id="info">
+        			<table>
+        				<tr>
+        					<td colspan="2">※최근 한달이내 주문건의 정보</td>
+        				</tr>
+        				<tr>
+        					<td>취소</td>
+        					<td>0</td>
+        				</tr>
+        				<tr>
+        					<td>교환/반품</td>
+        					<td>0</td>
+        				</tr>
+        			</table>
+        		</div>
+        	</div>
         </div><!--section-->
-        
         <hr>
         <div id="footer">
             <div id="footerLeft">

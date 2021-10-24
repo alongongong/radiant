@@ -47,7 +47,7 @@ input[type="text"] {
 	height: 30px;
 	text-align: center;
 	padding-top: 5px;
-	left: 1300px;
+	left: 1400px;
 	top: 50px;
 	border-radius: 5px;
 }
@@ -85,12 +85,7 @@ input[type="text"] {
 					<input type="text" name="color${i.count }" id="color${i.count }" value="${stockDTO.color }" size="7">
 				</td>
 				<td>
-					<select class="category" name="category${i.count }" id="category${i.count }" style="width:80px;">
-						<option value="상의">상의</option>
-						<option value="하의">하의</option>
-						<option value="아우터">아우터</option>
-					</select>
-					<input type="hidden" value="${stockDTO.category }" size="10">
+					<input type="text"  name="category${i.count }" id="category${i.count }" value="${stockDTO.category }" size="8">
 				</td>
 				<td>
 					<input type="text" name="price${i.count }" id="price${i.count }" value="${stockDTO.price }" size="10">
@@ -142,11 +137,7 @@ input[type="text"] {
 				<input type="text" name="color" size="7">
 			</td>
 			<td>
-				<select name="category" id="category" style="width:80px;">
-						<option value="상의">상의</option>
-						<option value="하의">하의</option>
-						<option value="아우터">아우터</option>
-					</select>
+				<input type="text" name="category" size="8">
 			</td>
 			<td>
 				<input type="text" name="price" size="10">
@@ -211,10 +202,6 @@ function clickBtn(btn, i){
 	document.getElementById("btn").value = btn;
 	document.stockPrintForm.submit();
 }
-
-$(function(){
-	$('.category').val($(this).next().val());
-});
 </script>
 </body>
 </html>

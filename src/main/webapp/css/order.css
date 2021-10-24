@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+table{
+	margin: 0 auto;
+	padding: 10px;
+	width: 800px;
+}
+tbody {
+	border-top: 2px solid #39210D;
+}
+#orderTopTable tbody, #saleTable tbody, #payInfoTable tbody {
+	border-bottom: 1px solid #999;
+}
+th {
+	text-align: left;
+	padding: 20px 30px;
+}
+tbody td {
+	padding: 5px 30px;
+	font-size: 10pt;
+}
+tfoot td {
+	padding: 30px 40px;
+}
+#orderTopTable thead th {
+	padding: 30px 50px;
+}
+#topDiv {
+	text-align: center;
+	font-size: 18pt;
+	padding-bottom: 15px;
+}
+#orderTopTable thead img {
+	width: 700px;
+	height: 80px;
+}
+#saleTable div, #shipInfoTable div, #paymentTable div {
+	color: #555;
+	font-size: 9pt;
+}
+#orderTopTable p, #saleTable p, #paymentTable p {
+	color: black;
+	font-size: 10pt;
+	font-weight: bold;
+	display: inline-block;
+}
+#saleTable p:after {
+	content: ' | ';
+	color: #aaa;
+	padding: 0 7px;
+}
+#saleTable span, #paymentTable span {
+	color: #b04545;
+	font-size: 9pt;
+}
+#saleTable input[type="button"] {
+	background: #39210D;
+	color: white;
+	font-size: 10pt;
+	height: 32px;
+}
+#saleTable tfoot tr td:last-child {
+	text-align: right;
+}
+#payInfoTable tr td:last-child {
+	text-align: right;
+}
+#payInfoTable tfoot td:last-child {
+	color: #b04545;
+	font-weight: bold;
+}
+input[type="text"], select {
+	font-size: 10pt;
+	height: 30px;
+}
+textarea {
+	font-size: 10pt;
+}
+#orderBtn {
+	background: #39210D;
+	color: white;
+	font-size: 10pt;
+	width: 740px;
+	height: 40px;
+	margin-bottom: 5px;
+}
+#orderCancelBtn {
+	background: #ccc;
+	font-size: 10pt;
+	width: 740px;
+	height: 40px;
+}
+#paymentTable ul {
+	margin: 0;
+	border: 1px solid #999;
+}
+#paymentTable ul:first-child {
+	border-bottom: 0;
+}
+#paymentTable li {
+	display: inline-block;
+	padding-top: 28px;
+	width: 184px;
+	height: 80px;
+	border-left: 1px solid #999;
+	text-align: center;
+	vertical-align: middle;
+}
+#paymentTable li:first-child {
+	border-left: none;
+}
+#paymentTable .btn {
+	width: 243px;
+	height: 40px;
+	font-size: 10pt;
+	border: 1px solid #999;
+}
+
+/* 여기는 배송쪽 order때문에 만든 css에여ㅛ */
+#section > div {
+	float: left;
+	margin: 10px 20px;
+}
+
+#section:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* sideNav */
+#section #sideNav {
+	border: solid;
+	padding: 10px;
+}
+
+#section #sideNav > ul > li{
+	margin: 0 10px;
+}
+
+
+
+/* #order */
+#section #order {
+	background-color: rgb(252, 250, 255);
+	width: 80%;
+	padding: 30px;
+}
+
+#section #order #shipping > span {
+	margin-right: 20px;
+}
+
+
+#section #order #shipping, span, #section #order #info {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#section #order #shipping > table td {
+	width: 100px;
+}
+
+#section #order img {
+	width: 700px;
+}
+
+#section #order #info > table td {
+	width: 100px;
+}

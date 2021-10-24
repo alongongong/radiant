@@ -153,7 +153,7 @@
 						
 						<div id="color-index-list">
 							<select name="select-color" id="colorSelect" class="color selected">
-							  <option value="">==  [필수] 색상 선택  ==</option>
+							  <option value="null">==  [필수] 색상 선택  ==</option>
 						      <option value="black">BLACK</option>
 						      <option value="white">WHITE</option>
 						      <option value="blue">BLUE</option>

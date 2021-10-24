@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/radiant/css/radiant_Main.css">
     
     <link rel="stylesheet" href="/radiant/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/radiant/css/order.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
 </head>
@@ -170,42 +171,281 @@
 	        </div>
         </div><!--mainNav-->
         
-	   	<div id="imgSlideDiv">
-	   		<ul id="imgList">
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_1.png" alt="imgSlide_1"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_2.png" alt="imgSlide_2"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_3.png" alt="imgSlide_3"/></li>
-	   			<li><img src="/radiant/img/imgSlide/imgSlide_4.png" alt="imgSlide_4"/></li>
-	   		</ul>
-	   		<input type="button" id="prev" value="prev" onclick="imgSlide(1)">
-	   		<input type="button" id="next" value="next" onclick="imgSlide(0)">
-	   		<label id="prevL" for="prev"><</label>
-	   		<label id="nextL" for="next">></label>
-	  	</div><!-- imgSlide -->
-	  	
-        <div id="section">
         
-            <table align="center">
-	        	<c:forEach var="i" begin="0" end="3" step="1">
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        		
-	        		<tr>
-	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
-	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
-	        				</td>
-	        			</c:forEach>
-	        		</tr>
-	        	</c:forEach>        	
-        	</table>
-        	
+        <div id="section">
+        	<form id="payForm" name="payForm" method="post" action="">
+        		<div id="orderTopDiv">
+        			<table id="orderTopTable">
+        				<thead>
+	        				<tr>
+	        					<th colspan="2">
+	        						<div id="topDiv">주문서 작성</div>
+	        						<img src="/radiant/img/opderPay.png" alt="주문결제">
+	        					</th>
+	        				</tr>
+        				</thead>
+        				<tbody>
+        					<tr>
+        						<td colspan="2" height="70px">상품정보</td>
+        					</tr>
+        					<!-- 구매 상품 여러개면 반복(for문) -->
+	        				<tr>
+	        					<td width="200px">상품이미지</td>
+	        					<td>
+	        						<div id="productName">상품이름</div>
+	        						<div id="productInfo">상품정보</div>
+	        						<div id="productPrice">상품가격</div>
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+        				<tfoot>
+	        				<tr>
+	        					<td colspan="2"><p>배송비는 10,000원 이상 구매시 무료배송입니다.</p></td>
+	        				</tr>
+        				</tfoot>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="saleDiv">
+        			<table id="saleTable">
+        				<tbody>
+        					<tr>
+        						<th colspan="2">할인/혜택</th>
+        					</tr>
+        					<tr>
+        						<td colspan="2">
+        							<div><p>적립금</p>보유적립금<span>0원</span></div>
+        							<input type="text" name="saved" value="0" size="101">
+        							<input type="button" id="allUseBtn" class="btn" value="전액사용">
+        						</td>
+        					</tr>
+        					<tr>
+        						<td colspan="2"><div><p>적립포인트</p>구매하시면 <span>330원</span>이 적립됩니다.</div></td>
+        					</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+        				<tfoot>
+        					<tr>
+        						<td>총 할인내역</td>
+        						<td>
+        							<div>기본할인 (-) <span>0</span>원</div>
+        							<div>적립금 (-) <span>0</span>원</div>
+        						</td>
+        					</tr>
+        				</tfoot>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="payInfoDiv">
+        			<table id="payInfoTable">
+        				<tbody>
+	        				<tr>
+	        					<th colspan="2">결제정보</th>
+	        				</tr>
+	        				<tr>
+	        					<td>총 상품금엑</td>
+	        					<td>33,000원</td>
+	        				</tr>
+	        				<tr>
+	        					<td>배송료</td>
+	        					<td>0원</td>
+	        				</tr>
+	        				<tr>
+	        					<td>총 할인금액</td>
+	        					<td>-3,000원</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+        				<tfoot>
+        					<tr>
+        						<td>총 결제금액</td>
+        						<td>30,000원</td>
+        					</tr>
+        				</tfoot>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="userInfodiv">
+        			<table id="userInfoTable">
+        				<tbody>
+	        				<tr>
+	        					<th>주문자정보</th>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<input type="checkbox" id="memberUpdate" name="memberUpdate" checked>
+	        						<label for="memberUpdate">주문자 정보로 회원정보를 업데이트 합니다.</label>
+	        					</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<input type="text" id="userInfoName" name="userInfoName" value="이름불러오기" size="115">
+	        					</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<select id="userInfoTel1" name="userInfoTel1" style="width: 255px">
+	        							<option value="010">010</option>
+	        							<option value="011">011</option>
+	        							<option value="019">019</option>	
+	        						</select>
+	        						<input type="text" id="userInfoTel2" name="userInfoTel2" value="TEL2불러오기" size="33">
+	        						<input type="text" id="userInfoTel3" name="userInfotel3" value="TEL3불러오기" size="33">
+	        					</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<input type="text" id="userInfoEmail" name="userInfoEmail" value="이메일불러오기" size="115">
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+	        			</tbody>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="shipInfoDiv">
+        			<table id="shipInfoTable">
+        				<tbody>
+        					<tr>
+        						<th>배송지정보</th>
+        					</tr>
+        					<tr>
+        						<td>
+        							<input type="checkbox" id="userSame">
+        							<label for="userSame">주문인 정보와 동일</label>
+        						</td>
+        					<tr>
+        					<tr>
+        						<td> <!-- DB에 입력된 배송지정보 for문으로 불러오기 -->
+        							<select id="shipInfoSelect" style="width: 740px">
+        								<option value="0">배송지를 선택해주세요</option>
+        							</select>
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<input type="text" id="shipName" name="shipName" value="이름불러오기" placeholder="이름" size="115">
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<select id="shipTel1" name="shipTel1" style="width: 255px">
+	        							<option value="010">010</option>
+	        							<option value="011">011</option>
+	        							<option value="019">019</option>	
+	        						</select>
+        							<input type="text" id="shipTel2" name="shipTel2" value="Tel2불러오기" size="33">
+        							<input type="text" id="shipTel3" name="shipTel3" value="Tel3불러오기" size="33">
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<input type="text" id="shipZipcode" name="shipZipcode" placeholder="우편번호" size="115">
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<input type="text" id="" name="" value="" placeholder="주소" size="115">
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<input type="text" id="" name="" value="" placeholder="상세주소" size="115">
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<textarea id="" name="" placeholder="배송메모" cols="117" rows="4"></textarea>
+        						</td>
+        					<tr>
+        					<tr>
+        						<td>
+        							<div>배송메모는 배달기사님께 보여지는 메모입니다.</div>
+        							<div>주문건 관련하여 요청사항 있으실 경우 게시판에 꼭! 남겨주세요:)</div>
+        						</td>
+        					</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="paymentDiv">
+        			<table id="paymentTable">
+        				<tbody>
+	        				<tr>
+	        					<th colspan="2">결제수단 선택</th>
+	        				</tr>
+	        				<tr>
+	        					<td colspan="2" align="center">
+	        						<input type="button" class="btn" id="buyBenefit" value="구매혜택">
+	        						<input type="button" class="btn" id="freeMonthly" value="무이자 할부">
+	        						<input type="button" class="btn" id="saveInfo" value="적립금 지급안내">
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+	        				<tr>
+	        					<td colspan="2">
+	        						<ul>
+	        							<li>무통장입금</li><li>신용카드</li><li>휴대폰 결제</li><li>삼성PAY</li>
+	        						</ul>
+	        						<ul>
+	        							<li>PAYCO</li><li>카카오페이</li><li>스마일페이</li><li>간편결제</li>
+	        						</ul>
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+	        				<tr>
+	        					<td colspan="2">
+									<div><span>'선택한 결제수단'</span>를 선택하셨습니다.</div>
+									<div>아래 주문하기를 눌러 결제를 이어가주세요.</div>
+								</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<p>무통장입금</p>
+	        					</td>
+	        					<td>
+	        						<div>레디언트에 지정된 계좌로 직접 입금하는 방식입니다.</div>
+	        						<div>(인터넷뱅킹, 텔레뱅킹, ATM, 은행방문)</div>
+	        					</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<p>실시간계좌이체</p>
+	        					</td>
+	        					<td>
+	        						<div>은행을 거치지않고 회원님 계좌에서 바로 이체되는 편리한 서비스입니다. (이체수수료무료 / 공인인증서필수)</div>
+	        					</td>
+	        				</tr>
+	        				<tr>
+	        					<td>
+	        						<p>휴대폰결제</p>
+	        					</td>
+	        					<td>
+	        						<div>인증번호를 통해 간단히 휴대폰으로 결제처리가 되면 익월통신요금에 합산청구됩니다.</div>
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+        			</table>
+        		</div>
+        		<br><br><br>
+        		<div id="payBtnDiv">
+	        		<table id="payBtnTable">
+        				<tbody>
+	        				<tr><td>&emsp;</td></tr>
+	        				<tr>
+	        					<td>
+	        						<input type="button" class="btn" id="orderBtn" value="결제하기">
+	        						<input type="button" class="btn" id="orderCancelBtn" value="취소">
+	        					</td>
+	        				</tr>
+	        				<tr><td>&emsp;</td></tr>
+        				</tbody>
+	        			</table>
+        			</div>
+        	</form>
         </div><!--section-->
         
         <hr>

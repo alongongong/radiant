@@ -45,4 +45,11 @@
 		delete radiantDetail where clnum=#{clnum}
 	</delete>
 	
+	<!-- 재고출력 -->
+	<select id="getStockList" resultType="stock">
+		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
+		join radiantstock using(clnum) join radiantdetail using(clnum) 
+		where category=#{category} order by clnum, color
+	</select>
+	
  </mapper>
