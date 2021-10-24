@@ -10,7 +10,7 @@
 <script type="text/javascript">
 window.onload=function(){
 	alert("로그아웃");
-	location.href="/radiant/";
+	location.href="/radiant/main/index.do";
 }
 
 </script>
