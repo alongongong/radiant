@@ -2,14 +2,7 @@ package cart.dao;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -53,6 +46,13 @@ public class CartDAO  {
 		sqlSession.insert("cartSQL.insert",cartDTO);
 		sqlSession.commit();
 		sqlSession.close();
+	}
+	
+	public List<CartDTO> cartList(){
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<CartDTO> cartList = sqlSession.selectList("cartSQL.cartList");
+		sqlSession.close();
+		return cartList;
 	}
 
 }

@@ -151,6 +151,14 @@
  							<th scope="col">가격</th>
  							<th scope="col"></th>
  						</tr>
+ 						
+ 				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
+					<tr>
+						<td>${cartDTO.product_id }</td>
+						<td>${cartDTO.amount }</td>
+						<td>${cartDTO.amount }</td>
+					</tr>
+				</c:forEach>
  				
  					</table>
  				</form>	
@@ -199,9 +207,8 @@
  					</div>
  				</div>
  			</ul>
+
 			
-			
-                </li>
             </ul>
             <ul class="footBtwrap clearfix">
                 <li>
