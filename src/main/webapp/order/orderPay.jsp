@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/radiant/css/order.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
+    <script type="text/javascript" src="/radiant/js/order.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -387,10 +388,17 @@
 	        				<tr>
 	        					<td colspan="2">
 	        						<ul>
-	        							<li>무통장입금</li><li>신용카드</li><li>휴대폰 결제</li><li>삼성PAY</li>
+	        							<li><img src="/radiant/img/payment/deposit.png" alt="deposit" class="paymentImg"> 
+	        								<img src="/radiant/img/payment/deposit_check.png" alt="deposit_check" class="paymentImgHidden">     								
+										</li><li><img src="/radiant/img/payment/card.png" alt="card" class="paymentImg" data-num="0">
+										</li><li><img src="/radiant/img/payment/phone.png" alt="phone" class="paymentImg" data-num="0">
+										</li><li><img src="/radiant/img/payment/samsung.png" alt="samsung" class="paymentImg" data-num="0"></li>
 	        						</ul>
 	        						<ul>
-	        							<li>PAYCO</li><li>카카오페이</li><li>스마일페이</li><li>간편결제</li>
+	        							<li><img src="/radiant/img/payment/payco.png" alt="payco" class="paymentImg" data-num="0">
+	        							</li><li><img src="/radiant/img/payment/kakao.png" alt="kakao" class="paymentImg" data-num="0">
+	        							</li><li><img src="/radiant/img/payment/smilepay.png" alt="smilepay" class="paymentImg" data-num="0">
+	        							</li><li><img src="/radiant/img/payment/simplepay.png" alt="simplepay" class="paymentImg" data-num="0"></li>
 	        						</ul>
 	        					</td>
 	        				</tr>
