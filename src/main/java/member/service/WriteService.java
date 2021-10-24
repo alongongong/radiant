@@ -64,12 +64,18 @@ public class WriteService implements CommandProcess {
 	
 		
 		//세션
-		
-		request.setAttribute("memName", name);
-		request.setAttribute("memId", id);
-		request.setAttribute("memTel1", tel1);
-		request.setAttribute("memTel2", tel2);
-		request.setAttribute("memTel3", tel3);
+		HttpSession session = request.getSession();
+		session.setAttribute("memName", name);
+		session.setAttribute("memId", id);
+		session.setAttribute("memTel1", tel1);
+		session.setAttribute("memTel2", tel2);
+		session.setAttribute("memTel3", tel3);
+
+		/*
+		 * request.setAttribute("memName", name); request.setAttribute("memId", id);
+		 * request.setAttribute("memTel1", tel1); request.setAttribute("memTel2", tel2);
+		 * request.setAttribute("memTel3", tel3);
+		 */
 					
 		//응답
 		return "/member/write.jsp";

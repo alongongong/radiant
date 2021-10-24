@@ -35,3 +35,15 @@ function nextImage(direction) {
 }
 
 // 컬러 셀렉 박스 선택
+
+
+//장바구니 
+$('#mycartBtn').click(function(){
+	if(!$('#colorSelect > option:selected').val()||$('#sizeSelect > option:selected').val()=='none'){
+		alert("상품을 선택해주세요");
+	}else{
+		$('#stockToCart').submit();
+	}
+	
+
+});

@@ -131,7 +131,7 @@
 			
 			
 			
-			
+		<form id ="stockToCart" method="post" action = "/radiant/cart/cart.do">
 			<div class="stock-detail">
 				<div id="stock-title">
 					<h4>
@@ -169,7 +169,7 @@
 						</div>
 						
 						<div id="size-index-list">
-							<select name="select-size" class="size selected">
+							<select name="select-size" id="sizeSelect" class="size selected">
 						      <option value="none">==  [필수] 사이즈 선택  ==</option>
 						      <option value="smal">S</option>
 						      <option value="medium">M</option>
@@ -189,8 +189,9 @@
 					<input type="button" id="buyBtn" class="buy button" value="구매하기"/>
 					<input type="button" id="mycartBtn" class="mycart button" value="장바구니"/>
 				</div>
-				
+			
 			</div><!-- 제품 상세페이지 -->
+		</form>
 		</section><!--section-->
 		
 	<aside id="stockReview" class="aside"><!-- 제품정보 페이지 -->

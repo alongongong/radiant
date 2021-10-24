@@ -23,6 +23,7 @@
  	<mappers>
  		<mapper resource="stock/dao/stockMapper.xml"/>
  		<mapper resource="board/dao/commentMapper.xml"/>
+ 		<mapper resource="cart/dao/cartMapper.xml"/>
  	</mappers>
  	
  </configuration>
