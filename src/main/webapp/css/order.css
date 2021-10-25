@@ -70,7 +70,7 @@
 	color: #b04545;
 	font-weight: bold;
 }
-#payForm input[type="text"], select {
+#payForm input[type="text"], #payForm select {
 	font-size: 10pt;
 	height: 30px;
 }
@@ -93,10 +93,9 @@
 }
 #paymentTable ul {
 	margin: 0;
-	border: 1px solid #999;
 }
 #paymentTable ul:first-child {
-	border-bottom: 0;
+	border-bottom: 1px solid #999;
 }
 #paymentTable li {
 	display: inline-block;
@@ -114,6 +113,18 @@
 }
 #paymentTable li:first-child {
 	border-left: none;
+}
+#paymentTable .paymentImg {
+	visibility: visible;
+}
+#paymentTable .paymentImgCheck {
+	visibility: visible;
+}
+#paymentTable .paymentHidden {
+	display: none;
+}
+#paymentTable .paymentImgCheckHidden {
+	display: none;
 }
 #paymentTable .btn {
 	width: 243px;

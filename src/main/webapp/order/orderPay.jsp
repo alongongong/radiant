@@ -388,17 +388,23 @@
 	        				<tr>
 	        					<td colspan="2">
 	        						<ul>
-	        							<li><img src="/radiant/img/payment/deposit.png" alt="deposit" class="paymentImg"> 
-	        								<img src="/radiant/img/payment/deposit_check.png" alt="deposit_check" class="paymentImgHidden">     								
-										</li><li><img src="/radiant/img/payment/card.png" alt="card" class="paymentImg" data-num="0">
-										</li><li><img src="/radiant/img/payment/phone.png" alt="phone" class="paymentImg" data-num="0">
-										</li><li><img src="/radiant/img/payment/samsung.png" alt="samsung" class="paymentImg" data-num="0"></li>
-	        						</ul>
+	        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/deposit.png" alt="deposit" class="paymentImg"> 
+	        								<img src="/radiant/img/payment/deposit_check.png" alt="deposit_check" class="paymentImgCheckHidden">
+										</li><li class="paymentLi" data-num="1" style="background: #3E3E3E"><img src="/radiant/img/payment/card.png" alt="card" class="paymentHidden">
+											<img src="/radiant/img/payment/card_check.png" alt="card"  class="paymentImgCheck">
+										</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/phone.png" alt="phone" class="paymentImg">
+											<img src="/radiant/img/payment/phone_check.png" alt="phone"  class="paymentImgCheckHidden">
+										</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/samsung.png" alt="samsung" class="paymentImg">
+											<img src="/radiant/img/payment/samsung_check.png" alt="samsung"  class="paymentImgCheckHidden"></li></ul>
 	        						<ul>
-	        							<li><img src="/radiant/img/payment/payco.png" alt="payco" class="paymentImg" data-num="0">
-	        							</li><li><img src="/radiant/img/payment/kakao.png" alt="kakao" class="paymentImg" data-num="0">
-	        							</li><li><img src="/radiant/img/payment/smilepay.png" alt="smilepay" class="paymentImg" data-num="0">
-	        							</li><li><img src="/radiant/img/payment/simplepay.png" alt="simplepay" class="paymentImg" data-num="0"></li>
+	        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/payco.png" alt="payco" class="paymentImg">
+	        								<img src="/radiant/img/payment/payco_check.png" alt="payco"  class="paymentImgCheckHidden">
+	        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/kakao.png" alt="kakao" class="paymentImg">
+	        								<img src="/radiant/img/payment/kakao_check.png" alt="kakao"  class="paymentImgCheckHidden">
+	        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/smilepay.png" alt="smilepay" class="paymentImg">
+	        								<img src="/radiant/img/payment/smilepay_check.png" alt="smilepay"  class="paymentImgCheckHidden">
+	        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/simplepay.png" alt="simplepay" class="paymentImg">
+	        								<img src="/radiant/img/payment/simplepay_check.png" alt="simplepay" class="paymentImgCheckHidden"></li>
 	        						</ul>
 	        					</td>
 	        				</tr>
