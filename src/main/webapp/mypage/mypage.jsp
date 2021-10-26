@@ -253,6 +253,7 @@
         			<ul>
         				<li><strong>정보관리</strong></li>
         				<li><a href="/radiant/member/updateForm.do">회원정보 수정</a></li>
+        				<li><a href="/radiant/mypage/manageShip.do">배송지 관리</a>
         				<li><a href="/radiant/member/deleteForm.do">회원탈퇴</a></li>
         			</ul>
         		</div>	
