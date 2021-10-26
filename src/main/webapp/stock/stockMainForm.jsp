@@ -135,13 +135,13 @@
 			<div class="stock-detail">
 				<div id="stock-title">
 					<h4>
-						<span>[레디언트]ts2866 1+1 레이어드 하기 좋은 베이직 속기모 하이넥 티 tee</span>
+						<span>[레디언트]${clInfo.clName }</span>
 					</h4><br>
 					<h6>
-						<span style="color: #A98B59"><b>#데일리룩 #편안하고예쁘게 #러블리룩</b></span>
+						<span style="color: #A98B59"><b>${clInfo.clDetail }</b></span>
 					</h6><br><br>
 					<h3>
-						<span style="color: #B9062F">21%&nbsp;&nbsp;&nbsp;</span>18,900원 &nbsp;<del>24,000원</del>
+						<span style="color: #B9062F">${clInfo.salerate }%&nbsp;&nbsp;&nbsp;</span>${(1-clInfo.salerate/100) * clInfo.price }원 &nbsp;<del>${clInfo.price }원</del>
 					</h3>
 				</div><!-- 상세정보 제목부 -->
 				
@@ -154,14 +154,13 @@
 						<div id="color-index-list">
 							<select name="select-color" id="colorSelect" class="color selected">
 							  <option value="null">==  [필수] 색상 선택  ==</option>
-						      <option value="black">BLACK</option>
+						      <option value="${clInfo.color }">${clInfo.color }</option>
 						      <option value="white">WHITE</option>
 						      <option value="blue">BLUE</option>
 						    </select>
-						   &nbsp;&nbsp;
-						   <div class="show-color" style="background-color: white; border: 5px solid black;"></div>
 						</div>
 					</div><!-- 색상정보 -->
+					<hr>
 					
 					<div id="stock-size">
 						<div id="stock-index-size">
@@ -171,16 +170,26 @@
 						<div id="size-index-list">
 							<select name="select-size" id="sizeSelect" class="size selected">
 						      <option value="none">==  [필수] 사이즈 선택  ==</option>
-						      <option value="smal">S</option>
-						      <option value="medium">M</option>
-						      <option value="large">L</option>
-						      <option value="xlarge">XL</option>
+						      <option value="FREE">FREE</option>
 						   </select>
 						</div>
 					</div><!-- 사이즈정보 -->
-					<div class="stock-detail-para">
-						<p>이곳에 상품 상세설명</p>
+					<hr>
+					
+					<!-- 수량정보넣는곳 -->
+					<div class="exec">
+					   <form>
+					        <!-- 각 단계별 dropdown을 표시할 span태그 -->
+					        <span id="category1"></span>
+					        <span id="category2"></span>
+					        <span id="category3"></span>
+					    </form>
 					</div>
+					
+					<div class="console"></div>
+					
+					
+					
 					
 				</div>
 				

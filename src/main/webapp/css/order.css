@@ -52,6 +52,7 @@
 #saleTable span, #paymentTable span {
 	color: #b04545;
 	font-size: 9pt;
+	vertical-align: top;
 }
 #saleTable input[type="button"] {
 	background: #39210D;
@@ -69,7 +70,7 @@
 	color: #b04545;
 	font-weight: bold;
 }
-#payForm input[type="text"], select {
+#payForm input[type="text"], #payForm select {
 	font-size: 10pt;
 	height: 30px;
 }
@@ -92,22 +93,38 @@
 }
 #paymentTable ul {
 	margin: 0;
-	border: 1px solid #999;
 }
 #paymentTable ul:first-child {
-	border-bottom: 0;
+	border-bottom: 1px solid #999;
 }
 #paymentTable li {
 	display: inline-block;
-	padding-top: 28px;
 	width: 184px;
-	height: 80px;
+	height: 100px;
 	border-left: 1px solid #999;
 	text-align: center;
 	vertical-align: middle;
+	overflow: hidden;
+}
+#paymentTable li img {
+    max-width: 300px;
+    max-height: 110px;
+    margin-top: -6px;
 }
 #paymentTable li:first-child {
 	border-left: none;
+}
+#paymentTable .paymentImg {
+	visibility: visible;
+}
+#paymentTable .paymentImgCheck {
+	visibility: visible;
+}
+#paymentTable .paymentHidden {
+	display: none;
+}
+#paymentTable .paymentImgCheckHidden {
+	display: none;
 }
 #paymentTable .btn {
 	width: 243px;

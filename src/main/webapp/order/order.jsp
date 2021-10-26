@@ -243,6 +243,7 @@
 						
 						<c:forEach>
 						</c:forEach>
+						
 					</table>
 				</div>
         	</div>
