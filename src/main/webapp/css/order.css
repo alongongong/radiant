@@ -156,12 +156,9 @@
 	font-size: 10pt;
 }
 
-
-
 /* #order */
 #section #order {
 	background-color: rgb(252, 250, 255);
-	width: 80%;
 	padding: 30px;
 }
 
@@ -186,6 +183,7 @@
 #section #order #info > table td {
 	width: 100px;
 }
+
 
 
 /* ----------------------------------------- */
@@ -309,4 +307,16 @@
 	background: #3E3E3E;
 	color: white;
 	font-size: 10pt;
+}
+
+#section #content {
+	width: 80%;
+}
+#section #content #orderTable table  tr {
+	border-top: solid; 
+}
+
+#section #content #orderTable > table tr > td {
+	padding: 0 20px;
+
 }
