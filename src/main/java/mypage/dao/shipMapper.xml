@@ -1,1 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="shipSQL">
+ 
+ 	<!-- 배송지 추가 -->
+ 	<insert id="addShip" parameterType="ship">
+ 		insert into radiantship values(#{id}, #{shipName}, #{shipZipcode}, #{shipAddr1}, #{shipAddr2},
+ 			#{receiver}, #{shipTel1}, #{shipTel2}, #{shipTel3}, #{baseShipCheck});
+ 	</insert>
+ 
+ </mapper>

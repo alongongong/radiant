@@ -51,5 +51,10 @@
 		join radiantstock using(clnum) join radiantdetail using(clnum) 
 		where category=#{category} order by clnum, color
 	</select>
-	
+	<!-- 옷정보출력 -->
+	<select id="getClInfo" resultType="stock">
+		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
+		join radiantstock using(clnum) join radiantdetail using(clnum) 
+		where clnum=#{clnum} order by clnum, color
+	</select>
  </mapper>

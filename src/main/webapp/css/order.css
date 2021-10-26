@@ -147,12 +147,13 @@
 
 /* sideNav */
 #section #sideNav {
-	border: solid;
-	padding: 10px;
+	border: 2px solid  #39210D;
+	padding: 15px 25px;
 }
 
 #section #sideNav > ul > li{
 	margin: 0 10px;
+	font-size: 10pt;
 }
 
 
@@ -190,7 +191,7 @@
 /* ----------------------------------------- */
 /* 배송지 관리 */
 #manageShipForm {
-	margin : 20px;
+	margin : 15px;
 	font-size: 10pt;
 	float: left;
 }
@@ -250,6 +251,10 @@
 }
 
 /* 배송지 추가 */
+#addrShipDiv {
+	width: 600px;
+	margin: 0 auto;
+}
 #addShipAddrForm{
 	margin: 20px;
 }
@@ -274,10 +279,15 @@
 }
 #addShipAddrForm #addShipAddrTable input[type="text"] {
 	margin: 2px 0;
-	height: 19px;
+	height: 25px;
 }
-#addShipAddrForm #addShipAddrTable span{
+#addShipAddrForm #addShipAddrTable label {
+	padding: 0;
+	margin: 0;
+}
+#addShipAddrForm #addShipAddrTable span {
 	color: red;
+	margin: 3px;
 }
 #addShipAddrForm #addShipBtnDiv {
 	text-align: center;
@@ -288,10 +298,15 @@
 	height: 25px;
 }
 #addShipAddrForm #addShipCancelBtn {
-	width: 40px;
-	height: 25px;
+	width: 60px;
+	height: 35px;
+	font-size: 10pt;
+	border: 1px solid #3E3E3E;
 }
 #addShipAddrForm #addShipBtn {
-	width: 40px;
-	height: 25px;
+	width: 60px;
+	height: 35px;
+	background: #3E3E3E;
+	color: white;
+	font-size: 10pt;
 }

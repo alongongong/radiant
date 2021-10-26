@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import mypage.bean.ShipDTO;
 
 public class ShipDAO {
 	private static ShipDAO instance;
@@ -29,4 +32,10 @@ public class ShipDAO {
 		}
 	} // 생성자	
 
+	public void addShip(ShipDTO shipDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("shipSQL.addShip", shipDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	} // addShip()
 }

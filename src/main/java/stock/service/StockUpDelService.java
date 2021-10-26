@@ -45,9 +45,9 @@ public class StockUpDelService implements CommandProcess {
 			stockDAO.update2(stockDTO);
 			stockDAO.update3(stockDTO);
 		} else if(btnName.equals("삭제")) {
-			stockDAO.delete1(clNum);
 			stockDAO.delete2(clNum);
 			stockDAO.delete3(clNum);
+			stockDAO.delete1(clNum);
 		} else {
 			System.out.println("잘못됐어..");
 		}

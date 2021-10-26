@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ShipDTO {
+	private String id;
 	private String shipName;
 	private String shipZipcode;
 	private String shipAddr1;
