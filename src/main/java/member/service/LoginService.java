@@ -43,7 +43,7 @@ public class LoginService implements CommandProcess {
 			session.setAttribute("memTel3", tel3);
 			session.setAttribute("memGrade", memberGrade);
 
-			return "/index.jsp";
+			return "/main/index.do";
 		} // if		
 	}
 

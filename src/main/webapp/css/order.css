@@ -1,25 +1,25 @@
 @charset "UTF-8";
 
-table{
+#payForm table{
 	margin: 0 auto;
 	padding: 10px;
 	width: 800px;
 }
-tbody {
+#payForm tbody {
 	border-top: 2px solid #39210D;
 }
 #orderTopTable tbody, #saleTable tbody, #payInfoTable tbody {
 	border-bottom: 1px solid #999;
 }
-th {
+#payForm th {
 	text-align: left;
 	padding: 20px 30px;
 }
-tbody td {
+#payForm tbody td {
 	padding: 5px 30px;
 	font-size: 10pt;
 }
-tfoot td {
+#payForm tfoot td {
 	padding: 30px 40px;
 }
 #orderTopTable thead th {
@@ -69,11 +69,11 @@ tfoot td {
 	color: #b04545;
 	font-weight: bold;
 }
-input[type="text"], select {
+#payForm input[type="text"], select {
 	font-size: 10pt;
 	height: 30px;
 }
-textarea {
+#payForm textarea {
 	font-size: 10pt;
 }
 #orderBtn {
@@ -138,12 +138,9 @@ textarea {
 	margin: 0 10px;
 }
 
-
-
 /* #order */
 #section #order {
 	background-color: rgb(252, 250, 255);
-	width: 80%;
 	padding: 30px;
 }
 
@@ -167,4 +164,16 @@ textarea {
 
 #section #order #info > table td {
 	width: 100px;
+}
+
+/* #content */
+#section #content {
+	width: 80%;
+}
+#section #content #orderTable table  tr {
+	border-top: solid; 
+}
+
+#section #content #orderTable > table tr > td {
+	padding: 0 20px;
 }

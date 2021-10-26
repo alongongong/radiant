@@ -194,41 +194,62 @@
         		</ul>
         	</div><!-- sideNav -->
         	
-        	<div id="order">
-        		<div id="shipping">
-	           		<table>
-	        			<tr>
-							<td colspan="6" style="padding: 0 10px;">
-			        			<img alt="order" src="/radiant/img/order.PNG">						
-							</td>        			
-	        			</tr>
-	        			<tr>
-	        				<td>주문접수</td>
-	        				<td>결제완료</td>
-	        				<td>상품준비중</td>
-	        				<td>출고시작</td>
-	        				<td>배송중</td>
-	        				<td>거래완료</td>
-	        			</tr>
-	        		</table>
-        		</div>
-        		<div id="info">
-        			<table>
-        				<tr>
-        					<td colspan="2">※최근 한달이내 주문건의 정보</td>
-        				</tr>
-        				<tr>
-        					<td>취소</td>
-        					<td>0</td>
-        				</tr>
-        				<tr>
-        					<td>교환/반품</td>
-        					<td>0</td>
-        				</tr>
-        			</table>
-        		</div>
+        	<div id="content">
+	        	<div id="order">
+	        		<div id="shipping">
+		           		<table>
+		        			<tr>
+								<td colspan="6" style="padding: 0 10px;">
+				        			<img alt="order" src="/radiant/img/order.PNG">						
+								</td>        			
+		        			</tr>
+		        			<tr>
+		        				<td>주문접수</td>
+		        				<td>결제완료</td>
+		        				<td>상품준비중</td>
+		        				<td>출고시작</td>
+		        				<td>배송중</td>
+		        				<td>거래완료</td>
+		        			</tr>
+		        		</table>
+	        		</div>
+	        		<div id="info">
+	        			<table>
+	        				<tr>
+	        					<td colspan="2">※최근 한달이내 주문건의 정보</td>
+	        				</tr>
+	        				<tr>
+	        					<td>취소</td>
+	        					<td>0</td>
+	        				</tr>
+	        				<tr>
+	        					<td>교환/반품</td>
+	        					<td>0</td>
+	        				</tr>
+	        			</table>
+	        		</div>
+	        	</div>
+
+	        	<h3>주문내역</h3>
+	        	
+	        	<div id="orderTable">
+					<table>
+						<tr>
+							<td width="500">일자-주문번호</td>
+							<td>개별상황</td>
+							<td>상품금액</td>
+							<td>진행상황</td>
+						</tr>
+						
+						<c:forEach>
+						</c:forEach>
+					</table>
+				</div>
         	</div>
+        	
         </div><!--section-->
+        
+        
         <hr>
         <div id="footer">
             <div id="footerLeft">
