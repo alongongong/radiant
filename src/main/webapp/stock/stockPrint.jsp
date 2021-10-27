@@ -134,7 +134,7 @@ input[type="text"] {
 					<input type="text" name="clName${i.count }" id="clName${i.count }" value="${stockDTO.clName }" size="30">
 				</td>
 				<td>
-					<input type="text" name="color${i.count }" id="color${i.count }" value="" size="7">
+					<input type="text" name="color${i.count }" id="colorAdd${i.count }" value="" size="7">
 				</td>
 				<td>
 					<input type="text"  name="category${i.count }" id="category${i.count }" value="${stockDTO.category }" size="8">
@@ -152,10 +152,10 @@ input[type="text"] {
 					<input type="text" id="salePrice${i.count }" size="10" value="${stockDTO.price*(stockDTO.salerate/100) }" readonly>
 				</td>
 				<td>
-					<input type="text" name="enterCount${i.count }" id="enterCount${i.count }" value="${stockDTO.enterCount }" size="5">
+					<input type="text" name="enterCount${i.count }" id="enterCountAdd${i.count }" value="${stockDTO.enterCount }" size="5">
 				</td>
 				<td>
-					<input type="text" name="outCount${i.count }" id="outCount${i.count }" value="${stockDTO.outCount }" size="5">
+					<input type="text" name="outCount${i.count }" id="outCountAdd${i.count }" value="${stockDTO.outCount }" size="5">
 				</td>
 				<td>
 					<input type="text" id="stockCount${i.count }" value="${stockDTO.enterCount-stockDTO.outCount }" size="5" readonly>
@@ -268,9 +268,9 @@ function optionAdd(i) {
 		type: 'post',
 		data: {
 				'clNum' : $('#clNum' + i).val(),
-				'color' : $('#color' + i).val(),
-				'enterCount' : $('#enterCount' + i).val(),
-				'outCount' : $('#outCount' + i).val()
+				'color' : $('#colorAdd' + i).val(),
+				'enterCount' : $('#enterCountAdd' + i).val(),
+				'outCount' : $('#outCountAdd' + i).val()
 				},
 		success: function() {
 			alert('성공');
