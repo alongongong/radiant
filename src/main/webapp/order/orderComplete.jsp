@@ -18,6 +18,7 @@
 <body>
     <div id="wrap">
         <div id="header">
+            
             <div id="logo">
                 <a href="/radiant/main/index.do"><img src="/radiant/img/logo.png" alt="logo"></a>
             </div><!--logo-->
@@ -34,9 +35,8 @@
                     <c:if test="${sessionScope.memId != null }">
                     	<li>${sessionScope.memName }님 로그인</li>
                     	<li><a href="/radiant/member/logout.do">로그아웃</a></li>
-                    	<li><a href="/radiant/member/updateForm.do">정보수정</a></li>
+                    	<li><a href="/radiant/mypage/mypage.do">마이페이지</a></li>
                     </c:if>
-                    <li><a href="/radiant/mypage/mypage.do">마이페이지</a></li>
                     <li><a href="/radiant/board/qnaList.do?pg=1">고객센터</a></li>
                     <c:if test="${sessionScope.memId == '관리자' }">
                     	<li><a href="/radiant/stock/stockPrint.do">재고관리</a></li>
@@ -168,7 +168,7 @@
 	            </ul>
 	        </div>
         </div><!--mainNav-->
-       
+	  	
         <div id="section">
         	<div id="sideNav">
         		<h5>마이페이지</h5>
@@ -195,59 +195,13 @@
         	</div><!-- sideNav -->
         	
         	<div id="content">
-	        	<div id="order">
-	        		<div id="shipping">
-		           		<table>
-		        			<tr>
-								<td colspan="6" style="padding: 0 10px;">
-				        			<img alt="order" src="/radiant/img/order.PNG">						
-								</td>        			
-		        			</tr>
-		        			<tr>
-		        				<td>주문접수</td>
-		        				<td>결제완료</td>
-		        				<td>상품준비중</td>
-		        				<td>출고시작</td>
-		        				<td>배송중</td>
-		        				<td>거래완료</td>
-		        			</tr>
-		        		</table>
-	        		</div>
-	        		<div id="info">
-	        			<table>
-	        				<tr>
-	        					<td colspan="2">※최근 한달이내 주문건의 정보</td>
-	        				</tr>
-	        				<tr>
-	        					<td>취소</td>
-	        					<td>0</td>
-	        				</tr>
-	        				<tr>
-	        					<td>교환/반품</td>
-	        					<td>0</td>
-	        				</tr>
-	        			</table>
-	        		</div>
+	        	<div id="orderCompleteDiv">
+	        		<p>결제가 완료되었습니다.</p>
+	        		<input type="button" value="확인"/>
 	        	</div>
-
-	        	<h3>주문내역</h3>
-	        	
-	        	<div id="orderTable">
-					<table>
-						<tr>
-							<td width="500">일자-주문번호</td>
-							<td>개별상황</td>
-							<td>상품금액</td>
-							<td>진행상황</td>
-						</tr>
-						
-						
-					</table>
-				</div>
-        	</div>
+        	</div><!-- content -->
         	
         </div><!--section-->
-        
         
         <hr>
         <div id="footer">

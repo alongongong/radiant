@@ -17,4 +17,5 @@ $(function() {
 			//$('li').not(this).find('.paymentCheck .paymentHidden').removeClass('paymentCheck');	
 		}
 	});
+	
 });

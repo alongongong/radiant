@@ -174,7 +174,7 @@
         
         
         <div id="section">
-        	<form id="payForm" name="payForm" method="post" action="">
+        	<form id="payForm" name="payForm" method="post" action="/raidant/order/orderComplete.do">
         		<div id="orderTopDiv">
         			<table id="orderTopTable">
         				<thead>
@@ -451,7 +451,7 @@
 	        				<tr><td>&emsp;</td></tr>
 	        				<tr>
 	        					<td>
-	        						<input type="button" class="btn" id="orderBtn" value="결제하기">
+	        						<input type="submit" class="btn" id="orderBtn" value="결제하기">
 	        						<input type="button" class="btn" id="orderCancelBtn" value="취소">
 	        					</td>
 	        				</tr>

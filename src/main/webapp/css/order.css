@@ -184,8 +184,13 @@
 	width: 100px;
 }
 
+#section #content #orderCompleteDiv{
+	height: 325px;
+}
 
-
+#section #content #orderCompleteDiv > p {
+	vertical-align: middle;
+}
 /* ----------------------------------------- */
 /* 배송지 관리 */
 #manageShipForm {
