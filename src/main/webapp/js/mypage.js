@@ -8,9 +8,25 @@ $(function(){
 	
 	/* 배송지 추가 우편번호 버튼*/
 	$('#shipZipcode').click(function(){
-		window.open("/radiant/mypage/chechPost.do",
+		window.open("/radiant/mypage/chechPostForm.do",
 				"checkPost",
 				"width=500 height=500 top 200 left=700");
+	});
+	/* 우편번호 검색 버튼*/
+	$('#checkPostForm #checkPostSearchBtn').click(function(){
+		$.ajax({
+			url: '/radiant/mypage/checkPost.do',
+			type: 'post',
+			data: $('#checkPostForm').serialize(),
+			dataType: 'json',
+			success: function(data){
+				alert(JSON.stringify(data));
+			},
+			error: function(err){
+				console.log(err);
+			}
+			
+		});
 	});
 	
 	/* 우편번호 추가*/

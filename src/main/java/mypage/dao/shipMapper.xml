@@ -10,5 +10,14 @@
  		insert into radiantship values(#{id}, #{shipName}, #{shipZipcode}, #{shipAddr1}, #{shipAddr2},
  			#{receiver}, #{shipTel1}, #{shipTel2}, #{shipTel3}, #{baseShipCheck});
  	</insert>
+ 	
+ 	<!-- 우편번호 찾기 -->
+ 	<select id="getZipcodeList" parameterType="java.util.Map" resultType="zipcode">
+ 		select * from newzipcode where sido like '%'||#{sido}||'%' 
+ 		<if test="sigungu != ''">
+ 			and sigungu like '%'||#{sigungu}||'%'
+ 		</if>
+ 		and roadname like '%'||#{roadname}||'%'
+ 	</select>
  
  </mapper>
