@@ -13,7 +13,7 @@ public class CheckPostFormService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
-		return "/mypage/checkPost.jsp";
+		return "/mypage/checkPostForm.jsp";
 	}
 
 }

@@ -215,12 +215,6 @@
         				</tr>
         			</thead>
         			<tbody><!-- 배송지 불러오기 -->
-        				<tr>
-        					<td></td>
-        					<td></td>
-        					<td></td>
-        					<td></td>
-        				</tr>
         			</tbody>
         		</table>
         		<div id="shipInfoDiv">배송지 등록/변경 안내</div>

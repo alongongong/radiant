@@ -62,7 +62,7 @@
 		</table>
 		<div id="addShipBtnDiv">
 			<input type="button" id="addShipCancelBtn" class="btn" value="취소">
-			<input type="button" id="addShipBtn" class="btn" value="등록">
+			<input type="button" id="addShipOkBtn" class="btn" value="등록">
 		</div>
 	</form>
 </div>

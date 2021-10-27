@@ -1,4 +1,4 @@
-package mypage.dao;
+package mypage.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,11 +20,11 @@ public class AddShipAddrService implements CommandProcess {
 		String shipZipcode = request.getParameter("shipZipcode");
 		String shipAddr1 = request.getParameter("shipAddr1");
 		String shipAddr2 = request.getParameter("shipAddr2");
-		String receiver = request.getParameter("receiver");
+		String receiver = request.getParameter("shipReceiver");
 		String shipTel1 = request.getParameter("shipTel1");
 		String shipTel2 = request.getParameter("shipTel2");
 		String shipTel3 = request.getParameter("shipTel3");
-		String baseShipCheck = request.getParameter("baseShipCheck");
+		String baseShipCheck = request.getParameter("baseShipYN");
 		
 		ShipDTO shipDTO = new ShipDTO();
 		shipDTO.setId(id);
@@ -43,6 +43,7 @@ public class AddShipAddrService implements CommandProcess {
 		
 		
 		return "/board/commentDelete.jsp";
+		// 아무값도 가져갈 필요가 없어서 빈 jsp로 이동.
 	}
 
 }

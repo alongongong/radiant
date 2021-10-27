@@ -8,9 +8,9 @@
   	<init-param>
   		<param-name>propertyConfig</param-name>
 
-		<!-- <param-value>C:\study\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> -->
+		<param-value>C:\study\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value>
   		<!-- <param-value>C:/Users/downc/git/repository/radiant\src\main\webapp\WEB-INF\command.properties</param-value> --><!-- 현석님 -->
-  		<param-value>D:\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> <!-- 건휘 -->
+  		<!-- <param-value>D:\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> --> <!-- 건휘 -->
   		<!-- <param-value>D:/java_ee/workspace/radiant/src/main/webapp/WEB-INF/command.properties</param-value> --><!--현정  -->
 
   	</init-param>

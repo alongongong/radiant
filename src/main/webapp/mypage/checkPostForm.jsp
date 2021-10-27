@@ -6,20 +6,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Radiant 레디언트</title>
 <style type="text/css">
-td {
-	width: 100px;
-	font-size: 9pt;
+#checkPostForm > table {
+	border: 1px solid #999;
+	border-collapse: collapse;
 }
-input {
-	font-size: 9pt;
+#checkPostForm td {
+	width: 100px;
+	font-size: 10pt;
+	border: 1px solid #999;
+	padding: 7px;
+}
+#checkPostForm input {
+	font-size: 10pt;
+}
+#checkPostForm #addrEmptyTd {
+	color: red;
+	font-weight: bold;
 }
 </style>
 </head>
 <body>
 <form name="postForm" id="checkPostForm">
-	<table border="1" cellspacing="0" cellpadding="7">
+	<table>
 		<tr>
 			<td align="center">시도</td>
 			<td>

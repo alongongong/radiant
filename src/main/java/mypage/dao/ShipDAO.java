@@ -53,5 +53,12 @@ public class ShipDAO {
 		List<ZipcodeDTO> list = sqlSession.selectList("shipSQL.getZipcodeList", map);
 		sqlSession.close();
 		return list;
-	}
+	} // getZipcodeList()
+
+	public List<ShipDTO> getShipList(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<ShipDTO> list = sqlSession.selectList("shipSQL.getShipList", id);
+		sqlSession.close();		
+		return list;
+	} // getShipList()
 }

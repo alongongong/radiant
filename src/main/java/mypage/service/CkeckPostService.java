@@ -33,10 +33,23 @@ public class CkeckPostService implements CommandProcess {
 			JSONArray array = new JSONArray();
 			
 			for(ZipcodeDTO zipcodeDTO : list) {
+				JSONObject temp = new JSONObject();
+				temp.put("zipcode", zipcodeDTO.getZipcode());
+				temp.put("sido", zipcodeDTO.getSido());
+				temp.put("sigungu", zipcodeDTO.getSigungu());
+				temp.put("yubmyundong", zipcodeDTO.getYubmyundong());
+				temp.put("ri", zipcodeDTO.getRi());
+				temp.put("roadname", zipcodeDTO.getRoadname());
+				temp.put("buildingname", zipcodeDTO.getBuildingname());
 				
-			}
+				array.add(temp);
+			} // for
+			
+			json.put("list", array);
 		}
-		return null;
+		request.setAttribute("list", json);
+		
+		return "/mypage/checkPost.jsp";
 	}
 
 }
