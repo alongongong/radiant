@@ -2,6 +2,9 @@ package mypage.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import mypage.bean.ShipDTO;
+import mypage.bean.ZipcodeDTO;
 
 public class ShipDAO {
 	private static ShipDAO instance;
@@ -38,4 +42,16 @@ public class ShipDAO {
 		sqlSession.commit();
 		sqlSession.close();
 	} // addShip()
+
+	public List<ZipcodeDTO> getZipcodeList(String sido, String sigungu, String roadname) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("sido", sido);
+		map.put("sigungu", sigungu);
+		map.put("roadname", roadname);
+		
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<ZipcodeDTO> list = sqlSession.selectList("shipSQL.getZipcodeList", map);
+		sqlSession.close();
+		return list;
+	}
 }

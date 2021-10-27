@@ -51,37 +51,13 @@ input {
 			<td align="center">도로명</td>
 			<td colspan="3">
 				<input type="text" name="roadname" size="40" id="roadname">
-				<input type="submit" id="checkPostSearchBtn" value="검색">
+				<input type="button" id="checkPostSearchBtn" value="검색">
 			</td>
 		</tr>
 		<tr>
 			<td align="center">우편번호</td>
 			<td colspan="3" align="center">주소</td>
 		</tr>
-		<c:if test="${requestScope.list != null}">
-			<c:forEach var="zipcodeDTO" items="${requestScope.list }">
-				<c:set var="address">
-					${zipcodeDTO.sido 
-					} ${zipcodeDTO.sigungu 
-					} ${zipcodeDTO.yubmyundong 
-					} ${zipcodeDTO.ri 
-					} ${zipcodeDTO.roadname 
-					} ${zipcodeDTO.buildingname }
-				</c:set>
-				<tr>
-					<td align="center">${zipcodeDTO.zipcode }</td>
-					<td colspan="3">
-						<%-- <a href="#" class="addressA" onclick="checkPostClose('${zipcodeDTO.zipcode}','${address }')">${address }</a> --%>
-						
-						<a href="#" class="addressA">${address }</a>
-						<%-- 값이 여러개라서 id속성을 쓰면 하나 눌렀을 때 모든 항목에 연결됨.
-							class속성을 이용하면 각각의 태그가 따로 먹힘. --%>
-						<input type="hidden" id="zipcode" value="${zipcodeDTO.zipcode }">
-						<input type="hidden" id="address" value="${address }">
-					</td>
-				</tr>
-			</c:forEach>
-		</c:if>
 	</table>
 </form>
 
