@@ -129,6 +129,19 @@ public class StockDAO {
     sqlSession.close();
     return clInfo;
   }
+  
+  public void addOption(int clNum, String color, int enterCount, int outCount) {
+	  SqlSession sqlSession = sqlSessionFactory.openSession();
+	  Map<String, Object> map = new HashMap<String, Object>();
+	  map.put("clNum", clNum);
+	  map.put("color", color);
+	  map.put("enterCount", enterCount);
+	  map.put("outCount", outCount);
+	  
+	  sqlSession.insert("addOption", map);
+	  sqlSession.commit();
+	  sqlSession.close();
+  }
 
 
 }
