@@ -24,4 +24,12 @@
  	<select id="getShipList" resultType="ship">
  		select * from radiantship where id=#{id}
  	</select>
+ 	
+ 	<!-- 기본 배송지 수정 -->
+ 	<update id="changeBaseShip1" parameterType="String">
+ 		update radiantship set baseshipcheck='false' where shipname=#{shipname}
+ 	</update>
+ 	<update id="changeBaseShip2" parameterType="String">
+ 		update radiantship set baseshipcheck='true' where shipname=#{newBaseShip}
+ 	</update>
  </mapper>

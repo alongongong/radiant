@@ -61,4 +61,18 @@ public class ShipDAO {
 		sqlSession.close();		
 		return list;
 	} // getShipList()
+
+	public void changeBaseShip1(String shipName) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("shipSQL.changeBaseShip1", shipName);
+		sqlSession.commit();
+		sqlSession.close();		
+	} // changeBaseShip1()
+
+	public void changeBaseShip2(String newBaseShip) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("shipSQL.changeBaseShip2", newBaseShip);
+		sqlSession.commit();
+		sqlSession.close();	
+	} // changeBaseShip2()
 }

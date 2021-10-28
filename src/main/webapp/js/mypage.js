@@ -20,9 +20,14 @@ $(function(){
 				}).append($('<input>',{
 					type: 'checkbox',
 					class: 'shipCheck'
+				})).append($('<input>',{
+					type: 'hidden',
+					value: items.baseShipCheck,
+					class: 'baseShip'
 				}))).append($('<td>',{
 					align: 'center',
-					text: items.shipName
+					text: items.shipName,
+					class: 'shipName'
 				})).append($('<td>',{
 					text: items.shipAddr1 + ' '
 						+items.shipAddr2,
@@ -37,18 +42,44 @@ $(function(){
 					class: 'deleteShipBtn',
 					value: '삭제'
 				}))).appendTo($('#manageShipTable > tbody'));
-			});
 			
+				/* 기본배송지에 체크하기*/
+				if(eval(items.baseShipCheck)) {
+					$('.shipCheck:eq('+index+')').prop('checked',true);
+				
+					/* 기본배송지 체크 */
+					$('#baseShipBtn').click(function(){
+						if($('.shipCheck:eq('+index+')').prop('checked')) {
+							alert('기본 배송지입니다.');
+						} else {
+							var newBaseShip = $('#manageShipTable').find('.shipCheck:checked').parent().next().text();
+							$.ajax({
+								url: '/radiant/mypage/changeBaseShip.do',
+								type: 'post',
+								data: 'shipName='+$('.shipName:eq('+index+')').text()+'&newBaseShip='+newBaseShip,
+								success: function(data){
+									alert('기본 배송지가 수정되었습니다.');
+								},
+								error: function(err){
+									console.log(err);
+								}
+							});
+						}	
+					});
+				}
+				
+			});
+				
+			/* 체크박스에 1개만 체크되게 하기 */
 			$('.shipCheck').click(function(){
 				$('.shipCheck').prop('checked',false);
 				$(this).prop('checked',true);
 			});
-			
 		},
 		error: function(err){
 			console.log(err);
 		}
-		});
+	});
 	
 	/* 배송지 추가 우편번호 버튼*/
 	$('#findShipZipcode').click(function(){
@@ -115,8 +146,12 @@ $(function(){
 			
 		});
 	});
-	
-	
+
+	/* 기본 배송지 설정 버튼 */
+	$(document).on('click', '#baseShipBtn', function(){
+		
+	});
+
 	/*배송지 추가 취소 버튼*/
 	$('#addShipCancelBtn').click(function(){
 		if(confirm("정말 취소하시겠습니까?"))
