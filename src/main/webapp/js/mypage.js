@@ -38,6 +38,12 @@ $(function(){
 					value: '삭제'
 				}))).appendTo($('#manageShipTable > tbody'));
 			});
+			
+			$('.shipCheck').click(function(){
+				$('.shipCheck').prop('checked',false);
+				$(this).prop('checked',true);
+			});
+			
 		},
 		error: function(err){
 			console.log(err);

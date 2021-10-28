@@ -196,7 +196,7 @@
 	       	</div><!-- sideNav -->
         	
         	
-        	<form id="manageShipForm" name="manageShipForm" action="">
+        	<form id="manageShipForm" name="manageShipForm">
         		<legend>배송지 관리</legend>
         		<div id="shipBtnDiv">
         			상품구매 시 배송되는 주소록입니다. 배송지를 추가/수정/삭제하여 관리할 수 있습니다.
