@@ -48,7 +48,19 @@ $(function(){
 		error: function(err){
 			console.log(err);
 		}
+	});
+	
+	$(document).on("click", 'input.deleteShipBtn', function() {
+		var shipName = $(this).parent().prev().prev().html();
+		$.ajax({
+			url: '/radiant/mypage/shipAddrDelete.do',
+			type: 'post',
+			data: 'shipName=' + shipName,
+			success: function() { location.href="/radiant/mypage/manageShip.do"},
+			error: function() { alert('실패'); }
 		});
+		
+	});
 	
 	/* 배송지 추가 우편번호 버튼*/
 	$('#findShipZipcode').click(function(){

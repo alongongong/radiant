@@ -61,4 +61,11 @@ public class ShipDAO {
 		sqlSession.close();		
 		return list;
 	} // getShipList()
+	
+	public void shipDelete(String shipName) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("shipDelete", shipName);
+		sqlSession.commit();
+		sqlSession.close();
+	}
 }

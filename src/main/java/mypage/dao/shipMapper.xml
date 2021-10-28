@@ -24,4 +24,8 @@
  	<select id="getShipList" resultType="ship">
  		select * from radiantship where id=#{id}
  	</select>
+ 	
+ 	<delete id="shipDelete" parameterType="String">
+ 		delete radiantship where shipName = #{shipName}
+ 	</delete>
  </mapper>

@@ -1,7 +1,5 @@
 package mypage.service;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,12 +7,16 @@ import com.control.CommandProcess;
 
 import mypage.dao.ShipDAO;
 
-
-public class CheckPostFormService implements CommandProcess {
+public class ShipAddrDeleteService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-		return "/mypage/checkPostForm.jsp";
+		
+		String shipName = request.getParameter("shipName");
+		
+		ShipDAO shipDAO = ShipDAO.getInstance();
+		shipDAO.shipDelete(shipName);
+		return "/board/commentDelete.jsp";
 	}
 
 }
