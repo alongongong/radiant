@@ -47,3 +47,18 @@ $('#mycartBtn').click(function(){
 	
 
 });
+
+
+// 결제하기 버튼
+$('.like-buy-mycart #buyBtn').click(function(){
+	if($('#colorSelect > option:selected').val()=='null' || $('#sizeSelect > option:selected').val()=='none'){
+		alert('상품을 선택해주세요.');
+	} else {
+		$.ajax({
+			url: '/radiant/order/orderPay.do',
+			type: 'get',
+			data: 'product_id='+$('#').val()+'&color='+$('#colorSelect > option:selected').val(),
+			
+		});
+	}
+});
