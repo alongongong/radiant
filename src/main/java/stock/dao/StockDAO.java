@@ -124,24 +124,24 @@ public class StockDAO {
     return stockList;
   }
 
-  public StockDTO getClInfo(int clnum) {
+  public List<StockDTO> getClInfoList(int clnum) {
     SqlSession sqlSession = sqlSessionFactory.openSession();
-    StockDTO clInfo = sqlSession.selectOne("stockSQL.getClInfo", clnum);
+    List<StockDTO> clInfoList = sqlSession.selectList("stockSQL.getClInfoList", clnum);
     sqlSession.close();
-    return clInfo;
+    return clInfoList;
   }
-  
+
   public void addOption(int clNum, String color, int enterCount, int outCount) {
-	  SqlSession sqlSession = sqlSessionFactory.openSession();
-	  Map<String, Object> map = new HashMap<String, Object>();
-	  map.put("clNum", clNum);
-	  map.put("color", color);
-	  map.put("enterCount", enterCount);
-	  map.put("outCount", outCount);
-	  
-	  sqlSession.insert("addOption", map);
-	  sqlSession.commit();
-	  sqlSession.close();
+    SqlSession sqlSession = sqlSessionFactory.openSession();
+    Map<String, Object> map = new HashMap<String, Object>();
+    map.put("clNum", clNum);
+    map.put("color", color);
+    map.put("enterCount", enterCount);
+    map.put("outCount", outCount);
+
+    sqlSession.insert("addOption", map);
+    sqlSession.commit();
+    sqlSession.close();
   }
 
 

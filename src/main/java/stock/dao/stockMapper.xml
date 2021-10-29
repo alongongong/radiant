@@ -56,8 +56,8 @@
 		select clname,price from radiantinfo where clnum=#{clnum}
 	</select>
 	
-	<!-- 옷정보출력 -->
-	<select id="getClInfo" resultType="stock">
+	<!-- 상세페이지용 옷정보리스트 -->
+	<select id="getClInfoList" resultType="stock">
 		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
 		join radiantstock using(clnum) join radiantdetail using(clnum) 
 		where clnum=#{clnum} order by clnum, color

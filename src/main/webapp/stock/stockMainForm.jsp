@@ -136,13 +136,13 @@
 			<div class="stock-detail">
 				<div id="stock-title">
 					<h4>
-						<span>[레디언트]${clInfo.clName }</span>
+						<span>[레디언트]${clInfoList[0].clName }</span>
 					</h4><br>
 					<h6>
-						<span style="color: #A98B59"><b>${clInfo.clDetail }</b></span>
+						<span style="color: #A98B59"><b>${clInfoList[0].clDetail }</b></span>
 					</h6><br><br>
 					<h3>
-						<span style="color: #B9062F">${clInfo.salerate }%&nbsp;&nbsp;&nbsp;</span>${(1-clInfo.salerate/100) * clInfo.price }원 &nbsp;<del>${clInfo.price }원</del>
+						<span style="color: #B9062F">${clInfoList[0].salerate }%&nbsp;&nbsp;&nbsp;</span>${(1-clInfoList[0].salerate/100) * clInfoList[0].price }원 &nbsp;<del>${clInfoList[0].price }원</del>
 					</h3>
 				</div><!-- 상세정보 제목부 -->
 				
@@ -155,9 +155,9 @@
 						<div id="color-index-list">
 							<select name="select-color" id="colorSelect" class="color selected">
 							  <option value="null">==  [필수] 색상 선택  ==</option>
-						      <option value="${clInfo.color }">${clInfo.color }</option>
-						      <option value="white">WHITE</option>
-						      <option value="blue">BLUE</option>
+							  <c:forEach var="stockDTO" items="${clInfoList }">
+						      	<option value="${stockDTO.color }">${stockDTO.color }</option>
+							  </c:forEach>
 						    </select>
 						</div>
 					</div><!-- 색상정보 -->
@@ -179,12 +179,7 @@
 					
 					<!-- 수량정보넣는곳 -->
 					<div class="exec">
-					   <form>
-					        <!-- 각 단계별 dropdown을 표시할 span태그 -->
-					        <span id="category1"></span>
-					        <span id="category2"></span>
-					        <span id="category3"></span>
-					    </form>
+						
 					</div>
 					
 					<div class="console"></div>
