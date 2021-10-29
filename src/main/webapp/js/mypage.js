@@ -81,6 +81,7 @@ $(function(){
 		}
 	});
 	
+	// 배송지 삭제 버튼 눌렀을 때
 	$(document).on("click", 'input.deleteShipBtn', function() {
 		var shipName = $(this).parent().prev().prev().html();
 		$.ajax({
@@ -91,6 +92,12 @@ $(function(){
 			error: function() { alert('실패'); }
 		});
 		
+	});
+	
+	// 배송지 수정 버튼 눌렀을 때
+	$(document).on("click", 'input.updateShipBtn', function() {
+		var shipName = $(this).parent().prev().prev().html();
+		window.open("/radiant/mypage/shipUpdateForm.do?shipName=" + shipName, "shipUpdate", "width=500 height=800 top=200 left=700");
 	});
 	
 	/* 배송지 추가 우편번호 버튼*/
