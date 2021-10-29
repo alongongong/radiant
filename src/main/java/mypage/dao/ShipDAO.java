@@ -72,6 +72,7 @@ public class ShipDAO {
 	public void updateShip(ShipDTO shipDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		sqlSession.update("shipSQL.updateShip", shipDTO);
+		sqlSession.commit();
 		sqlSession.close();
 	} // updateShip()
 	

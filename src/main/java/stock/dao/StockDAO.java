@@ -1,3 +1,6 @@
+
+
+
 package stock.dao;
 
 import java.io.IOException;
@@ -143,6 +146,13 @@ public class StockDAO {
     sqlSession.commit();
     sqlSession.close();
   }
+
+public StockDTO getStockDTO(StockDTO stockDTO) {
+	 SqlSession sqlSession = sqlSessionFactory.openSession();
+	    StockDTO clInfo = sqlSession.selectOne("stockSQL.getStockDTO", stockDTO);
+	    sqlSession.close();
+	    return clInfo;
+}
 
 
 }

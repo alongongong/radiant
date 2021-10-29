@@ -12,6 +12,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>	
 <script type="text/javascript" src="/radiant/js/member.js"></script>
 <script type="text/javascript" src="/radiant/bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="/radiant/js/cart.js"></script>
 
 <style type="text/css">
 #cart_order, #cart_delete, #cart_clean, #cart_like{
@@ -20,11 +21,19 @@
 	border: 0.1px solid #999;
 	font-size : 10pt;
 }
-.cart{
-	border-bottom :1px solid #888888;
-	border-top :1px solid #888888;
-	width : 75%;
+#topline{
+	border-bottom :1px solid #e6e6e6;
+	padding : 16px 0px 15px;
 	height : 70px;
+}
+#bottomline{
+	border-bottom :1px solid #e6e6e6;
+	height : 15%;
+}
+.cart{
+	border-top :1px solid #e6e6e6;
+	width : 75%;
+	height :70%;
 	padding : 16px 0px 15px;
 	margin : 20px  0px;
 	float: left;
@@ -33,7 +42,7 @@
 	padding : 0px 0px 10px
 }
 .footBtwrap clearfix{
-	padding : 20px 30px 10px;
+	padding : -20px -10px -10px;
 }
 .box{
 	width :20%;
@@ -144,25 +153,34 @@
                     </ul>
  
  			<ul	class="table_product">
+ 				<input type="hidden" id="userid" value="${userid}"/>
  				<form>
  					<table class="cart">
- 						<tr align="center">
+ 						<tr align="center" id="topline">
  							<th scope="col" colspan="2">상품정보</th><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
+ 							<th scope="col">수량</th>
  							<th scope="col">가격</th>
- 							<th scope="col"></th>
  						</tr>
 				<c:set var = "total" value = "0" />
  				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
-					<tr>
-						<td><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:100px;"alt="img"></td>
-						<%-- <td>${cartDTO.product_id }</td> --%>
-						<td>${cartDTO.product_name }</td>
-						<td>${cartDTO.amount }</td>
-						<td>${cartDTO.price }</td>
+ 					
+					<tr id="bottomline">
+						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
+						<td width="400px"><input type="checkbox"/><br>${cartDTO.product_name}<br><br>
+						</td>
+						<td width="100px" align="center">${cartDTO.amount }</td>
+						<td align="center">${cartDTO.price }</td>
+						<td id="delete_img"><img src="../img/delete_img.png" style="width:10px; height:10px;"alt="img"><input type="hidden" class="cart_id" value="${cartDTO.cart_id }"/></td>
 					</tr>
 					<c:set var= "total" value="${total +(cartDTO.price * cartDTO.amount) }"/>
 				</c:forEach>
- 				
+				<tr>
+					<td colspan="2" height="50px">
+		 				<button class="btn" id="cart_order" type="button" onclick="" >선택상품 주문</button>
+		               	<button class="btn" id="cart_delete" type="button" onclick="" >선택상품 삭제</button>
+		               	<button class="btn" id="cart_clean" type="button">장바구니 비우기</button>
+		            </td>
+               	<tr>
  					</table>
  				</form>	
  			</ul>
@@ -173,7 +191,6 @@
  						<tr>
  							<th height="100px">결제금액</th>
  						</tr>
- 				
  						<tr>
  							<td height="50px" width="180px">상품 금액</td><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
  							
@@ -206,8 +223,9 @@
  							</td>
  						</tr>	
  					</table>
+ 					<hr width="320px" style="vertical-align :middle; margin-top:15px; margin-left: -30px; padding : 15px;">
  					<div id="free-id">
- 						<img src="../img/i.PNG" width="320px" style="vertical-align :middle; margin-top:-3px; margin-left: -30px;">
+ 						<!-- <img src="../img/i.PNG" width="320px" style="vertical-align :middle; margin-top:-3px; margin-left: -30px;"> -->
  						<img src="../img/cart_free_delivery.PNG" style="vertical-align :middle; margin-top:-6px; ">
  						<span>80,000원이상</span>
  						 구매시 
@@ -224,15 +242,13 @@
             </ul>
             <ul class="footBtwrap clearfix">
                 <li>
-                <button class="btn" id="cart_order" type="button" onclick="" >선택상품 주문</button>
-               	<button class="btn" id="cart_delete" type="button" onclick="" >선택상품 삭제</button>
-               	<button class="btn" id="cart_clean" type="button" onclick="" >장바구니 비우기</button>
+           
                	</li>
             </ul>
            
            
        
-        
+       		<br><br> 
        
           </div><!--subNav-->
         </div><!--section-->

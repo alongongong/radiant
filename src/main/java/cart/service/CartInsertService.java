@@ -25,11 +25,18 @@ public class CartInsertService implements CommandProcess {
 		String userid = (String)session.getAttribute("memId");
 		String mainFileList = request.getParameter("mainFileList");
 		int product_id = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
+		String color = request.getParameter("select-color");
 		
+		System.out.println(color);
+		
+		StockDTO stockDTO = new StockDTO();
+		stockDTO.setColor(color);
+		stockDTO.setClNum(product_id);
 		
 		StockDAO stockDAO =StockDAO.getInstance();
-		/* StockDTO stockDTO = stockDAO.getStockDTO(product_id); */
+		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
+
 	
 		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
 		String[] fileList = path.list();
@@ -45,10 +52,10 @@ public class CartInsertService implements CommandProcess {
 		cartDTO.setUserid(userid);
 		cartDTO.setAmount(1); //아직 안함 - 수량
 		cartDTO.setProduct_id(product_id); //clnum
-		/*
-		 * cartDTO.setProduct_name(stockDTO.getClName());
-		 * cartDTO.setPrice(stockDTO.getPrice());
-		 */
+		
+		cartDTO.setProduct_name(stockDTO.getClName());
+		cartDTO.setPrice(stockDTO.getPrice());
+		 
 		
 		CartDAO cartDAO = CartDAO.getInstance();
 		
@@ -58,7 +65,7 @@ public class CartInsertService implements CommandProcess {
 			cartDAO.insert(cartDTO);//장바구니 테이블에 저장됨
 		}
 		
-		List<CartDTO> cartlist = cartDAO.cartList();
+		List<CartDTO> cartlist = cartDAO.cartList(userid);
 		
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));
@@ -76,7 +83,7 @@ public class CartInsertService implements CommandProcess {
 		
 		
 		
-		
+		request.setAttribute("userid", userid);
 		request.setAttribute("cartlist", cartlist);
 		request.setAttribute("mainFileList", mainFileList);
 
