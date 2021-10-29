@@ -4,11 +4,15 @@ $(document).ready(function(){
 		
 		if(result){
 			//yes
-			$.get(url, {'cart_id':cart_id}, function(data){
+			var cart_id =$(this).find('input').val();
+			
+			alert(cart_id);
+			var url = "/radiant/cart/cartDelete.do";
+			$.get(url, {'cart_id':cart_id}, function(){
 				alert("삭제하였습니다.");
-				location.href="/radiant//cart/cartDelete.do";
+				location.href="/radiant/cart/cartPrint.do?userid="+$('#userid').val();
 			}).fail(function(){
-				alert("오류가 발생했습니다. 잠시 후에 다시 시도해주세요.");
+				alert("실패");
 			});
 	
 		}else{

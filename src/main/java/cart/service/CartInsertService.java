@@ -83,7 +83,7 @@ public class CartInsertService implements CommandProcess {
 		
 		
 		
-		
+		request.setAttribute("userid", userid);
 		request.setAttribute("cartlist", cartlist);
 		request.setAttribute("mainFileList", mainFileList);
 
