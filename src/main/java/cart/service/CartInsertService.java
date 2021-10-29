@@ -28,7 +28,7 @@ public class CartInsertService implements CommandProcess {
 		
 		
 		StockDAO stockDAO =StockDAO.getInstance();
-		StockDTO stockDTO = stockDAO.getStockDTO(product_id);
+		/* StockDTO stockDTO = stockDAO.getStockDTO(product_id); */
 		
 	
 		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
@@ -45,8 +45,10 @@ public class CartInsertService implements CommandProcess {
 		cartDTO.setUserid(userid);
 		cartDTO.setAmount(1); //아직 안함 - 수량
 		cartDTO.setProduct_id(product_id); //clnum
-		cartDTO.setProduct_name(stockDTO.getClName());
-		cartDTO.setPrice(stockDTO.getPrice());
+		/*
+		 * cartDTO.setProduct_name(stockDTO.getClName());
+		 * cartDTO.setPrice(stockDTO.getPrice());
+		 */
 		
 		CartDAO cartDAO = CartDAO.getInstance();
 		
