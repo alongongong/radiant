@@ -52,8 +52,10 @@
 		where category=#{category} order by clnum, color
 	</select>
 	
-	<select id="getStockDTO" resultType="stock">
-		select clname,price from radiantinfo where clnum=#{clnum}
+	<select id="getStockDTO" parameterType="stock" resultType="stock">
+		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
+		join radiantstock using(clnum) join radiantdetail using(clnum) 
+		where clnum=#{clNum} and color=#{color} order by clnum, color
 	</select>
 	
 	<!-- 옷정보출력 -->

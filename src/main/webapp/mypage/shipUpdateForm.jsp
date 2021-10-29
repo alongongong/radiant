@@ -101,15 +101,19 @@
 		$('#addShipUpdateBtn').prop('disabled', '');
 	})
 	$('#addShipUpdateBtn').click(function() {
-		alert('버튼을 눌렀어요!');
 		$.ajax({
 			url: '/radiant/mypage/shipUpdate.do',
 			type: 'post',
 			data: $('#addShipAddrForm').serialize(),
 			dataType: 'text',
-			sccess: function() { alert('성공'); },
+			success: function() { 
+				window.close(); 
+				opener.document.location.href="/radiant/mypage/manageShip.do";
+				},
 			error: function() { alert('실패'); }
 		});
+		
+		//location.href="/radiant/mypage/manageShip.do";
 	});
 </script>
 </body>

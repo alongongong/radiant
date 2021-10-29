@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
+import net.sf.json.JSONObject;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
@@ -21,7 +22,18 @@ public class GetOrderPayService implements CommandProcess {
 		
 		// DB
 		StockDAO stockDAO = StockDAO.getInstance();
+		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
+		JSONObject json = new JSONObject();
+		json.put("clNum", clNum);
+		json.put("color", color);
+		json.put("clName", stockDTO.getClName());
+		json.put("category", stockDTO.getCategory());
+		json.put("price", stockDTO.getPrice());
+		json.put("salerate", stockDTO.getSalerate());
+		json.put("clDetail", stockDTO.getClDetail());
+
+		request.setAttribute("json", json);
 		
 		return null;
 	}
