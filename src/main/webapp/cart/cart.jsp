@@ -153,6 +153,7 @@
                     </ul>
  
  			<ul	class="table_product">
+ 				<input type="hidden" id="userid" value="${userid}"/>
  				<form>
  					<table class="cart">
  						<tr align="center" id="topline">
@@ -162,13 +163,14 @@
  						</tr>
 				<c:set var = "total" value = "0" />
  				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
+ 					
 					<tr id="bottomline">
 						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
 						<td width="400px"><input type="checkbox"/><br>${cartDTO.product_name}<br><br>
 						</td>
 						<td width="100px" align="center">${cartDTO.amount }</td>
 						<td align="center">${cartDTO.price }</td>
-						<td id="delete_img"><img src="../img/delete_img.png" style="width:10px; height:10px;"alt="img"></td>
+						<td id="delete_img"><img src="../img/delete_img.png" style="width:10px; height:10px;"alt="img"><input type="hidden" class="cart_id" value="${cartDTO.cart_id }"/></td>
 					</tr>
 					<c:set var= "total" value="${total +(cartDTO.price * cartDTO.amount) }"/>
 				</c:forEach>
