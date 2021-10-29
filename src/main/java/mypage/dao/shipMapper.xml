@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="shipSQL">
+ 
+ 	<!-- 배송지 추가 -->
+ 	<insert id="addShip" parameterType="ship">
+ 		insert into radiantship values(#{id}, #{shipName}, #{shipZipcode}, #{shipAddr1}, #{shipAddr2},
+ 			#{receiver}, #{shipTel1}, #{shipTel2}, #{shipTel3}, #{baseShipCheck})
+ 	</insert>
+ 	
+ 	<!-- 우편번호 찾기 -->
+ 	<select id="getZipcodeList" parameterType="java.util.Map" resultType="zipcode">
+ 		select * from newzipcode where sido like '%'||#{sido}||'%' 
+ 		<if test="sigungu != ''">
+ 			and sigungu like '%'||#{sigungu}||'%'
+ 		</if>
+ 		and roadname like '%'||#{roadname}||'%'
+ 	</select>
+ 
+ 	<!-- 배송지 출력 -->
+ 	<select id="getShipList" resultType="ship">
+ 		select * from radiantship where id=#{id}
+ 	</select>
+ 	
+	<!-- 배송지 삭제 -->
+ 	<delete id="shipDelete" parameterType="String">
+ 		delete radiantship where shipName = #{shipName}
+ 	</delete>
+
+ 	<!-- 기본 배송지 수정 -->
+ 	<update id="changeBaseShip1" parameterType="String">
+ 		update radiantship set baseshipcheck='false' where shipname=#{shipname}
+ 	</update>
+ 	<update id="changeBaseShip2" parameterType="String">
+ 		update radiantship set baseshipcheck='true' where shipname=#{newBaseShip}
+ 	</update>
+ </mapper>

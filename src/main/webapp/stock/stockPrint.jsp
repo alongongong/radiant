@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>재고 테이블</title>
 <style type="text/css">
-<<<<<<< Updated upstream
 body{
 	margin: 20px;
 }
@@ -52,6 +51,10 @@ input[type="text"] {
 	border-radius: 5px;
 }
 
+.hidden {
+	display: none;
+}
+
 </style>
 </head>
 <body>
@@ -70,6 +73,7 @@ input[type="text"] {
 			<th>구매수</th>
 			<th>재고</th>
 			<th>상세설명</th>
+			<td></td>
 			<td></td>
 			<td></td>
 		</tr>
@@ -111,11 +115,57 @@ input[type="text"] {
 				<td>
 					<input type="text" name="clDetail${i.count }" id="clDetail${i.count }" value="${stockDTO.clDetail }">
 				</td>
+				<td>
+					<input type="button" id="optionBtn${i.count }" value="+" onclick="optionView(${i.count})">
+				</td>
 				<td id="buttonTd${i.count }">
 					<input type="button" id="delete${i.count }" value="삭제" onclick="clickBtn('삭제', ${i.count})">
 				</td>
 				<td>
 					<input type="button" id="change${i.count }" value="수정" onclick="clickBtn('수정', ${i.count})" style="visibility: hidden;">
+				</td>
+			</tr>
+			
+			<tr onchange="update(${i.count })" id="option${i.count }" class="hidden">
+				<td>
+					<input type="text" name="clNum${i.count }" id="clNum${i.count }" value="${stockDTO.clNum }" size="7" readonly>
+				</td>
+				<td>
+					<input type="text" name="clName${i.count }" id="clName${i.count }" value="${stockDTO.clName }" size="30">
+				</td>
+				<td>
+					<input type="text" name="color${i.count }" id="colorAdd${i.count }" value="" size="7">
+				</td>
+				<td>
+					<input type="text"  name="category${i.count }" id="category${i.count }" value="${stockDTO.category }" size="8">
+				</td>
+				<td>
+					<input type="text" name="price${i.count }" id="price${i.count }" value="${stockDTO.price }" size="10">
+				</td>
+				<td style="width: 85px;">
+					<input type="text" name="salerate${i.count }" id="salerate${i.count }" value="${stockDTO.salerate}" size="5">%
+				</td>
+				<td>
+					<input type="text" id="sellPrice${i.count }" size="10" value="${stockDTO.price*(1-stockDTO.salerate/100) }" readonly>
+				</td>
+				<td>
+					<input type="text" id="salePrice${i.count }" size="10" value="${stockDTO.price*(stockDTO.salerate/100) }" readonly>
+				</td>
+				<td>
+					<input type="text" name="enterCount${i.count }" id="enterCountAdd${i.count }" value="${stockDTO.enterCount }" size="5">
+				</td>
+				<td>
+					<input type="text" name="outCount${i.count }" id="outCountAdd${i.count }" value="${stockDTO.outCount }" size="5">
+				</td>
+				<td>
+					<input type="text" id="stockCount${i.count }" value="${stockDTO.enterCount-stockDTO.outCount }" size="5" readonly>
+				</td>
+				<td>
+					<input type="text" name="clDetail${i.count }" id="clDetail${i.count }" value="${stockDTO.clDetail }">
+				</td>
+				<td></td>
+				<td id="buttonTd" >
+				<input type="button" id="inputBtn" value="추가" onclick="optionAdd(${i.count })"/>
 				</td>
 			</tr>
 		</c:forEach>
@@ -163,6 +213,7 @@ input[type="text"] {
 			<td>
 				<input type="text" name="clDetail" >
 			</td>
+			<td>&ensp;&ensp;&ensp;</td>
 			<td id="buttonTd" >
 				<button id="inputBtn">추가</button>
 			</td>
@@ -202,6 +253,36 @@ function clickBtn(btn, i){
 	document.getElementById("btn").value = btn;
 	document.stockPrintForm.submit();
 }
+
+function optionView(i) {
+	if($('#option' + i).attr('class') == 'hidden') {
+		$('#option' + i).removeClass();
+	}else {
+		$('#option' + i).addClass('hidden');
+	}
+}
+
+function optionAdd(i) {
+	$.ajax({
+		url: '/radiant/stock/Option.do',
+		type: 'post',
+		data: {
+				'clNum' : $('#clNum' + i).val(),
+				'color' : $('#colorAdd' + i).val(),
+				'enterCount' : $('#enterCountAdd' + i).val(),
+				'outCount' : $('#outCountAdd' + i).val()
+				},
+		success: function() {
+			alert('성공');
+		},
+		error: function(error) {
+			alert('에러');
+			console.log(error);		}
+		
+	});
+}
+
+
 </script>
 </body>
 </html>

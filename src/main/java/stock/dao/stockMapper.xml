@@ -51,9 +51,22 @@
 		join radiantstock using(clnum) join radiantdetail using(clnum) 
 		where category=#{category} order by clnum, color
 	</select>
+<<<<<<< HEAD
 	
 	<select id="getStockDTO" resultType="stock">
 		select clname,price from radiantinfo where clnum=#{clnum}
 	</select>
 	
+=======
+	<!-- 옷정보출력 -->
+	<select id="getClInfo" resultType="stock">
+		select clnum, clname, category, price, salerate, color, entercount, outcount, clDetail from radiantinfo
+		join radiantstock using(clnum) join radiantdetail using(clnum) 
+		where clnum=#{clnum} order by clnum, color
+	</select>
+	<!-- 옵션추가 -->
+	<insert id="addOption" parameterType="java.util.Map">
+		insert into radiantstock values(#{clNum}, #{color}, #{enterCount}, #{outCount})
+	</insert>
+>>>>>>> 1379db48a63ba6391035a0e6fc4fa4089641772c
  </mapper>

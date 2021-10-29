@@ -7,6 +7,8 @@
  		<typeAlias type="stock.bean.StockDTO" alias="stock"/>
  		<typeAlias type="board.bean.CommentDTO" alias="comment"/>
  		<typeAlias type="cart.bean.CartDTO" alias="cart"/>
+ 		<typeAlias type="mypage.bean.ShipDTO" alias="ship"/>
+ 		<typeAlias type="mypage.bean.ZipcodeDTO" alias="zipcode"/>
  	</typeAliases>
  
  	<environments default="development">
@@ -25,6 +27,7 @@
  		<mapper resource="stock/dao/stockMapper.xml"/>
  		<mapper resource="board/dao/commentMapper.xml"/>
  		<mapper resource="cart/dao/cartMapper.xml"/>
+ 		<mapper resource="mypage/dao/shipMapper.xml"/>
  	</mappers>
  	
  </configuration>

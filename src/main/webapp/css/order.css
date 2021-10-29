@@ -1,25 +1,25 @@
 @charset "UTF-8";
 
-table{
+#payForm table{
 	margin: 0 auto;
 	padding: 10px;
 	width: 800px;
 }
-tbody {
+#payForm tbody {
 	border-top: 2px solid #39210D;
 }
 #orderTopTable tbody, #saleTable tbody, #payInfoTable tbody {
 	border-bottom: 1px solid #999;
 }
-th {
+#payForm th {
 	text-align: left;
 	padding: 20px 30px;
 }
-tbody td {
+#payForm tbody td {
 	padding: 5px 30px;
 	font-size: 10pt;
 }
-tfoot td {
+#payForm tfoot td {
 	padding: 30px 40px;
 }
 #orderTopTable thead th {
@@ -52,6 +52,7 @@ tfoot td {
 #saleTable span, #paymentTable span {
 	color: #b04545;
 	font-size: 9pt;
+	vertical-align: top;
 }
 #saleTable input[type="button"] {
 	background: #39210D;
@@ -69,11 +70,11 @@ tfoot td {
 	color: #b04545;
 	font-weight: bold;
 }
-input[type="text"], select {
+#payForm input[type="text"], #payForm select {
 	font-size: 10pt;
 	height: 30px;
 }
-textarea {
+#payForm textarea {
 	font-size: 10pt;
 }
 #orderBtn {
@@ -92,22 +93,38 @@ textarea {
 }
 #paymentTable ul {
 	margin: 0;
-	border: 1px solid #999;
 }
 #paymentTable ul:first-child {
-	border-bottom: 0;
+	border-bottom: 1px solid #999;
 }
 #paymentTable li {
 	display: inline-block;
-	padding-top: 28px;
 	width: 184px;
-	height: 80px;
+	height: 100px;
 	border-left: 1px solid #999;
 	text-align: center;
 	vertical-align: middle;
+	overflow: hidden;
+}
+#paymentTable li img {
+    max-width: 300px;
+    max-height: 110px;
+    margin-top: -6px;
 }
 #paymentTable li:first-child {
 	border-left: none;
+}
+#paymentTable .paymentImg {
+	visibility: visible;
+}
+#paymentTable .paymentImgCheck {
+	visibility: visible;
+}
+#paymentTable .paymentHidden {
+	display: none;
+}
+#paymentTable .paymentImgCheckHidden {
+	display: none;
 }
 #paymentTable .btn {
 	width: 243px;
@@ -130,20 +147,18 @@ textarea {
 
 /* sideNav */
 #section #sideNav {
-	border: solid;
-	padding: 10px;
+	border: 2px solid  #39210D;
+	padding: 15px 25px;
 }
 
 #section #sideNav > ul > li{
 	margin: 0 10px;
+	font-size: 10pt;
 }
-
-
 
 /* #order */
 #section #order {
 	background-color: rgb(252, 250, 255);
-	width: 80%;
 	padding: 30px;
 }
 
@@ -167,4 +182,163 @@ textarea {
 
 #section #order #info > table td {
 	width: 100px;
+}
+
+#section #content #orderCompleteDiv{
+	height: 325px;
+}
+
+#section #content #orderCompleteDiv > p {
+	vertical-align: middle;
+}
+/* ----------------------------------------- */
+/* 배송지 관리 */
+#manageShipForm {
+	margin : 15px;
+	font-size: 10pt;
+	float: left;
+}
+#manageShipForm > legend {
+	font-size: 18pt;
+	margin-bottom: 15px;
+}
+#manageShipForm #shipBtnDiv {
+	margin: 20px 0;
+	height: 40px;
+	vertical-align: middle;
+} 
+#manageShipForm #shipBtnDiv > div {
+	float: right;
+	vertical-align: middle;
+}
+#manageShipForm #addShipBtn {
+	height: 35px;
+	background: #39210D;
+	margin-top: -7px;
+	color: white;
+	font-size: 10pt;
+	text-align: right;
+}
+#manageShipForm #baseShipBtn {
+	height: 35px;
+	margin-top: -7px;
+	background: #ccc;
+	font-size: 10pt;
+}
+#manageShipForm #manageShipTable {
+	border-top: 2px solid #39210D; 
+	width: 834px;
+	margin: 20px 0;
+}
+#manageShipForm #manageShipTable th {
+	text-align: center;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding: 5px;
+}
+#manageShipForm #manageShipTable td {
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding: 5px;
+}
+#manageShipForm #shipInfoDiv {
+	font-size: 18pt;
+	margin-top: 70px;
+}
+#manageShipForm > ul {
+	margin: 10px;
+	padding: 10px;
+}
+#manageShipForm > ul > li {
+	list-style: disc;
+	margin: 10px;
+}
+#manageShipForm:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#manageShipForm .updateShipBtn, #manageShipForm .deleteShipBtn {
+	margin: 0 2px;
+	background: #ccc;
+	border: 1px solid #ccc;
+	font-size: 9pt;
+	border-radius: 3px;
+}
+
+/* 배송지 추가 */
+#addrShipDiv {
+	width: 600px;
+	margin: 0 auto;
+}
+#addShipAddrForm{
+	margin: 20px;
+}
+#addShipAddrForm legend {
+	font-size: 15pt;
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+#addShipAddrForm #addShipAddrTable {
+	border-top: 2px solid #39210D;
+	border-collapse: collapse;
+	margin: 30px 0;
+	font-size: 10pt;
+}
+#addShipAddrForm #addShipAddrTable td {
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding: 10px;
+}
+#addShipAddrForm #addShipAddrTable tr>td:first-child {
+	background: #eee;	
+}
+#addShipAddrForm #addShipAddrTable input[type="text"] {
+	margin: 2px 0;
+	height: 25px;
+}
+#addShipAddrForm #addShipAddrTable label {
+	padding: 0;
+	margin: 0;
+}
+#addShipAddrForm #addShipAddrTable span {
+	color: red;
+	margin: 3px;
+}
+#addShipAddrForm #addShipAddrTable div {
+	font-size: 8pt;
+	color: #aa210D;
+	font-weight: bold;
+}
+#addShipAddrForm #addShipBtnDiv {
+	text-align: center;
+}
+#addShipAddrForm #findShipZipcode {
+	background: white;
+	border: 1px solid #999;
+	height: 25px;
+}
+#addShipAddrForm #addShipCancelBtn {
+	width: 60px;
+	height: 35px;
+	font-size: 10pt;
+	border: 1px solid #3E3E3E;
+}
+#addShipAddrForm #addShipOkBtn {
+	width: 60px;
+	height: 35px;
+	background: #3E3E3E;
+	color: white;
+	font-size: 10pt;
+}
+#section #content {
+	width: 80%;
+}
+#section #content #orderTable table  tr {
+	border-top: solid; 
+}
+
+#section #content #orderTable > table tr > td {
+	padding: 0 20px;
+
 }
