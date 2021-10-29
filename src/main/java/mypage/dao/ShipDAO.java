@@ -62,6 +62,20 @@ public class ShipDAO {
 		return list;
 	} // getShipList()
 	
+	public ShipDTO getShip(String shipName) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		ShipDTO shipDTO = sqlSession.selectOne("shipSQL.getShip", shipName);
+		sqlSession.close();
+		return shipDTO;
+	} // getShip()
+	
+	public void updateShip(ShipDTO shipDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("shipSQL.updateShip", shipDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	} // updateShip()
+	
 	public void shipDelete(String shipName) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		sqlSession.delete("shipDelete", shipName);

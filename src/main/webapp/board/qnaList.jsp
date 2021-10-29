@@ -248,6 +248,7 @@
 				                								<font size="2" color="lightgray">${commentDTO.commentDate }</font>
 				                								<c:if test="${commentDTO.commentId == sessionScope.memId || sessionScope.memId == '관리자' }">
 				                								&emsp;
+				                								<input type="button" class="commentUpdateBtn" value="수정">
 				                								<input type="button" class="commentDeleteBtn" value="삭제">
 				                								</c:if>
 				                							</div>

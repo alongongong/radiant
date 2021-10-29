@@ -112,14 +112,29 @@ $(function(){
 			error:function(request,status,error){
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 			},
-			statusCode: { 404: function() { //to do 
+			/*statusCode: { 404: function() { //to do 
 				location.href="/radiant/board/qnaList.do?pg=1";
 				} 
-			}
+			}*/
 
 		}); // ajax
 	}); // click 이벤트
 	
+	// 댓글 수정 버튼
+	$(document).on('click','.commentUpdateBtn', function(){
+		var commentSeq = $(this).parents('.commentView').val();
+		var target = $(this).parent().next();
+		var content = target.text();
+		content.trim();
+		alert(content);
+		target.html('');
+		$('<input>', {
+			type: 'text',
+			value: content,
+			class: 'commentUpInput'
+		}).appendTo(target);
+	
+	});
 	// 댓글 삭제 버튼
 	$(document).on('click', '.commentDeleteBtn', function(){
 		if(confirm('선택하신 댓글을 삭제하시겠습니까?')){
@@ -153,6 +168,13 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var date_span = $('<font size="2" color="lightgray">');
 	date_span.html('&emsp;&emsp;' + datetime + '&emsp;');
 	
+	var up_input = $('<input>');
+	up_input.attr({
+		'type' : 'button',
+		'value' : '삭제',
+		'class' : 'commentUpdateBtn'
+	})
+	
 	var del_input = $('<input>');
 	del_input.attr({
 		'type' : 'button',
@@ -163,7 +185,7 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var content_p = $('<p>');
 	content_p.html(content);
 	
-	writer_p.append(name_span).append(date_span).append(del_input);
+	writer_p.append(name_span).append(date_span).append(up_input).append(del_input);
 	new_li.append(writer_p).append(content_p);
 	$('#comment_list'+boardSeq).append(new_li);
 }

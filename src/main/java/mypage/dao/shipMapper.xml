@@ -20,10 +20,28 @@
  		and roadname like '%'||#{roadname}||'%'
  	</select>
  
- 	<!-- 배송지 출력 -->
+ 	<!-- 배송지 리스트 출력 -->
  	<select id="getShipList" resultType="ship">
  		select * from radiantship where id=#{id}
  	</select>
+ 	
+ 	<!-- 배송지 출력 -->
+ 	<select id="getShip" parameterType="String" resultType="ship">
+ 		select * from radiantship where shipname=#{shipName}
+ 	</select>
+ 	
+ 	<!-- 배송지 수정 -->
+ 	<update id="updateShip" parameterType="ship">
+ 		update radiantship set shipZipcode = #{shipZipcode}, 
+ 							   shipAddr1 = #{shipAddr1}, 
+ 							   shipAddr2 = #{shipAddr2}, 
+ 							   receiver = #{receiver}, 
+ 							   shipTel1 = #{shipTel1}, 
+ 							   shipTel2 = #{shipTel2}, 
+ 							   shipTel3 = #{shipTel3}, 
+ 							   baseShipCheck = #{baseShipCheck} 
+ 		where id=#{id} and shipname=#{shipName} 
+ 	</update>
  	
 	<!-- 배송지 삭제 -->
  	<delete id="shipDelete" parameterType="String">

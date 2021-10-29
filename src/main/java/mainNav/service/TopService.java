@@ -18,7 +18,7 @@ public class TopService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
 		//File path = new File("C:/java__ee/workspace/radiant/src/main/webapp/img/clothes"); //건휘
-		File path = new File("C:/study/java_ee/workspace/radiant/src/main/webapp/img/clothes"); //아라
+		File path = new File("C:/java__ee/workspace/radiant/src/main/webapp/img/clothes"); //아라
 		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
 
 		String[] fileList = path.list();
