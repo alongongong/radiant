@@ -37,6 +37,8 @@ public class ShipUpdateService implements CommandProcess {
 		shipDTO.setShipTel3(shipTel3);
 		shipDTO.setBaseShipCheck(baseShipCheck);
 		
+		System.out.println("id = " + id);
+		System.out.println("shipName = " + shipName);
 		ShipDAO shipDAO = ShipDAO.getInstance();
 		shipDAO.updateShip(shipDTO);
 		return "/board/commentDelete.jsp";
