@@ -17,5 +17,32 @@ $(function() {
 			//$('li').not(this).find('.paymentCheck .paymentHidden').removeClass('paymentCheck');	
 		}
 	});
+
+	// 결제하기 버튼
+	$('.like-buy-mycart #buyBtn').click(function(){
+		if($('#colorSelect > option:selected').val()=='null' || $('#sizeSelect > option:selected').val()=='none'){
+			alert('상품을 선택해주세요.');
+		} else {
+			location.href='/radiant/order/orderPay.do?mainFileList='+$('#mainFileList').val()+'&color='+$('#colorSelect > option:selected').val();
+		}
+		
+		
+		
+	});
+
+	
+	// 결제페이지 온로드
+	$.ajax({
+		url: '/radiant/order/getOrderpay.do',
+		type: 'post',
+		data: 'product_id='+$('#payForm #product_id').val()+'&color='+$('#product_id #color').val(),
+		dataType: 'json',
+		success: function(data){
+			
+		},
+		error: function(err){
+			console.log(err)
+		}
+	});
 	
 });

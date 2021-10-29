@@ -13,6 +13,7 @@ import stock.bean.StockDTO;
 
 public class StockDAO {
 
+
   private static StockDAO instance;
   private SqlSessionFactory sqlSessionFactory;
 

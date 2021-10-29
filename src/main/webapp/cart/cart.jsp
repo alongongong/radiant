@@ -151,13 +151,16 @@
  							<th scope="col">가격</th>
  							<th scope="col"></th>
  						</tr>
- 						
+				<c:set var = "total" value = "0" />
  				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
 					<tr>
-						<td>${cartDTO.product_id }</td>
+						<td><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:100px;"alt="img"></td>
+						<%-- <td>${cartDTO.product_id }</td> --%>
+						<td>${cartDTO.product_name }</td>
 						<td>${cartDTO.amount }</td>
-						<td>${cartDTO.amount }</td>
+						<td>${cartDTO.price }</td>
 					</tr>
+					<c:set var= "total" value="${total +(cartDTO.price * cartDTO.amount) }"/>
 				</c:forEach>
  				
  					</table>
@@ -170,26 +173,35 @@
  						<tr>
  							<th height="100px">결제금액</th>
  						</tr>
- 		
+ 				
  						<tr>
- 							<td height="50px" width="200px">상품 금액</td><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
+ 							<td height="50px" width="180px">상품 금액</td><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
+ 							
  							<td align ="right">
- 								<span id="total_price">0</span>
+ 								<span id="total_price">
+ 								<c:out value="${total}"/>
+ 								</span>
  								원
  							</td>
+ 								
  						</tr>
+ 		
  						<tr>
  							<td height="50px">배송료</td>
- 							<td>
+ 							<td align ="right">
  							  +
- 							  <span id="del_account">0</span>
+ 							  <span id="del_account">
+								<c:out value="${total > 80000 ? 0 : 3000}"/>
+							  </span>
  							  원
  							</td> 
  						</tr>
  						<tr class="total">
  							<td height="50px">총 결제 금액</td>
  							<td align ="right">
- 								<strong id="use_account">0</strong>
+ 								<strong id="use_account">
+ 									<c:out value="${total > 80000 ? total : total+3000}"/>
+ 								</strong>
  								원
  							</td>
  						</tr>	
@@ -215,7 +227,6 @@
                 <button class="btn" id="cart_order" type="button" onclick="" >선택상품 주문</button>
                	<button class="btn" id="cart_delete" type="button" onclick="" >선택상품 삭제</button>
                	<button class="btn" id="cart_clean" type="button" onclick="" >장바구니 비우기</button>
-               	<button class="btn" id="cart_like" type="button" onclick="" >전체 좋아요</button>
                	</li>
             </ul>
            
