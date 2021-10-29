@@ -3,6 +3,7 @@ package cart.dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -56,11 +57,27 @@ public class CartDAO  {
 		return count;
 	}
 	
-	public List<CartDTO> cartList(){
+	public List<CartDTO> cartList(String userid){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		List<CartDTO> cartList = sqlSession.selectList("cartSQL.cartList");
+		List<CartDTO> cartList = sqlSession.selectList("cartSQL.cartList",userid);
 		sqlSession.close();
 		return cartList;
+	}
+	
+	public CartDTO getUser(Map<String,String> map) {
+		CartDTO userDTO = null;
+
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		userDTO = sqlSession.selectOne("userSQL.getUser", map);//그때그때마다 값을 바꾸겠다. <T>
+		sqlSession.close();
+		return userDTO;
+	}
+	
+	public void delete(int cart_id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("cartSQL.delete", cart_id);
+		sqlSession.commit();
+		sqlSession.close();
 	}
 
 }

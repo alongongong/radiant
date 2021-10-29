@@ -22,4 +22,10 @@
 		and		product_id	= #{product_id}
  	</select>
  	
+ 	 <delete id="delete" parameterType="cart">
+ 		delete 
+ 		from    cart 
+ 		where   cart_id  =#{cart_id}
+ 	</delete> 
+ 	
  </mapper>
