@@ -81,7 +81,15 @@
 		background: #39210D;
 		font-size: 9pt;
    	}
-   	.commentDeleteBtn {
+   	.commentUpBtn {
+   		float: right;
+		width: 80px;
+		height: 60px;
+		color: white;
+		background: #39210D;
+		font-size: 9pt;
+	}
+   	.commentDeleteBtn, .commentUpdateBtn {
    		border: 0;
    		background: none;
    		color: blue;
@@ -253,7 +261,7 @@
 				                								</c:if>
 				                							</div>
 				                							<div>
-				                								${commentDTO.commentText}<br>
+				                								<p class="content_p">${commentDTO.commentText}</p><br>
 				                							</div>
 				                						</li>
 			                						</c:if>

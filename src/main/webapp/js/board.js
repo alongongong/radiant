@@ -123,18 +123,45 @@ $(function(){
 	// 댓글 수정 버튼
 	$(document).on('click','.commentUpdateBtn', function(){
 		var commentSeq = $(this).parents('.commentView').val();
-		var target = $(this).parent().next();
+		var target = $(this).parent().next().find('.content_p');
 		var content = target.text();
-		content.trim();
-		alert(content);
+		content = content.trim();
 		target.html('');
-		$('<input>', {
-			type: 'text',
-			value: content,
-			class: 'commentUpInput'
+		$('<textarea>', {
+			text: content,
+			id: 'commentUpText',
+			rows: '3',
+			cols: '103'
 		}).appendTo(target);
-	
+		$('<input>',{
+			type: 'button',
+			class: 'commentUpBtn',
+			value: '수정',
+			disabled: 'true'
+		}).appendTo(target);
+		
+		$('#commentUpText').change(function(){
+			$('.commentUpBtn').prop('disabled','');
+		});
+		
+		$('.commentUpBtn').click(function(){
+			$.ajax({
+				url: '/radiant/board/commentUpdate.do',
+				type: 'post',
+				data: 'commentSeq=' + commentSeq + '&commentContent=' + $('#commentUpText').val(),
+				success: function(data) {
+					var commentUpText = $('#commentUpText').val();
+					$('#commentUpText').remove();
+					$(this).remove();
+					target.text(commentUpText);
+				},
+				error: function(err) {
+					console.log(err);
+				}
+			});
+		});
 	});
+
 	// 댓글 삭제 버튼
 	$(document).on('click', '.commentDeleteBtn', function(){
 		if(confirm('선택하신 댓글을 삭제하시겠습니까?')){
@@ -171,7 +198,7 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	var up_input = $('<input>');
 	up_input.attr({
 		'type' : 'button',
-		'value' : '삭제',
+		'value' : '수정',
 		'class' : 'commentUpdateBtn'
 	})
 	
@@ -184,6 +211,7 @@ function addComment(commentSeq, boardSeq, writer, content, datetime) {
 	
 	var content_p = $('<p>');
 	content_p.html(content);
+	content_p.addClass('content_p')
 	
 	writer_p.append(name_span).append(date_span).append(up_input).append(del_input);
 	new_li.append(writer_p).append(content_p);

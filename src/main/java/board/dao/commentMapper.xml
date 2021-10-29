@@ -16,6 +16,10 @@
 		select commentSeq from radiantcomment where boardSeq=#{boardSeq} and commentid=#{commentId} and commenttext=#{commentText}
 	</select>
 	
+	<update id="commentUpdate" parameterType="comment">
+		update radiantcomment set commenttext=#{commentText} where commentSeq=#{commentSeq}
+	</update>
+	
 	<delete id="commentDelete">
 		delete radiantcomment where commentSeq=#{commentSeq}
 	</delete>

@@ -175,7 +175,7 @@
         
         <div id="section">
         	<form id="payForm" name="payForm" method="post" action="/raidant/order/orderComplete.do">
-        		<input type="hidden" id="product_id" value="${product_id }">
+        		<input type="hidden" id="product_id" value="${clNum }">
         		<input type="hidden" id="color" value="${color }">
         		<div id="orderTopDiv">
         			<table id="orderTopTable">

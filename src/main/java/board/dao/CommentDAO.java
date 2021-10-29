@@ -66,4 +66,11 @@ public class CommentDAO {
 		sqlSession.close();		
 	}
 
+	public void commentUpdate(CommentDTO commentDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("commentSQL.commentUpdate", commentDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	}
+
 }

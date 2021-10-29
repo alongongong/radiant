@@ -11,10 +11,10 @@ public class OrderPayService implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 데이터
 		String mainFileList = request.getParameter("mainFileList");
-		int product_id = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
+		int clNum = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
 		String color = request.getParameter("color");
 		
-		request.setAttribute("product_id", product_id);
+		request.setAttribute("clNum", clNum);
 		request.setAttribute("color", color);
 		
 		return "/order/orderPay.jsp";
