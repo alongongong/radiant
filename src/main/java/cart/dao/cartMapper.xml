@@ -7,11 +7,19 @@
  <mapper namespace="cartSQL">
  
  	<insert id="insert">
- 		insert into cart(cart_id, userid, product_id, amount) values(seq_cart.nextval, #{userid}, #{product_id}, #{amount})
+ 		insert into cart(cart_id, userid, product_id, amount, product_name, price) values(seq_cart.nextval, #{userid}, #{product_id}, #{amount},#{product_name},#{price})
  	</insert>
  	
  	<select id="cartList" resultType="cart">
- 		select product_id, amount from cart
+ 		select product_id, amount, product_name, price from cart where userid=#{userid}
+ 	</select>
+ 	
+	<select id="checkCart" resultType="Integer">
+		select 	count(1) 
+		from 	cart
+		where	1			= 1
+		and		userid 		= #{userid}
+		and		product_id	= #{product_id}
  	</select>
  	
  </mapper>
