@@ -147,12 +147,12 @@ function write_agree(){
 }	
 
 // 체크박스 전체 선택
-$(".join_Form").on("click", "#chkAll", function () {
-    $(this).parents(".join_Form").find('input').prop("checked", $(this).is(":checked"));
-
+$("#chkAll").click(function () {
+    $('#chk1').prop("checked",true);
+ 	$('#chk2').prop("checked",true);
 });
 
-// 체크박스 개별 선택
+/*// 체크박스 개별 선택
 $(".join_Form").on("click", ".normal", function() {
     var is_checked = true;
 
@@ -161,7 +161,7 @@ $(".join_Form").on("click", ".normal", function() {
     });
 
     $("#chkAll").prop("checked", is_checked);
-});
+});*/
 /*
 // 체크박스 개별 선택
 $(".checkbox_group").on("click", ".normal", function() {

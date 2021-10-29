@@ -48,6 +48,14 @@ public class CartDAO  {
 		sqlSession.close();
 	}
 	
+	public Integer checkCart(CartDTO cartDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		Integer count = sqlSession.selectOne("cartSQL.checkCart",cartDTO);
+		sqlSession.close();
+		
+		return count;
+	}
+	
 	public List<CartDTO> cartList(){
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<CartDTO> cartList = sqlSession.selectList("cartSQL.cartList");

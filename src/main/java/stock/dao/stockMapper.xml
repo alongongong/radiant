@@ -52,4 +52,8 @@
 		where category=#{category} order by clnum, color
 	</select>
 	
+	<select id="getStockDTO" resultType="stock">
+		select clname,price from radiantinfo where clnum=#{clnum}
+	</select>
+	
  </mapper>

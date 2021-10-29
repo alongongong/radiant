@@ -131,7 +131,7 @@
 			
 			
 			
-		<form id ="stockToCart" method="post" action = "/radiant/cart/cart.do">
+		<form id ="stockToCart" method="post" action = "/radiant/cart/cart.do?mainFileList=${mainFileList}">
 			<div class="stock-detail">
 				<div id="stock-title">
 					<h4>

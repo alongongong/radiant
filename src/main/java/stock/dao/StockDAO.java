@@ -129,5 +129,12 @@ public class StockDAO {
 		return stockList;
 	}
 	
+	public StockDTO getStockDTO(int clNum) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		StockDTO stockDTO = sqlSession.selectOne("stockSQL.getStockDTO",clNum);
+		
+		return stockDTO;
+	}
+	
 	
 }
