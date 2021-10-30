@@ -276,12 +276,10 @@ background: plum;
 /* 수량정보넣는곳 */
 
 div.exec{
-	background: darkgreen; 
-	border:10px solid black;
-	height: 100px;
 	text-align: left;
 }
 .exec > div > div{
 	display: inline-block;
+	margin: 10px 30px;
 }
 
