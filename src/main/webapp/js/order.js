@@ -26,10 +26,11 @@ $(function() {
 			var i = parseInt($('.exec #i').val());
 			var color='';
 			for(j=0; j<i; j++) {
-				color += '$color'+j+'=';
+				color += '&color'+j+'=';
 				color += $('.exec #color'+j).val();
 			}
-			location.href='/radiant/order/orderPay.do?mainFileList='+$('#mainFileList').val()+color+'$i='+i;
+			
+			location.href='/radiant/order/orderPay.do?mainFileList='+$('#mainFileList').val()+color+'&i='+i;
 		}
 
 	});
@@ -42,6 +43,9 @@ $(function() {
 		data: 'clNum='+$('#payForm #clNum').val()+'&color='+$('#payForm #color').val(),
 		dataType: 'json',
 		success: function(data){
+			for(j=0; j<data.i; j++) {
+				
+			}
 			$('#payForm #productImg').append($('<img>',{
 				src: '../img/clothes/'+data.img,
 				alt: '상품이미지',
@@ -56,25 +60,25 @@ $(function() {
 				style: 'font-size: 11px; color: #999; margin-bottom: 5px;'
 			}));
 			$('#payForm #productPrice').append($('<span>',{
-				text: $.numberWithCommas(parseInt(data.price)*parseInt(data.outCount)) + ' 원',
+				text: $.comma(parseInt(data.price)*parseInt(data.outCount)) + ' 원',
 				style: 'font-size: 13px; color: #999; text-decoration: line-through;'
 			})).append($('<span>',{
-				text: $.numberWithCommas(parseInt(data.price)*parseInt(data.outCount)*(100-parseInt(data.salerate))/100)+' 원',
+				text: $.comma(parseInt(data.price)*parseInt(data.outCount)*(100-parseInt(data.salerate))/100)+' 원',
 				style: 'font-size: 15px;'
 			}))
 		
 			var price = parseInt(data.price)*parseInt(data.outCount);
 			var salerate = parseInt(data.salerate);
-			$('#priceAll').text($.numberWithCommas(price)+'원'); // 총 상품금액
+			$('#priceAll').text($.comma(price)+'원'); // 총 상품금액
 			
 			if(price >= 80000) $('#shipMoney').text('0');
 			else $('#shipMoney').text('3,000'); // 배송료
 			
 			var saleMoney = price * salerate / 100;
-			$('#saleMoney').text($.numberWithCommas(saleMoney)); // 기본할인
-			$('#totSaleMoney').text($.numberWithCommas(saleMoney)); // 총할인금액
+			$('#saleMoney').text($.comma(saleMoney)); // 기본할인
+			$('#totSaleMoney').text($.comma(saleMoney)); // 총할인금액
 			var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-saleMoney
-			$('#totPrice').text($.numberWithCommas(totPrice)); // 촣 결제금액
+			$('#totPrice').text($.comma(totPrice)); // 촣 결제금액
 			
 			// 주문자 정보 입력
 			$('#userInfoTable #userInfoName').val(data.userName);
@@ -117,10 +121,10 @@ $(function() {
 		var saleMoney = parseInt($.uncomma($('#saleMoney').text()));
 		$('#saved').val($('#havaSaved').text()); // 적립금
 		$('#useSaved').text($('#havaSaved').text()); // 사용적립금
-		$('#totSaleMoney').text($.numberWithCommas(saved+saleMoney)); // 총할인금액
+		$('#totSaleMoney').text($.comma(saved+saleMoney)); // 총할인금액
 		
 		var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-(saved+saleMoney);
-		$('#totPrice').text($.numberWithCommas(totPrice));
+		$('#totPrice').text($.comma(totPrice));
 	})
 
 	// 적립금 입력할 때
@@ -135,17 +139,17 @@ $(function() {
 			$('#useSaved').text($('#havaSaved').text()); // 사용적립금
 			saved = parseInt($.uncomma($('#saved').val()));
 			
-			$('#totSaleMoney').text($.numberWithCommas(saved+saleMoney)); // 총할인금액
+			$('#totSaleMoney').text($.comma(saved+saleMoney)); // 총할인금액
 			
 			var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-(saved+saleMoney);
-			$('#totPrice').text($.numberWithCommas(totPrice));
+			$('#totPrice').text($.comma(totPrice));
 		} else {
-			$('#saved').val($.numberWithCommas($('#saved').val())); // 적립금
+			$('#saved').val($.comma($('#saved').val())); // 적립금
 			$('#useSaved').text($('#saved').val()); // 사용적립금
-			$('#totSaleMoney').text($.numberWithCommas(saved+saleMoney)); // 총할인금액
+			$('#totSaleMoney').text($.comma(saved+saleMoney)); // 총할인금액
 			
 			var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-(saved+saleMoney);
-			$('#totPrice').text($.numberWithCommas(totPrice));
+			$('#totPrice').text($.comma(totPrice));
 		}
 	});
 
@@ -168,7 +172,7 @@ $(function() {
 
 
 	// 세자리마다 콤마찍기 함수
-	$.numberWithCommas = function (x) {
+	$.comma = function (x) {
 		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 	

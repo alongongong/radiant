@@ -176,7 +176,10 @@
         <div id="section">
         	<form id="payForm" name="payForm" method="post" action="/raidant/order/orderComplete.do">
         		<input type="hidden" id="clNum" value="${clNum }">
-        		<input type="hidden" id="color" value="${color }">
+        		<input type="hidden" id="i" value="${i }">
+				<c:forEach var="j" begin="1" end="${i }" step="1">
+        			<input type="hidden" id="color${j }" value="${color[j-1]}">
+        		</c:forEach>
         		<div id="orderTopDiv">
         			<table id="orderTopTable">
         				<thead>
@@ -190,6 +193,11 @@
         				<tbody>
         					<tr>
         						<th colspan="2" height="70px">상품정보</th>
+        						<th>옵션</th>
+        						<th>가격</th>
+        						<th>수량</th>
+        						<th>총금액</th>
+        						<th>예상적립금</th>
         					</tr>
         					<!-- 구매 상품 여러개면 반복(for문) -->
 	        				<tr>
