@@ -175,8 +175,11 @@
         
         <div id="section">
         	<form id="payForm" name="payForm" method="post" action="/raidant/order/orderComplete.do">
-        		<input type="hidden" id="product_id" value="${clNum }">
-        		<input type="hidden" id="color" value="${color }">
+        		<input type="hidden" id="clNum" value="${clNum }">
+        		<input type="hidden" id="i" value="${i }">
+				<c:forEach var="j" begin="1" end="${i }" step="1">
+        			<input type="hidden" id="color${j }" value="${color[j-1]}">
+        		</c:forEach>
         		<div id="orderTopDiv">
         			<table id="orderTopTable">
         				<thead>
@@ -189,22 +192,27 @@
         				</thead>
         				<tbody>
         					<tr>
-        						<td colspan="2" height="70px">상품정보</td>
+        						<th colspan="2" height="70px">상품정보</th>
+        						<th>옵션</th>
+        						<th>가격</th>
+        						<th>수량</th>
+        						<th>총금액</th>
+        						<th>예상적립금</th>
         					</tr>
         					<!-- 구매 상품 여러개면 반복(for문) -->
 	        				<tr>
-	        					<td width="200px">상품이미지</td>
+	        					<td width="150px" id="productImg"></td>
 	        					<td>
-	        						<div id="productName">상품이름</div>
-	        						<div id="productInfo">상품정보</div>
-	        						<div id="productPrice">상품가격</div>
+	        						<div id="productName" name="productName"></div>
+	        						<div id="productInfo" name="productInfo"></div>
+	        						<div id="productPrice" name="productPrice"></div>
 	        					</td>
 	        				</tr>
 	        				<tr><td>&emsp;</td></tr>
         				</tbody>
         				<tfoot>
 	        				<tr>
-	        					<td colspan="2"><p>배송비는 10,000원 이상 구매시 무료배송입니다.</p></td>
+	        					<td colspan="2"><p>배송비는 80,000원 이상 구매시 무료배송입니다.</p></td>
 	        				</tr>
         				</tfoot>
         			</table>
@@ -218,13 +226,13 @@
         					</tr>
         					<tr>
         						<td colspan="2">
-        							<div><p>적립금</p>보유적립금<span>0원</span></div>
-        							<input type="text" name="saved" value="0" size="101">
+        							<div><p>적립금</p>보유적립금 <span id="havaSaved">1,000</span><span>원</span></div>
+        							<input type="text" id="saved" name="saved" value="0" size="101">
         							<input type="button" id="allUseBtn" class="btn" value="전액사용">
         						</td>
         					</tr>
         					<tr>
-        						<td colspan="2"><div><p>적립포인트</p>구매하시면 <span>330원</span>이 적립됩니다.</div></td>
+        						<td colspan="2"><div><p>적립포인트</p>구매하시면 <span id="newSaved" name="newSaved"></span>이 적립됩니다.</div></td>
         					</tr>
 	        				<tr><td>&emsp;</td></tr>
         				</tbody>
@@ -232,8 +240,8 @@
         					<tr>
         						<td>총 할인내역</td>
         						<td>
-        							<div>기본할인 (-) <span>0</span>원</div>
-        							<div>적립금 (-) <span>0</span>원</div>
+        							<div>기본할인 (-) <span id="saleMoney"></span>원</div>
+        							<div>적립금 (-) <span id="useSaved">0</span>원</div>
         						</td>
         					</tr>
         				</tfoot>
@@ -248,22 +256,22 @@
 	        				</tr>
 	        				<tr>
 	        					<td>총 상품금액</td>
-	        					<td>33,000원</td>
+	        					<td id="priceAll" name="priceAll"></td>
 	        				</tr>
 	        				<tr>
 	        					<td>배송료</td>
-	        					<td>0원</td>
+	        					<td><span id="shipMoney" name="shipMoney"></span>원</td>
 	        				</tr>
 	        				<tr>
 	        					<td>총 할인금액</td>
-	        					<td>-3,000원</td>
+	        					<td><span id="totSaleMoney"></span>원</td>
 	        				</tr>
 	        				<tr><td>&emsp;</td></tr>
         				</tbody>
         				<tfoot>
         					<tr>
         						<td>총 결제금액</td>
-        						<td>30,000원</td>
+        						<td><span id="totPrice" name="totPrice"></span>원</td>
         					</tr>
         				</tfoot>
         			</table>
@@ -344,22 +352,23 @@
         					<tr>
         					<tr>
         						<td>
-        							<input type="text" id="shipZipcode" name="shipZipcode" placeholder="우편번호" size="115">
+        							<input type="text" id="shipZipcode" name="shipZipcode" placeholder="우편번호" size="96">
+        							<input type="button" class="btn" id="zipcodeBtn" value="우편번호 검색">
         						</td>
         					<tr>
         					<tr>
         						<td>
-        							<input type="text" id="" name="" value="" placeholder="주소" size="115">
+        							<input type="text" id="shipAddr1" name="shipAddr1"placeholder="주소" size="115">
         						</td>
         					<tr>
         					<tr>
         						<td>
-        							<input type="text" id="" name="" value="" placeholder="상세주소" size="115">
+        							<input type="text" id="shipAddr2" name="shipAddr2"placeholder="상세주소" size="115">
         						</td>
         					<tr>
         					<tr>
         						<td>
-        							<textarea id="" name="" placeholder="배송메모" cols="117" rows="4"></textarea>
+        							<textarea id="shipMemo" name="shipMemo" placeholder="배송메모" cols="117" rows="4"></textarea>
         						</td>
         					<tr>
         					<tr>
@@ -459,8 +468,8 @@
 	        				</tr>
 	        				<tr><td>&emsp;</td></tr>
         				</tbody>
-	        			</table>
-        			</div>
+        			</table>
+       			</div>
         	</form>
         </div><!--section-->
         

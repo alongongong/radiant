@@ -1,13 +1,20 @@
 package order.service;
 
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
+import member.bean.MemberDTO;
+import member.dao.MemberDAO;
+import mypage.bean.ShipDTO;
+import mypage.dao.ShipDAO;
 import net.sf.json.JSONObject;
+import staticFile.StaticFile;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
@@ -16,22 +23,37 @@ public class GetOrderPayService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 데이터
+		HttpSession session = request.getSession();
+		String memId = (String) session.getAttribute("memId");
+		
+		int i = Integer.parseInt(request.getParameter("i"));
 		int clNum = Integer.parseInt(request.getParameter("clNum"));
-		String color = request.getParameter("color");
+		
+		String[] color = new String[i];
+		for(int j=0; j<i; j++) {
+			color[i] = request.getParameter("color");
+		}
+		int outCount = 2;
+		//int outCount = Integer.parseInt(request.getParameter("outCount"));
 		StockDTO stockDTO = new StockDTO();
+		stockDTO = new StockDTO();
 		stockDTO.setClNum(clNum);
-		stockDTO.setColor(color);
+		stockDTO.setColor(color[0]);
 		
 		// DB
 		StockDAO stockDAO = StockDAO.getInstance();
 		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
-		// 사진
-		//File path = new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes"); //현석님
-		File path = new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");//아라언니
-		//File path = new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
-		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
-		String[] fileList = path.list();
+		
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		MemberDTO memberDTO = memberDAO.getMember(memId);
+		
+		
+		ShipDAO shipDAO = ShipDAO.getInstance();
+		List<ShipDTO> list = shipDAO.getShipList(memId);
+		
+		
+		String[] fileList = StaticFile.path.list();
 		
 		String img = null;
 		
@@ -43,8 +65,10 @@ public class GetOrderPayService implements CommandProcess {
 			}
 		} // for
 		
+		
 		JSONObject json = new JSONObject();
-		json.put("clNum", clNum);
+		json.put("i", i);
+		json.put("stockList", clNum);
 		json.put("color", color);
 		json.put("clName", stockDTO.getClName());
 		json.put("category", stockDTO.getCategory());
@@ -52,6 +76,13 @@ public class GetOrderPayService implements CommandProcess {
 		json.put("salerate", stockDTO.getSalerate());
 		json.put("clDetail", stockDTO.getClDetail());
 		json.put("img", img);
+		json.put("outCount", outCount);
+		json.put("userName", memberDTO.getName());
+		json.put("userTel1", memberDTO.getTel1());
+		json.put("userTel2", memberDTO.getTel2());
+		json.put("userTel3", memberDTO.getTel3());
+		json.put("userEmail", memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
+		json.put("list", list);
 
 		request.setAttribute("list", json);
 		

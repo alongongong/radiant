@@ -1,6 +1,5 @@
 package cart.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +10,7 @@ import com.control.CommandProcess;
 
 import cart.bean.CartDTO;
 import cart.dao.CartDAO;
-import stock.bean.StockDTO;
+import staticFile.StaticFile;
 
 public class CartPrintService implements CommandProcess {
 
@@ -31,11 +30,10 @@ public class CartPrintService implements CommandProcess {
 
 		List<CartDTO> cartlist = cartDAO.cartList(userid);
 		
-		//File path = new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes"); //현석님
-		//File path = new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");//아라언니
-		//File path = new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
-		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
-		String[] fileList = path.list();
+
+
+		String[] fileList = StaticFile.path.list();
+
 		
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));

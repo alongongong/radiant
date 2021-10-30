@@ -1,6 +1,5 @@
 package cart.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +10,7 @@ import com.control.CommandProcess;
 
 import cart.bean.CartDTO;
 import cart.dao.CartDAO;
+import staticFile.StaticFile;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
@@ -37,15 +37,9 @@ public class CartInsertService implements CommandProcess {
 		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
 
-	
-		//File path = new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes"); //현석님
-		//File path = new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");//아라언니
-		//File path = new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
-		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
-		String[] fileList = path.list();
 
-		
-	
+		String[] fileList = StaticFile.path.list();
+
 		
 		if(userid==null) {//로그인하지 않은 상태이면 로그인 화면으로 이동
 			return "/member/loginForm.do";
@@ -79,13 +73,10 @@ public class CartInsertService implements CommandProcess {
 					
 				}
 			
-				
 			}
 		}
 		
-		
-		
-		
+
 		request.setAttribute("userid", userid);
 		request.setAttribute("cartlist", cartlist);
 		request.setAttribute("mainFileList", mainFileList);
