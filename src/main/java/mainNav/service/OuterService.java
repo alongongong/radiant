@@ -1,6 +1,5 @@
 package mainNav.service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
+import staticFile.StaticFile;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
@@ -17,12 +17,7 @@ public class OuterService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
-
-		File path = new File("C:/study/java_ee/workspace/radiant/src/main/webapp/img/clothes");//아라언니
-		//File path = new File("C:/java__ee/workspace/radiant/src/main/webapp/img/clothes");//건휘
-		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
-
-		String[] fileList = path.list();
+		String[] fileList = StaticFile.path.list();
 		List<String> list = new ArrayList<String>();
 		
 		for(String data : fileList) {

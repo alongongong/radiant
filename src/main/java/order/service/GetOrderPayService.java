@@ -1,6 +1,5 @@
 package order.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +13,7 @@ import member.dao.MemberDAO;
 import mypage.bean.ShipDTO;
 import mypage.dao.ShipDAO;
 import net.sf.json.JSONObject;
+import staticFile.StaticFile;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
@@ -43,12 +43,7 @@ public class GetOrderPayService implements CommandProcess {
 		ShipDAO shipDAO = ShipDAO.getInstance();
 		List<ShipDTO> list = shipDAO.getShipList(memId);
 		
-		// 사진
-		//File path = new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes"); //현석님
-		File path = new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");//아라언니
-		//File path = new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
-		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
-		String[] fileList = path.list();
+		String[] fileList = StaticFile.path.list();
 		
 		String img = null;
 		
