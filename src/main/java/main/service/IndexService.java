@@ -7,6 +7,7 @@ import com.control.CommandProcess;
 
 import staticFile.StaticFile;
 
+
 public class IndexService implements CommandProcess {
 
 	@Override

@@ -25,7 +25,7 @@ public class CartInsertService implements CommandProcess {
 		String userid = (String)session.getAttribute("memId");
 		String mainFileList = request.getParameter("mainFileList");
 		int product_id = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
-		String color = request.getParameter("select-color");
+		String color = request.getParameter("color");
 		
 		System.out.println(color);
 		
@@ -37,7 +37,9 @@ public class CartInsertService implements CommandProcess {
 		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
 
+
 		String[] fileList = StaticFile.path.list();
+
 		
 		if(userid==null) {//로그인하지 않은 상태이면 로그인 화면으로 이동
 			return "/member/loginForm.do";

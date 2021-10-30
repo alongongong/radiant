@@ -17,7 +17,9 @@ public class OuterService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+
 		String[] fileList = StaticFile.path.list();
+
 		List<String> list = new ArrayList<String>();
 		
 		for(String data : fileList) {

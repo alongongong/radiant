@@ -17,6 +17,7 @@ public class AllProductService implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 
+
 		String[] fileList = StaticFile.path.list();
 		List<String> topImaList = new ArrayList<String>();
 		List<String> pantsImaList = new ArrayList<String>();
@@ -50,6 +51,7 @@ public class AllProductService implements CommandProcess {
 		List<StockDTO> pantsList = stockDAO.getStockList("하의");
 		List<StockDTO> outerList = stockDAO.getStockList("아우터");
 		
+
 //				for (int i = 0; i < fileList.length; i++) {
 //				    System.out.println("file: " + fileList[i]);
 //				}

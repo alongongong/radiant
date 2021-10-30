@@ -31,7 +31,9 @@ public class CartPrintService implements CommandProcess {
 		List<CartDTO> cartlist = cartDAO.cartList(userid);
 		
 
+
 		String[] fileList = StaticFile.path.list();
+
 		
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));

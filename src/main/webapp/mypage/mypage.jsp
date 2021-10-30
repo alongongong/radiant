@@ -238,7 +238,7 @@
         		<div id="myRadi">
         			<ul>
         				<li><strong>나의레디</strong></li>
-        				<li><a href="">장바구니</a></li>
+        				<li><a href="/radiant/cart/cartPrint.do">장바구니</a></li>
         				
         			</ul>
         		</div>

@@ -51,7 +51,7 @@ var i=0;
 //상품선택추가div
 $('form div select').change(function() {
 	if($('#colorSelect').val() != 'null' && $('#sizeSelect').val() != 'none') {
-		if($('#colorSelect').val()!=$('#color').val()) {
+		if(document.querySelector('input[value=' + $('#colorSelect').val() + ']') == null) {
 			$('.exec').append($('<div>'))
 			$('.exec > div').append($('<div>', {
 				align: 'left',
@@ -65,15 +65,15 @@ $('form div select').change(function() {
 				name: 'color',
 				value: $('#colorSelect').val()
 			}))
-			$('.exec > div').append($('<div>',{background: 'blue'}).append($('<input>',{
+			$('.exec > div').append($('<div>',{ margin: '10px'}).append($('<input>',{
 				type: 'button',
-				value: '삭제'
+				value: '<'
 			})).append($('<span>',{
 				text: 22
 			})).append($('<input>',{
 				type: 'button',
-				value: '추가'
-			})));
+				value: '>'
+			}))).append($('<br>'));
 			i++;
 			$('.exec #i').val(i);
 		} else {alert('이미 선택된 옵션입니다.');}
@@ -83,6 +83,7 @@ $('form div select').change(function() {
 
 		$('.exec > div:gt(0)').remove();
 	}
+
 });
 
 
