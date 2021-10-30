@@ -20,7 +20,7 @@ $(function() {
 
 	// 결제하기 버튼(상세페이지에서 결제하기 버튼)
 	$('.like-buy-mycart #buyBtn').click(function(){
-		if($('#colorSelect > option:selected').val()=='null' || $('#sizeSelect > option:selected').val()=='none'){
+		if(document.querySelector('.exec > div') == null){ // 선택한 상품 div가 없을 때
 			alert('상품을 선택해주세요.');
 		} else {
 			location.href='/radiant/order/orderPay.do?mainFileList='+$('#mainFileList').val()+'&color='+$('#colorSelect > option:selected').val();
@@ -36,7 +36,7 @@ $(function() {
 		data: 'clNum='+$('#payForm #clNum').val()+'&color='+$('#payForm #color').val(),
 		dataType: 'json',
 		success: function(data){
-		
+			alert(JSON.stringify(data));
 		},
 		error: function(err){
 			console.log(err)

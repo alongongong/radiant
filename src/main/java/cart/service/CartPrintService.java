@@ -31,7 +31,10 @@ public class CartPrintService implements CommandProcess {
 
 		List<CartDTO> cartlist = cartDAO.cartList(userid);
 		
-		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
+		//File path = new File("C:\\Users\\downc\\git\\repository\\radiant\\src\\main\\webapp\\img\\clothes"); //현석님
+		//File path = new File("C:\\study\\java_ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");//아라언니
+		//File path = new File("C:\\java__ee\\workspace\\radiant\\src\\main\\webapp\\img\\clothes");
+		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
 		String[] fileList = path.list();
 		
 		for(String data : fileList) {

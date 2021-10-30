@@ -39,7 +39,7 @@ function nextImage(direction) {
 
 //장바구니 
 $('#mycartBtn').click(function(){
-	if(!$('#colorSelect > option:selected').val()||$('#sizeSelect > option:selected').val()=='none'){
+	if(document.querySelector('.exec > div') == null){
 		alert("상품을 선택해주세요");
 	}else{
 		$('#stockToCart').submit();
@@ -58,7 +58,7 @@ $('form div select').change(function() {
 		}).append($('<span>', {
 			text: $('#colorSelect').val() + ' / ' + $('#sizeSelect').val()
 		})));
-		
+
 		$('.exec > div').append($('<div>',{background: 'blue'}).append($('<input>',{
 			type: 'button',
 			value: '삭제'
@@ -70,8 +70,8 @@ $('form div select').change(function() {
 		})));
 		$('#colorSelect').val('null');
 		$('#sizeSelect').val('none');
-		
-		$('.exec > div > div:(1)').remove();
+
+		$('.exec > div:gt(0)').remove();
 	}
 });
 
