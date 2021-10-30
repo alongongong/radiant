@@ -40,41 +40,69 @@ $(function() {
 	$.ajax({
 		url: '/radiant/order/getOrderpay.do',
 		type: 'post',
-		data: 'clNum='+$('#payForm #clNum').val()+'&color='+$('#payForm #color').val(),
+		data: $('#payForm').serialize(),
 		dataType: 'json',
 		success: function(data){
+			var price=0;
+			var saleMoney=0;
 			for(j=0; j<data.i; j++) {
-				
-			}
-			$('#payForm #productImg').append($('<img>',{
-				src: '../img/clothes/'+data.img,
-				alt: '상품이미지',
-				width: '120px'
-			}));
-			$('#payForm #productName').append($('<span>',{
-				text: data.clName,
-				style: 'font-size: 15px; font-weight: bold; margin-bottom: 20px;'
-			}));
-			$('#payForm #productInfo').append($('<span>',{
-				text: data.color + ' / FREE | 수량 : '+data.outCount+'개',
-				style: 'font-size: 11px; color: #999; margin-bottom: 5px;'
-			}));
-			$('#payForm #productPrice').append($('<span>',{
-				text: $.comma(parseInt(data.price)*parseInt(data.outCount)) + ' 원',
-				style: 'font-size: 13px; color: #999; text-decoration: line-through;'
-			})).append($('<span>',{
-				text: $.comma(parseInt(data.price)*parseInt(data.outCount)*(100-parseInt(data.salerate))/100)+' 원',
-				style: 'font-size: 15px;'
-			}))
-		
-			var price = parseInt(data.price)*parseInt(data.outCount);
-			var salerate = parseInt(data.salerate);
+				$('#orderTopTable tbody').append($('<tr>').append($('<td>',{
+					width: '130px'
+				}).append($('<img>',{
+					width: '120px',
+					src: '../img/clothes/'+data.img,
+					alt: '상품이미지',
+					class: 'productImg',
+					style: 'padding: 5px 5px 5px 20px; width: 120px'
+				}))).append($('<td>').append($('<div>',{
+					class: 'productName',
+					name: 'productName',
+					text: data.clName,
+					style: 'font-size: 13px; font-weight: bold; width: 450px;'
+				}))).append($('<td>').append($('<div>',{
+					class: 'productInfo',
+					name: 'productInfo',
+					text: data.color[j] + ' / FREE',
+					style: 'font-size: 13px; width: 120px',
+					align: 'center'
+				}))).append($('<td>').append($('<div>',{
+					width: '80px'
+				}).append($('<span>',{
+					text: $.comma(parseInt(data.price)) + ' 원',
+					style: 'font-size: 10px; color: #999; text-decoration: line-through; display:block',
+					align: 'center'
+				})).append($('<span>',{
+					class: 'productPrice',
+					name: 'productPrice',
+					text: $.comma(parseInt(data.price)*(1-parseInt(data.salerate)/100))+' 원',
+					style: 'font-size: 13px; display: block',
+					align: 'center'
+				})))).append($('<td>').append($('<div>',{
+					class: 'productAmount',
+					name: 'productAmount',
+					text: data.outCount,
+					align: 'center',
+					width: '80px'
+				}))).append($('<td>').append($('<div>',{
+					class: 'totPrice',
+					name: 'totPrice',
+					text: $.comma(parseInt(data.price)*parseInt(data.outCount)*(100-parseInt(data.salerate))/100)+' 원',
+					style: 'font-size: 13px; width: 100px',
+					align: 'center'
+				}))).append($('<td>').append($('<div>',{
+					text: '100원',
+					style: 'font-size: 13px; width: 100px',
+					align: 'center'
+				}))))
+				price += (data.price*data.outCount);
+				saleMoney += (data.price * data.outCount * data.salerate / 100);
+			} // for
 			$('#priceAll').text($.comma(price)+'원'); // 총 상품금액
 			
 			if(price >= 80000) $('#shipMoney').text('0');
 			else $('#shipMoney').text('3,000'); // 배송료
 			
-			var saleMoney = price * salerate / 100;
+			
 			$('#saleMoney').text($.comma(saleMoney)); // 기본할인
 			$('#totSaleMoney').text($.comma(saleMoney)); // 총할인금액
 			var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-saleMoney

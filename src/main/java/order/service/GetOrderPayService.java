@@ -31,10 +31,12 @@ public class GetOrderPayService implements CommandProcess {
 		
 		String[] color = new String[i];
 		for(int j=0; j<i; j++) {
-			color[i] = request.getParameter("color");
+			color[j] = request.getParameter("color"+j);
 		}
+		
 		int outCount = 2;
 		//int outCount = Integer.parseInt(request.getParameter("outCount"));
+		
 		StockDTO stockDTO = new StockDTO();
 		stockDTO = new StockDTO();
 		stockDTO.setClNum(clNum);
