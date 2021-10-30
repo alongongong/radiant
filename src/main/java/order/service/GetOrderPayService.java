@@ -1,5 +1,6 @@
 package order.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,23 +26,32 @@ public class GetOrderPayService implements CommandProcess {
 		HttpSession session = request.getSession();
 		String memId = (String) session.getAttribute("memId");
 		
+		int i = Integer.parseInt(request.getParameter("i"));
 		int clNum = Integer.parseInt(request.getParameter("clNum"));
-		String color = request.getParameter("color");
+		
+		String[] color = new String[i];
+		for(int j=0; j<i; j++) {
+			color[i] = request.getParameter("color");
+		}
 		int outCount = 2;
 		//int outCount = Integer.parseInt(request.getParameter("outCount"));
 		StockDTO stockDTO = new StockDTO();
+		stockDTO = new StockDTO();
 		stockDTO.setClNum(clNum);
-		stockDTO.setColor(color);
+		stockDTO.setColor(color[0]);
 		
 		// DB
 		StockDAO stockDAO = StockDAO.getInstance();
 		stockDTO = stockDAO.getStockDTO(stockDTO);
 		
+		
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberDTO memberDTO = memberDAO.getMember(memId);
 		
+		
 		ShipDAO shipDAO = ShipDAO.getInstance();
 		List<ShipDTO> list = shipDAO.getShipList(memId);
+		
 		
 		String[] fileList = StaticFile.path.list();
 		
@@ -55,8 +65,10 @@ public class GetOrderPayService implements CommandProcess {
 			}
 		} // for
 		
+		
 		JSONObject json = new JSONObject();
-		json.put("clNum", clNum);
+		json.put("i", i);
+		json.put("stockList", clNum);
 		json.put("color", color);
 		json.put("clName", stockDTO.getClName());
 		json.put("category", stockDTO.getCategory());
