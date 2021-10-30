@@ -15,7 +15,7 @@
 <script type="text/javascript" src="/radiant/js/cart.js"></script>
 
 <style type="text/css">
-#cart_order, #cart_delete, #cart_clean, #cart_like{
+#cart_order, #cart_delete, #cart_clean, #cart_like, #count_plus, #count_minus{
 	color: black; 
 	background: white; 
 	border: 0.1px solid #999;
@@ -157,9 +157,9 @@
  				<form>
  					<table class="cart">
  						<tr align="center" id="topline">
- 							<th scope="col" colspan="2">상품정보</th><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
- 							<th scope="col">수량</th>
- 							<th scope="col">가격</th>
+ 							<th scope="col" colspan="2" width="550px" >상품정보</th><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
+ 							<th scope="col" width="150px" >수량</th>
+ 							<th scope="col" width="256px" >가격</th>
  						</tr>
 				<c:set var = "total" value = "0" />
  				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
@@ -168,8 +168,12 @@
 						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
 						<td width="400px"><input type="checkbox"/><br>${cartDTO.product_name}<br><br>
 						</td>
-						<td width="100px" align="center">${cartDTO.amount }</td>
-						<td align="center">${cartDTO.price }</td>
+						<td id="countline" width="150px" align="center">
+							<button class="btn" id="count_minus" type="button" onclick="" >-</button>
+							<input type="text" id="count_text" name="ea" size="1" value=${cartDTO.amount } class="form_input" style ="text-align:center; border:none;" readonly>
+							<button class="btn" id="count_plus" type="button" onclick="" >+</button>
+						</td>
+						<td align="center" id="price">${cartDTO.price }</td>
 						<td id="delete_img"><img src="../img/delete_img.png" style="width:10px; height:10px;"alt="img"><input type="hidden" class="cart_id" value="${cartDTO.cart_id }"/></td>
 					</tr>
 					<c:set var= "total" value="${total +(cartDTO.price * cartDTO.amount) }"/>
@@ -208,7 +212,7 @@
  							<td align ="right">
  							  +
  							  <span id="del_account">
-								<c:out value="${total > 80000 ? 0 : 3000}"/>
+								<c:out value="${total >= 80000 || total == 0 ? 0 : 3000}"/>
 							  </span>
  							  원
  							</td> 
@@ -217,7 +221,7 @@
  							<td height="50px">총 결제 금액</td>
  							<td align ="right">
  								<strong id="use_account">
- 									<c:out value="${total > 80000 ? total : total+3000}"/>
+ 									<c:out value="${total >= 80000 || total==0 ? total : total+3000}"/>
  								</strong>
  								원
  							</td>

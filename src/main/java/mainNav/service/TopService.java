@@ -19,7 +19,7 @@ public class TopService implements CommandProcess {
 
 		//File path = new File("C:/java__ee/workspace/radiant/src/main/webapp/img/clothes"); //건휘
 		//File path = new File("C:/java__ee/workspace/radiant/src/main/webapp/img/clothes"); //아라
-		//File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
+		File path = new File("D:/java_ee/workspace/radiant/src/main/webapp/img/clothes");//현정
 
 		String[] fileList = path.list();
 		List<String> list = new ArrayList<String>();

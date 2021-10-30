@@ -50,29 +50,34 @@ $('#mycartBtn').click(function(){
 
 //상품선택추가div
 $('form div select').change(function() {
-	if($('#colorSelect').val() != 'null' && $('#sizeSelect').val() != 'none') {
-		$('.exec').append($('<div>'))
-		$('.exec > div').append($('<div>', {
-			align: 'left',
-			background: 'red'
-		}).append($('<span>', {
-			text: $('#colorSelect').val() + ' / ' + $('#sizeSelect').val()
-		})));
+   if($('#colorSelect').val() != 'null' && $('#sizeSelect').val() != 'none') {
+      $('.exec').append($('<div>'))
+      $('.exec > div').append($('<div>', {
+         align: 'left',
+         background: 'red'
+      }).append($('<span>', {
+         text: $('#colorSelect').val() + ' / ' + $('#sizeSelect').val()
+      })));
+      $('.exec > div').append($('<input>',{
+         type: 'hidden',
+         id: 'color',
+		 name:'color',
+         value: $('#colorSelect').val()
+      }))
+      $('.exec > div').append($('<div>',{background: 'blue'}).append($('<input>',{
+         type: 'button',
+         value: '삭제'
+      })).append($('<span>',{
+         text: 22
+      })).append($('<input>',{
+         type: 'button',
+         value: '추가'
+      })));
+      $('#colorSelect').val('null');
+      $('#sizeSelect').val('none');
 
-		$('.exec > div').append($('<div>',{background: 'blue'}).append($('<input>',{
-			type: 'button',
-			value: '삭제'
-		})).append($('<span>',{
-			text: 22
-		})).append($('<input>',{
-			type: 'button',
-			value: '추가'
-		})));
-		$('#colorSelect').val('null');
-		$('#sizeSelect').val('none');
-
-		$('.exec > div:gt(0)').remove();
-	}
+      $('.exec > div:gt(0)').remove();
+   }
 });
 
 
