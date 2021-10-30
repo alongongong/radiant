@@ -26,6 +26,8 @@ $(document).ready(function(){
 		
 		if(result){
 			//yes
+			var userid=$('#userid').val();
+			
 			var url = "/radiant/cart/cartDeleteAll.do";
 			$.get(url, {'userid':userid},function(){
 				alert("삭제하였습니다.");
@@ -72,14 +74,10 @@ $(document).ready(function(){
 		
 		$.get(url,{'amount':amount , 'cart_id':cart_id}, function(){
 	
-		//alert(total);
 		}).fail(function(){
 			alert("실패");
 		});		
 			
-		//
-		
-		
 	});
 	
 	//수량 증가
@@ -111,8 +109,15 @@ $(document).ready(function(){
 			alert("실패");
 		});		
 			
-		//계산하기
-		
+	});
+	
+	//전체 체크박스 클릭시 개별박스 선택
+	$('input:checkbox[name="chkAll"]').click(function(){
+		if($(this).is(":checked")){
+			$('input:checkbox[name="checkbox"]').prop("checked", true);
+		}else{
+			$('input:checkbox[name="checkbox"]').prop("checked", false);
+		}
 	});
 
 });
