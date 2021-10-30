@@ -179,7 +179,7 @@
 					
 					<!-- 수량정보넣는곳 -->
 					<div class="exec">
-						
+						<input type="hidden" id="i">
 					</div>
 					
 					<div class="console"></div>
