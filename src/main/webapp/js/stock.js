@@ -70,6 +70,7 @@ $('form div select').change(function() {
 				class: 'minus',
 				value: '<'
 			})).append($('<span>',{
+				class: 'outcount',
 				text: 1
 			})).append($('<input>',{
 				type: 'button',

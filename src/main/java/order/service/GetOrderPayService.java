@@ -30,11 +30,17 @@ public class GetOrderPayService implements CommandProcess {
 		int clNum = Integer.parseInt(request.getParameter("clNum"));
 		
 		String[] color = new String[i];
+		int[] outcount = new int[i];
 		for(int j=0; j<i; j++) {
-			color[i] = request.getParameter("color");
+			color[j] = request.getParameter("color"+j);
+			outcount[j] = Integer.parseInt(request.getParameter("outcount" + j));
+			System.out.println("color[" + j + "]" + color[j]);
+			System.out.println("outcount[" + j + "]" + outcount[j]);
 		}
-		int outCount = 2;
+		
+		//int outCount = 2;
 		//int outCount = Integer.parseInt(request.getParameter("outCount"));
+		
 		StockDTO stockDTO = new StockDTO();
 		stockDTO = new StockDTO();
 		stockDTO.setClNum(clNum);
@@ -65,7 +71,6 @@ public class GetOrderPayService implements CommandProcess {
 			}
 		} // for
 		
-		
 		JSONObject json = new JSONObject();
 		json.put("i", i);
 		json.put("stockList", clNum);
@@ -76,7 +81,7 @@ public class GetOrderPayService implements CommandProcess {
 		json.put("salerate", stockDTO.getSalerate());
 		json.put("clDetail", stockDTO.getClDetail());
 		json.put("img", img);
-		json.put("outCount", outCount);
+		json.put("outcount", outcount);
 		json.put("userName", memberDTO.getName());
 		json.put("userTel1", memberDTO.getTel1());
 		json.put("userTel2", memberDTO.getTel2());

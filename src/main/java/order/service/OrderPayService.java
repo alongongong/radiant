@@ -19,8 +19,11 @@ public class OrderPayService implements CommandProcess {
 		int clNum = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
 		
 		String[] color = new String[i];
+		String[] outcount = new String[i];
+		
 		for(int j=0; j<i; j++) {
 			color[j] = request.getParameter("color"+j);
+			outcount[j] = request.getParameter("outcount" + j);
 		} // for
 		
 		
@@ -31,6 +34,7 @@ public class OrderPayService implements CommandProcess {
 			request.setAttribute("clNum", clNum);
 			request.setAttribute("i", i);
 			request.setAttribute("color", color);
+			request.setAttribute("outcount", outcount);
 			
 			return "/order/orderPay.jsp";
 		} // if

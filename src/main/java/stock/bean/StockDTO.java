@@ -15,5 +15,5 @@ public class StockDTO {
 	private int outCount;
 	private String clDetail;
 	private int likeCount;
-
+	private String img;
 }

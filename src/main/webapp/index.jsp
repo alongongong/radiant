@@ -198,8 +198,8 @@
 	        		<tr>
 	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
 	        				<td>
-	        					<p>${fileList[j] }</p>
-	        					<p>50000원</p>
+	        					<p>${list[j].clName }</p>
+	        					<p>${list[j].price }</p>
 	        				</td>
 	        			</c:forEach>
 	        		</tr>

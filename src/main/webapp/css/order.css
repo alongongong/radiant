@@ -1,6 +1,6 @@
  @charset "UTF-8";
 
-#payForm table{
+#payForm #leftDiv table{
 	margin: 0 auto;
 	padding: 10px;
 	width: 800px;
@@ -9,10 +9,9 @@
 	border-top: 2px solid #39210D;
 }
 #orderTopTable tbody, #saleTable tbody, #payInfoTable tbody {
-	border-bottom: 1px solid #999;
+	border-bottom: 1px solid #bbb;
 }
 #payForm th {
-	text-align: left;
 	padding: 20px 30px;
 }
 #payForm tbody td {
@@ -24,11 +23,17 @@
 }
 #orderTopTable thead th {
 	padding: 30px 50px;
+	text-align: center;
+}
+#orderTopTable tbody th {
+	padding: 20px 10px;
+	text-align: center;
 }
 #orderTopTable tbody td {
 	padding: 5px 10px;
+	border-top: 1px solid #ddd;
 }
-#orderTopTable #productImg {
+#orderTopTable .productImg {
 	padding-left: 30px;
 }
 #topDiv {
@@ -36,9 +41,38 @@
 	font-size: 18pt;
 	padding-bottom: 15px;
 }
+#orderTopTable thead {
+	margin: 0 auto;
+	text-align: center;
+}
 #orderTopTable thead img {
 	width: 700px;
 	height: 80px;
+	margin: 0 auto;
+	text-align: center;
+}
+#leftDiv {
+	float: left;
+}
+#rightDiv {
+	float: right;
+	/* width: 470px; */
+	height: 1950px;
+}
+#rightDiv #stickyDiv {
+	position: sticky;
+	top: 75px;
+}
+#rightDiv #payInfoDiv #payInfoTable {
+	background: #f5f5f5;
+	width: 360px;
+	height: 360px;
+}
+#rightDiv #payInfoDiv #payInfoTable th {
+	border-bottom: 1px solid #aaa;
+}
+#rightDiv #payInfoDiv #payInfoTable td {
+	padding-top: 30px;
 }
 #saleTable div, #shipInfoTable div, #paymentTable div {
 	color: #555;
@@ -83,19 +117,27 @@
 #payForm textarea {
 	font-size: 10pt;
 }
-#orderBtn {
+#payBtnTable {
+	width: 360px;
+}
+#payBtnTable tbody td {
+	padding: 0;
+	text-align: center;
+}
+#orderPayBtn {
 	background: #39210D;
 	color: white;
 	font-size: 10pt;
-	width: 740px;
+	width: 355px;
 	height: 40px;
-	margin-bottom: 5px;
+	margin: 0 0 5px 0;
 }
 #orderCancelBtn {
 	background: #ccc;
 	font-size: 10pt;
-	width: 740px;
+	width: 355px;
 	height: 40px;
+	margin: 0 0 5px 0;
 }
 #shipInfoTable #zipcodeBtn {
 	background: #39210D;
