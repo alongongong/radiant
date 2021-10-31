@@ -167,7 +167,7 @@
  					
 					<tr id="bottomline">
 						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
-						<td width="400px"><input type="checkbox" name=""/><br>${cartDTO.product_name}<br><br>
+						<td width="400px"><input type="checkbox" name="checkbox"/><br>${cartDTO.product_name}<br><br>
 						</td>
 						<td align="center">${cartDTO.color }</td>
 						<td id="countline" width="150px" align="center">
