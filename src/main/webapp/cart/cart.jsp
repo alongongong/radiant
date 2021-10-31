@@ -158,6 +158,7 @@
  					<table class="cart">
  						<tr align="center" id="topline">
  							<th scope="col" colspan="2" width="550px" >상품정보</th><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
+ 							<th scope="col" width="100px" >색깔</th>
  							<th scope="col" width="150px" >수량</th>
  							<th scope="col" width="256px" >가격</th>
  						</tr>
@@ -168,6 +169,7 @@
 						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
 						<td width="400px"><input type="checkbox" name="checkbox"/><br>${cartDTO.product_name}<br><br>
 						</td>
+						<td align="center">${cartDTO.color }</td>
 						<td id="countline" width="150px" align="center">
 							<button class="btn" id="count_minus" type="button" onclick="" >-</button>
 							<input type="text" id="count_text" name="ea" size="1" value=${cartDTO.amount } class="form_input" style ="text-align:center; border:none;" readonly>

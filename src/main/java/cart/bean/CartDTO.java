@@ -13,5 +13,6 @@ public class CartDTO {
 	private int price;
 	private int money; 
 	private int amount;
+	private String color;
 	private String img;
 }

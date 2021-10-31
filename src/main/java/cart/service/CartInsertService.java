@@ -1,5 +1,6 @@
 package cart.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +26,18 @@ public class CartInsertService implements CommandProcess {
 		String userid = (String)session.getAttribute("memId");
 		String mainFileList = request.getParameter("mainFileList");
 		int product_id = Integer.parseInt(mainFileList.substring(0, mainFileList.lastIndexOf(".")));
-		String color = request.getParameter("color");
+		int i = Integer.parseInt(request.getParameter("i"));
 		
-		System.out.println(color);
+		String[] color = new String[i];
+		int[] outcount = new int[i];
+		
+		for(int j=0; j<i; j++) {
+			color[j] = request.getParameter("color"+j);
+			outcount[j] = Integer.parseInt(request.getParameter("outcount" + j));
+		} // for
 		
 		StockDTO stockDTO = new StockDTO();
-		stockDTO.setColor(color);
+		stockDTO.setColor(color[0]);
 		stockDTO.setClNum(product_id);
 		
 		StockDAO stockDAO =StockDAO.getInstance();
@@ -44,24 +51,23 @@ public class CartInsertService implements CommandProcess {
 		if(userid==null) {//로그인하지 않은 상태이면 로그인 화면으로 이동
 			return "/member/loginForm.do";
 		}	
-			
-		CartDTO cartDTO = new CartDTO();
-		cartDTO.setUserid(userid);
-		cartDTO.setAmount(1); //아직 안함 - 수량
-		cartDTO.setProduct_id(product_id); //clnum
 		
-		cartDTO.setProduct_name(stockDTO.getClName());
-		cartDTO.setPrice(stockDTO.getPrice());
-		 
-		
+		List<CartDTO> list = new ArrayList<CartDTO>();
 		CartDAO cartDAO = CartDAO.getInstance();
-		
-		Integer count = cartDAO.checkCart(cartDTO);
-		
-		if(count == 0) {
-			cartDAO.insert(cartDTO);//장바구니 테이블에 저장됨
-		}
-		
+		for(int j=0; j<i; j++) {
+			CartDTO cartDTO = new CartDTO();
+			cartDTO.setUserid(userid);
+			cartDTO.setAmount(outcount[j]);
+			cartDTO.setColor(color[j]);
+			cartDTO.setProduct_id(product_id); //clnum
+			cartDTO.setProduct_name(stockDTO.getClName());
+			cartDTO.setPrice(stockDTO.getPrice());			
+			Integer count = cartDAO.checkCart(cartDTO);
+			if(count == 0) {
+				cartDAO.insert(cartDTO);//장바구니 테이블에 저장됨
+			}
+		} // for
+		 
 		List<CartDTO> cartlist = cartDAO.cartList(userid);
 		
 		for(String data : fileList) {

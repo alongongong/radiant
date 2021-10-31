@@ -3,6 +3,7 @@ create table cart(
 cart_id number not null primary key, --장바구니 코드(일련번호)
 userid varchar2(50) not null, -- 아이디
 product_id number not null,   -- 상품코드
+color varchar2(30) not null, --옷색깔
 amount number default 0,       -- 수량
 product_name varchar2(50) not null,
 price number not null
