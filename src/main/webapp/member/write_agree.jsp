@@ -119,7 +119,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
                     <ul class="clearfix">
                         <li>이용약관에 동의합니다.</li>
                         <li class="checkBtn">
-                            <input type="checkbox" name="chk1" id="chk1"  class="normal">
+                            <input type="checkbox" name="checkbox" id="chk1"  class="normal">
                         </li>
                     </ul>
  
@@ -362,7 +362,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 			                    <ul class="clearfix">
 			                        <li>개인정보처리방침에 동의합니다.</li>
 			                        <li class="checkBtn">
-			                            <input type="checkbox" name="chk2" id="chk2" class="normal">
+			                            <input type="checkbox" name="checkbox" id="chk2" class="normal">
 			                        </li>
 			                    </ul>
 			 
@@ -491,6 +491,28 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
             </div>
         </div><!--footer-->
     </div><!--wrap-->
-        
+<script type="text/javascript">
+/*체크박스 전체 선택  */
+$("input:checkbox[name='chkAll']").click(function () {
+	
+	alert("확인");	    
+	if($(this).is(":checked")){
+		$('input:checkbox[name="checkbox"]').prop("checked", true);
+	}else{
+		$('input:checkbox[name="checkbox"]').prop("checked", false);
+	}
+		
+	$(".join_Form").on("click", ".normal", function() {
+	    var is_checked = true;
+
+	    $(".join_Form .normal").each(function(){
+	        is_checked = is_checked && $(this).is(":checked");
+	    });
+
+	    $("#chkAll").prop("checked", is_checked);
+	});			
+		
+}); 
+</script>        
 </body>
 </html>
