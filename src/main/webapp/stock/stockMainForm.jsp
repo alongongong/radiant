@@ -104,21 +104,12 @@
 						<div class="carousel">
 							<div class="item main">
 								<img src="../img/clothes/${mainFileList }" alt="${mainFileList }" />
-								<div class="caption">
-									Image 1
-								</div>
 							</div>
 							<div class="item">
 								<img src="../img/clothes/1.png" alt="1.png" />
-								<div class="caption">
-									Image 2
-								</div>
 							</div>
 							<div class="item">
 								<img src="../img/clothes/2.png" alt="cityscape" />
-								<div class="caption">
-									Image 3
-								</div>
 							</div>      
 						</div>
 					</div>
@@ -140,7 +131,7 @@
 					</h4><br>
 					<h6>
 						<span style="color: #A98B59"><b>${clInfoList[0].clDetail }</b></span>
-					</h6><br><br>
+					</h6><br>
 					<h3>
 						<c:if test="${clInfoList[0].salerate != 0}">
 							<span style="color: #B9062F">${clInfoList[0].salerate }%&nbsp;&nbsp;&nbsp;</span>${price}원 &nbsp;<del>${clInfoList[0].price }원</del>
@@ -195,49 +186,13 @@
 				</div>
 				
 				<div class="like-buy-mycart">
-					<input type="button" id="likeBtn" class="like button" value="찜하기"/>
-					<input type="button" id="buyBtn" class="buy button" value="구매하기"/>
-					<input type="button" id="mycartBtn" class="mycart button" value="장바구니"/>
+					<input type="button" id="buyBtn" class="buy btn" value="구매하기"/>
+					<input type="button" id="mycartBtn" class="mycart btn" value="장바구니"/>
 				</div>
 			
 			</div><!-- 제품 상세페이지 -->
 		</form>
 		</section><!--section-->
-		
-	<aside id="stockReview" class="aside"><!-- 제품정보 페이지 -->
-	</aside><!--section-->
-	
-	<footer class="footer"><!-- 리뷰게시판 -->
-		게시판
-	</footer><!-- footer -->
-	
-
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-	
         <hr>
         <div id="footer">
             <div id="footerLeft">

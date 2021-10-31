@@ -62,11 +62,18 @@ public class StockDAO {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		
 		List<StockDTO> list = sqlSession.selectList("stockSQL.print");
-		System.out.println(list.size());
 		sqlSession.close();
 		
 		return list;
 	} // print()
+	
+	public List<StockDTO> radiantInfo() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<StockDTO> list = sqlSession.selectList("stockSQL.radiantInfo");
+		sqlSession.close();
+		
+		return list;
+	} //radiantInfo()
 
 	public void update1(StockDTO stockDTO) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();

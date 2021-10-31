@@ -190,7 +190,7 @@
 	        		<tr>
 	        			<c:forEach var="j" begin="${i*4 }" end="${i*4+3 }" step="1">
 	        				<td>
-					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${fileList[j] }"><img src="/radiant/img/clothes/${fileList[j] }" alt="${fileList[j] }" class="img"></a>
+					       		<a id="stockMainFormDo" href="/radiant/stock/stockMainForm.do?fileList=${list[j].img }"><img src="/radiant/img/clothes/${list[j].img }" alt="${list[j].img }" class="img"></a>
 	        				</td>
 	        			</c:forEach>
 	        		</tr>

@@ -19,6 +19,10 @@
 		order by clnum, color
 	</select> <!-- 재고테이블 출력 -->
 	
+	<select id="radiantInfo" resultType="stock">
+		select * from radiantInfo
+	</select> <!-- radiantInfo테이블 출력 -->
+	
 	
 	<!-- 재고수정 -->
 	<update id="update1" parameterType="stock">
