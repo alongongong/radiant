@@ -35,11 +35,12 @@ public class StockMainFormService implements CommandProcess {
 
     List<StockDTO> clInfoList = stockDAO.getClInfoList(fileNumber);
 
-
+    int price = (int) ((1-clInfoList.get(0).getSalerate()/100.0) * clInfoList.get(0).getPrice());
+    
     // forward
     request.setAttribute("mainFileList", mainFileList);
     request.setAttribute("clInfoList", clInfoList);
-
+    request.setAttribute("price", price);
     return "/stock/stockMainForm.jsp";
   }
 

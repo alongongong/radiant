@@ -117,7 +117,7 @@
 							<div class="item">
 								<img src="../img/clothes/2.png" alt="cityscape" />
 								<div class="caption">
-								Image 3
+									Image 3
 								</div>
 							</div>      
 						</div>
@@ -142,7 +142,12 @@
 						<span style="color: #A98B59"><b>${clInfoList[0].clDetail }</b></span>
 					</h6><br><br>
 					<h3>
-						<span style="color: #B9062F">${clInfoList[0].salerate }%&nbsp;&nbsp;&nbsp;</span>${(1-clInfoList[0].salerate/100) * clInfoList[0].price }원 &nbsp;<del>${clInfoList[0].price }원</del>
+						<c:if test="${clInfoList[0].salerate != 0}">
+							<span style="color: #B9062F">${clInfoList[0].salerate }%&nbsp;&nbsp;&nbsp;</span>${price}원 &nbsp;<del>${clInfoList[0].price }원</del>
+						</c:if>
+						<c:if test="${clInfoList[0].salerate == 0}">
+							<span style="color: 'black'">${price}원</span>
+						</c:if>
 					</h3>
 				</div><!-- 상세정보 제목부 -->
 				

@@ -65,17 +65,20 @@ $('form div select').change(function() {
 				name: 'color',
 				value: $('#colorSelect').val()
 			}))
-			$('.exec > div').append($('<div>',{ margin: '10px'}).append($('<input>',{
+			$('.exec > div').append($('<div>',{ margin: '10px' }).append($('<input>',{
 				type: 'button',
+				class: 'minus',
 				value: '<'
 			})).append($('<span>',{
-				text: 22
+				text: 1
 			})).append($('<input>',{
 				type: 'button',
+				class: 'plus',
 				value: '>'
 			}))).append($('<br>'));
 			i++;
 			$('.exec #i').val(i);
+			
 		} else {alert('이미 선택된 옵션입니다.');}
 		
 		$('#colorSelect').val('null');
@@ -85,6 +88,28 @@ $('form div select').change(function() {
 	}
 
 });
+
+$(document).on('click', '.plus', function() {
+	var start = $(this).prev().text();
+	var num = Number(start);
+	
+	num++;
+	$(this).prev().text(num);
+});
+
+$(document).on('click', '.minus', function() {
+	var start = $(this).next().text();
+	var num = Number(start);
+	
+	if(num<=1){
+			num = 1;
+	}else {
+		num--;		
+	}
+	
+	$(this).next().text(num);
+});
+
 
 
 

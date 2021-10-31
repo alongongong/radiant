@@ -40,7 +40,7 @@ $(function() {
 	$.ajax({
 		url: '/radiant/order/getOrderpay.do',
 		type: 'post',
-		data: 'clNum='+$('#payForm #clNum').val()+'&color='+$('#payForm #color').val(),
+		data: 'clNum='+$('#payForm #clNum').val()+'&color='+$('#payForm #color').val() + '&i=' + $('#id').val(),
 		dataType: 'json',
 		success: function(data){
 			for(j=0; j<data.i; j++) {

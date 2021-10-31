@@ -278,8 +278,12 @@ background: plum;
 div.exec{
 	text-align: left;
 }
-.exec > div > div{
+.exec > div > div {
 	display: inline-block;
 	margin: 10px 30px;
+}
+
+.exec > input[type='button'] {
+	background: white;
 }
 
