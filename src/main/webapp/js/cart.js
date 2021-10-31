@@ -119,6 +119,27 @@ $(document).ready(function(){
 			$('input:checkbox[name="checkbox"]').prop("checked", false);
 		}
 	});
+	
+	//선택상품 삭제 
+	$('#cart_delete').click(function(){
+	/*	if($('input:checkbox[name="checkbox"]').is(":checked")){
+			alert($('input:checkbox[name="checkbox"]:checked').length);
+			
+	
+			var cart_id =$(this).parents().prev().find('input').val();
+			
+			alert(cart_id);
+			var url = "/radiant/cart/cartDelete.do";
+			$.get(url, {'cart_id':cart_id}, function(){
+				alert("삭제하였습니다.");
+				location.href="/radiant/cart/cartPrint.do?userid="+$('#userid').val();
+			}).fail(function(){
+				alert("실패");
+			});
+		}else{
+			alert("선택된 상품이 없습니다.");
+		}*/
+	});
 
 });
 
