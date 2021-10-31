@@ -448,7 +448,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
             </ul>
             <ul class="footBtwrap clearfix">
                 <li><button class="btn" id="write_agreeBtn" type="button" onclick="write_agree()" readonly}>확인</button></li>
-               	<li></li>
+
             </ul>
            
             
@@ -494,8 +494,7 @@ ul.join_box{border: 1px solid #ddd;background-color: #fff;}
 <script type="text/javascript">
 /*체크박스 전체 선택  */
 $("input:checkbox[name='chkAll']").click(function () {
-	
-	alert("확인");	    
+	    
 	if($(this).is(":checked")){
 		$('input:checkbox[name="checkbox"]').prop("checked", true);
 	}else{
