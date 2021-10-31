@@ -9,6 +9,7 @@
  		<typeAlias type="cart.bean.CartDTO" alias="cart"/>
  		<typeAlias type="mypage.bean.ShipDTO" alias="ship"/>
  		<typeAlias type="mypage.bean.ZipcodeDTO" alias="zipcode"/>
+ 		<typeAlias type="order.bean.OrderDTO" alias="order"/>
  	</typeAliases>
  
  	<environments default="development">
@@ -28,6 +29,7 @@
  		<mapper resource="board/dao/commentMapper.xml"/>
  		<mapper resource="cart/dao/cartMapper.xml"/>
  		<mapper resource="mypage/dao/shipMapper.xml"/>
+ 		<mapper resource="order/dao/orderMapper.xml"/>
  	</mappers>
  	
  </configuration>

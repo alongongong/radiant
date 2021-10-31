@@ -175,9 +175,9 @@
         
         <div id="section">
         	<form id="payForm" name="payForm" method="post" action="/radiant/order/orderComplete.do">
-        		<input type="hidden" id="clNum" name="clNum" value="${clNum }">
         		<input type="hidden" id="i" name="i" value="${i }">
 				<c:forEach var="j" begin="1" end="${i }" step="1">
+        			<input type="hidden" id="clNum" name="clNum${j-1 }" value="${clNum }">
         			<input type="hidden" id="color${j-1 }" name="color${j-1 }" value="${color[j-1]}">
         			<input type="hidden" id="outcount${j-1 }" name="outcount${j-1 }" value="${outcount[j-1]}">
         		</c:forEach>
@@ -225,7 +225,8 @@
 			        				</tr>
 			        				<tr>
 			        					<td>배송료</td>
-			        					<td><span id="shipMoney" name="shipMoney"></span>원</td>
+			        					<td><span id="shipMoney" name="shipMoney"></span>원
+			        						<input type="hidden" id="hiddenShipMoney" name="hiddenShipMoney"></td>
 			        				</tr>
 			        				<tr>
 			        					<td>총 할인금액</td>
@@ -248,8 +249,9 @@
 			        				<tr><td>&emsp;</td></tr>
 			        				<tr>
 			        					<td>
-			        						<input type="submit" class="btn" id="orderPayBtn" value="결제하기">
+			        						<input type="button" class="btn" id="orderPayBtn" value="결제하기">
 			        						<input type="button" class="btn" id="orderCancelBtn" value="취소">
+			        						<div id="noticeDiv"></div>
 			        					</td>
 			        				</tr>
 			        				<tr><td>&emsp;</td></tr>
@@ -269,13 +271,13 @@
 	        					</tr>
 	        					<tr>
 	        						<td colspan="2">
-	        							<div><p>적립금</p>보유적립금 <span id="havaSaved">1,000</span><span>원</span></div>
+	        							<div><p>적립금</p>보유적립금 <span id="haveSaved">1,000</span><span>원</span></div>
 	        							<input type="text" id="saved" name="saved" value="0" size="101">
 	        							<input type="button" id="allUseBtn" class="btn" value="전액사용">
 	        						</td>
 	        					</tr>
 	        					<tr>
-	        						<td colspan="2"><div><p>적립포인트</p>구매하시면 <span id="newSaved" name="newSaved"></span>이 적립됩니다.</div></td>
+	        						<td colspan="2"><div><p>적립포인트</p>구매하시면 <span id="newSaved" name="newSaved"></span><span>원</span>이 적립됩니다.</div></td>
 	        					</tr>
 		        				<tr><td>&emsp;</td></tr>
 	        				</tbody>
@@ -305,7 +307,7 @@
 		        				</tr>
 		        				<tr>
 		        					<td>
-		        						<input type="text" id="userInfoName" name="userInfoName" value="이름불러오기" size="115">
+		        						<input type="text" id="userInfoName" name="userInfoName" value="" size="115" readonly>
 		        					</td>
 		        				</tr>
 		        				<tr>
@@ -315,13 +317,13 @@
 		        							<option value="011">011</option>
 		        							<option value="019">019</option>	
 		        						</select>
-		        						<input type="text" id="userInfoTel2" name="userInfoTel2" value="TEL2불러오기" size="33">
-		        						<input type="text" id="userInfoTel3" name="userInfotel3" value="TEL3불러오기" size="33">
+		        						<input type="text" id="userInfoTel2" name="userInfoTel2" placeholder="휴대폰 번호" size="33">
+		        						<input type="text" id="userInfoTel3" name="userInfoTel3" placeholder="휴대폰 번호" size="33">
 		        					</td>
 		        				</tr>
 		        				<tr>
 		        					<td>
-		        						<input type="text" id="userInfoEmail" name="userInfoEmail" value="이메일불러오기" size="115">
+		        						<input type="email" id="userInfoEmail" name="userInfoEmail" placeholder="이메일" size="115">
 		        					</td>
 		        				</tr>
 		        				<tr><td>&emsp;</td></tr>
@@ -350,7 +352,7 @@
 	        					<tr>
 	        					<tr>
 	        						<td>
-	        							<input type="text" id="shipName" name="shipName" value="이름불러오기" placeholder="이름" size="115">
+	        							<input type="text" id="shipName" name="shipName" value="" placeholder="이름" size="115">
 	        						</td>
 	        					<tr>
 	        					<tr>
@@ -360,8 +362,8 @@
 		        							<option value="011">011</option>
 		        							<option value="019">019</option>	
 		        						</select>
-	        							<input type="text" id="shipTel2" name="shipTel2" value="Tel2불러오기" size="33">
-	        							<input type="text" id="shipTel3" name="shipTel3" value="Tel3불러오기" size="33">
+	        							<input type="text" id="shipTel2" name="shipTel2" placeholder="휴대폰번호" size="33">
+	        							<input type="text" id="shipTel3" name="shipTel3" placeholder="휴대폰번호" size="33">
 	        						</td>
 	        					<tr>
 	        					<tr>
@@ -413,24 +415,25 @@
 		        				<tr>
 		        					<td colspan="2">
 		        						<ul>
-		        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/deposit.png" alt="deposit" class="paymentImg"> 
-		        								<img src="/radiant/img/payment/deposit_check.png" alt="deposit_check" class="paymentImgCheckHidden">
-											</li><li class="paymentLi" data-num="1" style="background: #3E3E3E"><img src="/radiant/img/payment/card.png" alt="card" class="paymentHidden">
-												<img src="/radiant/img/payment/card_check.png" alt="card"  class="paymentImgCheck">
-											</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/phone.png" alt="phone" class="paymentImg">
-												<img src="/radiant/img/payment/phone_check.png" alt="phone"  class="paymentImgCheckHidden">
-											</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/samsung.png" alt="samsung" class="paymentImg">
-												<img src="/radiant/img/payment/samsung_check.png" alt="samsung"  class="paymentImgCheckHidden"></li></ul>
+		        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/deposit.png" alt="무통장입금" class="paymentImg"> 
+		        								<img src="/radiant/img/payment/deposit_check.png" alt="무통장입금" class="paymentImgCheckHidden">
+											</li><li class="paymentLi" data-num="1" style="background: #3E3E3E"><img src="/radiant/img/payment/card.png" alt="신용카드" class="paymentHidden">
+												<img src="/radiant/img/payment/card_check.png" alt="신용카드"  class="paymentImgCheck">
+											</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/phone.png" alt="휴대폰 결제" class="paymentImg">
+												<img src="/radiant/img/payment/phone_check.png" alt="휴대폰결제"  class="paymentImgCheckHidden">
+											</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/samsung.png" alt="삼성페이" class="paymentImg">
+												<img src="/radiant/img/payment/samsung_check.png" alt="삼성페이"  class="paymentImgCheckHidden"></li></ul>
 		        						<ul>
-		        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/payco.png" alt="payco" class="paymentImg">
-		        								<img src="/radiant/img/payment/payco_check.png" alt="payco"  class="paymentImgCheckHidden">
-		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/kakao.png" alt="kakao" class="paymentImg">
-		        								<img src="/radiant/img/payment/kakao_check.png" alt="kakao"  class="paymentImgCheckHidden">
-		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/smilepay.png" alt="smilepay" class="paymentImg">
-		        								<img src="/radiant/img/payment/smilepay_check.png" alt="smilepay"  class="paymentImgCheckHidden">
-		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/simplepay.png" alt="simplepay" class="paymentImg">
-		        								<img src="/radiant/img/payment/simplepay_check.png" alt="simplepay" class="paymentImgCheckHidden"></li>
+		        							<li class="paymentLi" data-num="0"><img src="/radiant/img/payment/payco.png" alt="PAYCO" class="paymentImg">
+		        								<img src="/radiant/img/payment/payco_check.png" alt="PAYCO"  class="paymentImgCheckHidden">
+		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/kakao.png" alt="카카오페이" class="paymentImg">
+		        								<img src="/radiant/img/payment/kakao_check.png" alt="카카오페이"  class="paymentImgCheckHidden">
+		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/smilepay.png" alt="스마일페이" class="paymentImg">
+		        								<img src="/radiant/img/payment/smilepay_check.png" alt="스마일페이"  class="paymentImgCheckHidden">
+		        							</li><li class="paymentLi" data-num="0"><img src="/radiant/img/payment/simplepay.png" alt="간편결제" class="paymentImg">
+		        								<img src="/radiant/img/payment/simplepay_check.png" alt="간편결제" class="paymentImgCheckHidden"></li>
 		        						</ul>
+		        						<input type="hidden" id="paymentCheck" name="paymentCheck" value="신용카드">
 		        					</td>
 		        				</tr>
 		        				<tr><td>&emsp;</td></tr>

@@ -69,5 +69,8 @@
 		insert into radiantstock values(#{clNum}, #{color}, #{enterCount}, #{outCount})
 	</insert>
 
-
+	<!-- 상품판매 -->
+	<update id="sellStock" parameterType="stock">
+		update radiantstock set outcount=#{outCount} where clnum=#{clNum} and color=#{color}
+	</update>
  </mapper>

@@ -144,5 +144,13 @@ public class StockDAO {
 		return clInfo;
 	}
 
+	public void sellStock(StockDTO stockDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.update("stockSQL.sellStock", stockDTO);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	} // sellStock()
+
 
 }
