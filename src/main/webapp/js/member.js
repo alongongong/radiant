@@ -146,34 +146,6 @@ function write_agree(){
 	 
 }	
 
-// 체크박스 전체 선택
-$("#chkAll").click(function () {
-    $('#chk1').prop("checked",true);
- 	$('#chk2').prop("checked",true);
-});
-
-/*// 체크박스 개별 선택
-$(".join_Form").on("click", ".normal", function() {
-    var is_checked = true;
-
-    $(".join_Form .normal").each(function(){
-        is_checked = is_checked && $(this).is(":checked");
-    });
-
-    $("#chkAll").prop("checked", is_checked);
-});*/
-/*
-// 체크박스 개별 선택
-$(".checkbox_group").on("click", ".normal", function() {
-    var is_checked = true;
-
-    $(".checkbox_group .normal").each(function(){
-        is_checked = is_checked && $(this).is(":checked");
-    });
-
-    $("#check_all").prop("checked", is_checked);
-});	*/
-
 
 //---------------------------------------------------------------------------로그인
 	
