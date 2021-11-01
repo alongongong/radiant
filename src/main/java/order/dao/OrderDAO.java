@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.Reader;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import order.bean.OrderDTO;
 
 public class OrderDAO {
 	private static OrderDAO instance;
@@ -28,6 +31,28 @@ public class OrderDAO {
 			e.printStackTrace();
 		}
 	} // 생성자
+
+	public void payInfo(OrderDTO orderDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("orderSQL.payInfo", orderDTO);
+		sqlSession.commit();
+		sqlSession.close();		
+	} // payInfo()
+
+	public void payProduct(OrderDTO orderDTO) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("orderSQL.payProduct", orderDTO);
+		sqlSession.commit();
+		sqlSession.close();
+	} // payProduct()
+
+	public void payDelivery() {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.insert("orderSQL.payDelivery");
+		sqlSession.commit();
+		sqlSession.close();		
+	} // payDelivery()
+	
 	
 	
 }

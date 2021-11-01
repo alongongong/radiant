@@ -42,13 +42,22 @@ $('#mycartBtn').click(function(){
 	if(document.querySelector('.exec > div') == null){
 		alert("상품을 선택해주세요");
 	}else{
-		$('#stockToCart').submit();
+		var i = parseInt($('.exec #i').val());
+		var color='';
+		var outcount='';
+		for(j=0; j<i; j++) {
+			color += '&color'+j+'=';
+			color += $('.exec #color'+j).val();
+			
+			outcount += '&outcount' + j + '=';
+			outcount += $('.outcount:eq(' + j +')').text();
+		}
+		location.href='/radiant/cart/cart.do?mainFileList='+$('#mainFileList').val()+color+ outcount +'&i='+i;
 	}
 });
 
-var i=0;
-
 //상품선택추가div
+var i=0;
 $('form div select').change(function() {
 	if($('#colorSelect').val() != 'null' && $('#sizeSelect').val() != 'none') {
 		if(document.querySelector('input[value=' + $('#colorSelect').val() + ']') == null) {
@@ -65,7 +74,9 @@ $('form div select').change(function() {
 				name: 'color',
 				value: $('#colorSelect').val()
 			}))
-			$('.exec > div').append($('<div>',{ margin: '10px' }).append($('<input>',{
+			$('.exec > div').append($('<div>',{ 
+				margin: '10px',
+				style: "float:right; margin-right: 110px;"}).append($('<input>',{
 				type: 'button',
 				class: 'minus',
 				value: '<'

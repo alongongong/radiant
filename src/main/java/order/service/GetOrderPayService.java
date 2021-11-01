@@ -27,11 +27,12 @@ public class GetOrderPayService implements CommandProcess {
 		String memId = (String) session.getAttribute("memId");
 		
 		int i = Integer.parseInt(request.getParameter("i"));
-		int clNum = Integer.parseInt(request.getParameter("clNum"));
+		int[] clNum = new int[i];
 		
 		String[] color = new String[i];
 		int[] outcount = new int[i];
 		for(int j=0; j<i; j++) {
+			clNum[j] = Integer.parseInt(request.getParameter("clNum"+j));
 			color[j] = request.getParameter("color"+j);
 			outcount[j] = Integer.parseInt(request.getParameter("outcount" + j));
 			System.out.println("color[" + j + "]" + color[j]);
@@ -43,7 +44,7 @@ public class GetOrderPayService implements CommandProcess {
 		
 		StockDTO stockDTO = new StockDTO();
 		stockDTO = new StockDTO();
-		stockDTO.setClNum(clNum);
+		stockDTO.setClNum(clNum[0]);
 		stockDTO.setColor(color[0]);
 		
 		// DB
@@ -66,14 +67,14 @@ public class GetOrderPayService implements CommandProcess {
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));
 			
-			if(temp == clNum) {
+			if(temp == clNum[0]) {
 				img = data;
 			}
 		} // for
 		
 		JSONObject json = new JSONObject();
 		json.put("i", i);
-		json.put("stockList", clNum);
+		json.put("stockList", clNum[0]);
 		json.put("color", color);
 		json.put("clName", stockDTO.getClName());
 		json.put("category", stockDTO.getCategory());

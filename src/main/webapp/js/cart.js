@@ -119,28 +119,51 @@ $(document).ready(function(){
 			$('input:checkbox[name="checkbox"]').prop("checked", false);
 		}
 	});
-	
-	//선택상품 삭제 
-	$('#cart_delete').click(function(){
-	/*	if($('input:checkbox[name="checkbox"]').is(":checked")){
-			alert($('input:checkbox[name="checkbox"]:checked').length);
-			
-	
-			var cart_id =$(this).parents().prev().find('input').val();
-			
-			alert(cart_id);
-			var url = "/radiant/cart/cartDelete.do";
-			$.get(url, {'cart_id':cart_id}, function(){
-				alert("삭제하였습니다.");
-				location.href="/radiant/cart/cartPrint.do?userid="+$('#userid').val();
-			}).fail(function(){
-				alert("실패");
-			});
-		}else{
-			alert("선택된 상품이 없습니다.");
-		}*/
-	});
+
+
 
 });
+
+//선택상품 삭제
+function deleteValue(){
+	var url = "delete";
+	var valueArr = new Array();
+	var list = $('input:checkbox[name="checkbox"]');
+
+	
+	for(var i =0; i < list.length; i++){
+		if(list[i].checked){
+			valueArr.push(list[i].value);
+		}
+	}
+
+	
+	var length = $('input:checkbox[name="checkbox"]:checked').length;
+	
+
+	if(valueArr.length == 0){
+		alert("선택된 상품이 없습니다.");
+	}else{
+		var chk = confirm("정말 삭제하시겠습니까?");
+			$.ajax({
+				url: '/radiant/cart/cartDeleteCheck.do',
+				type: 'post',
+				traditional : true,
+				data:{
+					valueArr : valueArr,
+					cart_id : $('.cart_id').val(),
+					length : length
+				},
+				success: function(data){
+					if(data=1){
+						alert("삭제성공");
+						location.href="/radiant/cart/cartPrint.do?userid="+$('#userid').val();
+					}else{
+						alert("삭제 실패");
+					}
+				}
+			});
+		}
+	}
 
 

@@ -1,5 +1,5 @@
 $(function() {
-	$('li:eq(1)').prop('style','background: #3E3E3E');
+	$('.paymentLi:eq(1)').prop('style','background: #3E3E3E');
 	
 	$('.paymentLi').click(function(){
 		if($(this).attr('data-num')=='0') {
@@ -14,8 +14,10 @@ $(function() {
 			$('li').not(this).find('.paymentHidden').removeClass('paymentHidden').addClass('paymentImg');
 			$('li').not(this).find('.paymentImgCheck').removeClass('paymentImgCheck').addClass('paymentImgCheckHidden');
 			//$('li').not(this).find('.paymentImg').removeClass('paymentHidden');
-			//$('li').not(this).find('.paymentCheck .paymentHidden').removeClass('paymentCheck');	
+			//$('li').not(this).find('.paymentCheck .paymentHidden').removeClass('paymentCheck');
+			$('#paymentCheck').val($(this).find('img:eq(1)').attr('alt'));
 		}
+		
 	});
 
 	// 결제하기 버튼(상세페이지에서 결제하기 버튼)
@@ -60,24 +62,29 @@ $(function() {
 					style: 'padding: 5px 5px 5px 20px; width: 120px'
 				}))).append($('<td>').append($('<div>',{
 					class: 'productName',
-					name: 'productName',
+					name: 'productName'+j,
 					text: data.clName,
-					style: 'font-size: 13px; font-weight: bold; width: 450px;'
+					style: 'font-size: 13px; font-weight: bold; width: 470px;'
 				}))).append($('<td>').append($('<div>',{
 					class: 'productInfo',
-					name: 'productInfo',
-					text: data.color[j] + ' / FREE',
-					style: 'font-size: 13px; width: 120px',
+					name: 'productInfo'+j,
+					text: data.color[j],
+					style: 'font-size: 13px; width: 130px',
 					align: 'center'
-				}))).append($('<td>').append($('<div>',{
-					width: '80px'
+				}).append($('<span>',{
+					text: ' / FREE',
+					style: 'font-size: 13px;',
+					align: 'center'
+				})))).append($('<td>').append($('<div>',{
+					width: '90px'
 				}).append($('<span>',{
 					text: $.comma(parseInt(data.price)) + ' 원',
+					id: 'salePrice'+j,
 					style: 'font-size: 10px; color: #999; text-decoration: line-through; display:block',
 					align: 'center'
 				})).append($('<span>',{
 					class: 'productPrice',
-					name: 'productPrice',
+					name: 'productPrice'+j,
 					text: $.comma(parseInt(data.price)*(1-parseInt(data.salerate)/100))+' 원',
 					style: 'font-size: 13px; display: block',
 					align: 'center'
@@ -86,28 +93,46 @@ $(function() {
 					name: 'productAmount',
 					text: data.outcount[j],
 					align: 'center',
-					width: '80px'
+					width: '90px'
 				}))).append($('<td>').append($('<div>',{
 					class: 'totPrice',
-					name: 'totPrice',
+					name: 'totPrice'+j,
 					text: $.comma(parseInt(data.price)*parseInt(data.outcount[j])*(100-parseInt(data.salerate))/100)+' 원',
-					style: 'font-size: 13px; width: 100px',
+					style: 'font-size: 13px; width: 110px',
 					align: 'center'
 				}))).append($('<td>').append($('<div>',{
 					text: '100원',
-					style: 'font-size: 13px; width: 100px',
-					align: 'center'
+					style: 'font-size: 13px; width: 110px',
+					align: 'center',
+					class: 'newProductSaved'
 				}))))
 				
-				alert("outCount=" + data.outcount[j]);
-				alert("PoutCount=" + parseInt(data.outcount[j]));
+				$('#payForm #topDiv').append($('<input>',{
+					type: 'hidden',
+					id: 'productAmount'+j,
+					name: 'productAmount'+j,
+					value: data.outcount[j],
+				}))
+
+
 				price += (data.price*data.outcount[j]);
 				saleMoney += (data.price * data.outcount[j] * data.salerate / 100);
+				
+				if(data.salerate == 0){
+					$('#salePrice'+j).remove();
+				}
+				
 			} // for
+			
+			
 			$('#priceAll').text($.comma(price)+'원'); // 총 상품금액
 			
-			if(price >= 80000) $('#shipMoney').text('0');
-			else $('#shipMoney').text('3,000'); // 배송료
+			if(price >= 80000) {
+				$('#shipMoney').text('0');
+				$('#hiddenShipMoney').val('0');
+			} else {$('#shipMoney').text('3,000'); 
+				$('#hiddenShipMoney').val('3000');
+			}// 배송료
 			
 			
 			$('#saleMoney').text($.comma(saleMoney)); // 기본할인
@@ -142,6 +167,7 @@ $(function() {
 				});
 			
 			});
+
 		}, // success
 		error: function(err){
 			console.log(err)
@@ -152,10 +178,10 @@ $(function() {
 	// 적립금 전체사용 버튼 눌렀을 때
 	$('#saleTable #allUseBtn').click(function(){
 		var price = parseInt($.uncomma($('#priceAll').text()));
-		var saved = parseInt($.uncomma($('#havaSaved').text()));
+		var saved = parseInt($.uncomma($('#haveSaved').text()));
 		var saleMoney = parseInt($.uncomma($('#saleMoney').text()));
-		$('#saved').val($('#havaSaved').text()); // 적립금
-		$('#useSaved').text($('#havaSaved').text()); // 사용적립금
+		$('#saved').val($('#haveSaved').text()); // 적립금
+		$('#useSaved').text($('#haveSaved').text()); // 사용적립금
 		$('#totSaleMoney').text($.comma(saved+saleMoney)); // 총할인금액
 		
 		var totPrice = price + parseInt($.uncomma($('#shipMoney').text()))-(saved+saleMoney);
@@ -167,11 +193,11 @@ $(function() {
 		var price = parseInt($.uncomma($('#priceAll').text()));
 		var saved = parseInt($.uncomma($('#saved').val()));
 		var saleMoney = parseInt($.uncomma($('#saleMoney').text()));
-		var haveSaved = parseInt($.uncomma($('#havaSaved').text()));
+		var haveSaved = parseInt($.uncomma($('#haveSaved').text()));
 		alert(saved)
 		if(saved > haveSaved) {
-			$('#saved').val(($('#havaSaved').text())); // 적립금
-			$('#useSaved').text($('#havaSaved').text()); // 사용적립금
+			$('#saved').val(($('#haveSaved').text())); // 적립금
+			$('#useSaved').text($('#haveSaved').text()); // 사용적립금
 			saved = parseInt($.uncomma($('#saved').val()));
 			
 			$('#totSaleMoney').text($.comma(saved+saleMoney)); // 총할인금액
@@ -215,4 +241,58 @@ $(function() {
 	$.uncomma =  function (x) {
 		return x.replace(/[^\d]+/g, '');
 	}
+
+
+	// 결제페이지에서 결제버튼
+	$('#payForm #orderPayBtn').click(function(){
+		// 유효성 검사
+		$('#noticeDiv').text('');
+		
+		if($('#userInfoName').val()==''){
+			$('#noticeDiv').text('주문자 정보를 입력해주세요.');
+			$('#userInfoName').focus();
+		} else if($('#userInfoTel1').val()==''){
+			$('#noticeDiv').text('주문자 정보를 입력해주세요.');
+			$('#userInfoTel1').focus();
+		} else if($('#userInfoTel2').val()==''){
+			$('#noticeDiv').text('주문자 정보를 입력해주세요.');
+			$('#userInfoTel2').focus();
+		} else if($('#userInfoTel3').val()==''){
+			$('#noticeDiv').text('주문자 정보를 입력해주세요.');
+			$('#userInfoTel3').focus();
+		} else if($('#userInfoEmail').val()==''){
+			$('#noticeDiv').text('주문자 정보를 입력해주세요.');
+			$('#userInfoEmail').focus();
+		} else if($('#shipName').val()==''){
+			$('#noticeDiv').text('배송지 정보를 입력해주세요.');
+			$('#shipName').focus();
+		} else if($('#shipTel2').val()==''){
+			$('#noticeDiv').text('배송지 정보를 입력해주세요.');
+			$('#shipTel2').focus();
+		} else if($('#shipTel3').val()==''){
+			$('#noticeDiv').text('배송지 정보를 입력해주세요.');
+			$('#shipTel3').focus();
+		} else if($('#shipZipcode').val()==''){
+			$('#noticeDiv').text('배송지 정보를 입력해주세요.');
+			$('#shipZipcode').focus();
+		} else if($('#shipAddr2').val()==''){
+			$('#noticeDiv').text('배송지 정보를 입력해주세요.');
+			$('#shipAddr2').focus();
+		} else {
+
+			$.ajax({
+				url: '/radiant/order/orderPaying.do',
+				type: 'post',
+				data: $('#payForm').serialize(),
+				success: function(data){
+					location.href='/radiant/order/orderComplete.do';
+					
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});
+		} // if
+	});	
+	
 });

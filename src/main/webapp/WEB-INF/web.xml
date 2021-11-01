@@ -11,7 +11,9 @@
 		<!-- <param-value>C:\study\java_ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> --><!-- 아라누나 -->
   		<!-- <param-value>C:/Users/downc/git/repository/radiant\src\main\webapp\WEB-INF\command.properties</param-value> --><!-- 현석님 -->
   		<!-- <param-value>C:\java__ee\workspace\radiant\src\main\webapp\WEB-INF\command.properties</param-value> --><!-- 건휘 -->
+
   		<param-value>D:/java_ee/workspace/radiant/src/main/webapp/WEB-INF/command.properties</param-value> <!--현정  -->
+
 
   	</init-param>
   </servlet>

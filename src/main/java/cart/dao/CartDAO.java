@@ -96,4 +96,15 @@ public class CartDAO  {
 		
 	}
 
+
+	public void deletecheck(String string) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("cartSQL.delete", string);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+
+
 }

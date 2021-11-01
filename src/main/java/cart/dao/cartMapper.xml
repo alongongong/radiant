@@ -7,11 +7,11 @@
  <mapper namespace="cartSQL">
  
  	<insert id="insert">
- 		insert into cart(cart_id, userid, product_id, amount, product_name, price) values(seq_cart.nextval, #{userid}, #{product_id}, #{amount},#{product_name},#{price})
+ 		insert into cart(cart_id, userid, product_id, amount, product_name, price, color) values(seq_cart.nextval, #{userid}, #{product_id}, #{amount},#{product_name},#{price}, #{color})
  	</insert>
  	
  	<select id="cartList" resultType="cart">
- 		select cart_id, product_id, amount, product_name, price from cart where userid=#{userid}
+ 		select cart_id, product_id, amount, product_name, price, color from cart where userid=#{userid}
  	</select>
  	
 	<select id="checkCart" resultType="Integer">
@@ -20,6 +20,7 @@
 		where	1			= 1
 		and		userid 		= #{userid}
 		and		product_id	= #{product_id}
+		and		color		= #{color}
  	</select>
  	
  	<!--x 눌렀을 때 삭제  -->
@@ -40,4 +41,11 @@
  		set     amount  = #{amount} 
  		where   cart_id = #{cart_id} 
  	</update>
+ 	<!--선택상품 삭제 -->
+ 	 <delete id="deletecheck" parameterType="java.util.List">
+ 		delete  cart 
+ 		<where>
+ 		find_in_set(cart_id, ${cart_id})
+ 		</where>   
+ 	</delete> 
  </mapper>

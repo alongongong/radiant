@@ -1,6 +1,5 @@
 package main.service;
 
-import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,8 +18,18 @@ public class IndexService implements CommandProcess {
 		String[] fileList = StaticFile.path.list();
 		
 		StockDAO stockDAO = StockDAO.getInstance();
-		List<StockDTO> list = stockDAO.print();
+		List<StockDTO> list = stockDAO.radiantInfo();
 		
+		for(String data : fileList) {
+			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));
+			
+			for(int i = 0; i < list.size(); i++) {
+				if(list.get(i).getClNum() == temp) {
+					list.get(i).setImg(data);					
+				}
+			}
+		}
+
 		request.setAttribute("fileList", fileList);
 		request.setAttribute("list", list);
 		return "/index.jsp";

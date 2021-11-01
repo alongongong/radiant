@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orderSQL">
+ 
+	<!-- 상품 구매 정보 입력 -->
+	<insert id="payInfo" parameterType="order">
+		insert into radiantorder values(
+		to_char(sysdate, 'yyyymmdd')||'-R00'||seq_ordernum.nextval, #{id}, #{shipMoney}, #{shipName}, #{shipTel1}, #{shipTel2}, #{shipTel3},
+		#{shipZipcode}, #{shipAddr1}, #{shipAddr2}, #{shipMemo}, #{payment}, sysdate)
+	</insert>
+	<insert id="payProduct" parameterType="order">
+		insert into radiantorderproduct values(
+		to_char(sysdate, 'yyyymmdd')||'-R00'||seq_ordernum.currval, #{clNum}, #{color}, #{outCount})
+	</insert>
+ 	<insert id="payDelivery">
+ 		insert into radiantdelivery(ordernum) values(to_char(sysdate, 'yyyymmdd')||'-R00'||seq_ordernum.currval)
+ 	</insert>
+</mapper>
