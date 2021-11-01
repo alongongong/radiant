@@ -2,6 +2,7 @@ package order.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import order.bean.OrderDTO;
+import order.bean.OrderHistoryDTO;
 
 public class OrderDAO {
 	private static OrderDAO instance;
@@ -52,6 +54,15 @@ public class OrderDAO {
 		sqlSession.commit();
 		sqlSession.close();		
 	} // payDelivery()
+	
+	public List<OrderHistoryDTO> getOrderHistory(String id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		System.out.println("id = " + id);
+		List<OrderHistoryDTO> list = sqlSession.selectList("orderSQL.getOrderHistory", id);
+		sqlSession.close();
+		return list;
+		
+	} // getOrderHistory()
 	
 	
 	

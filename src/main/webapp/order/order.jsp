@@ -230,15 +230,16 @@
 	        		</div>
 	        	</div>
 
-	        	<h3>주문내역</h3>
+	        	<h4>주문내역</h4>
 	        	
 	        	<div id="orderTable">
-					<table>
+					<table id="table">
 						<tr>
-							<td width="500">일자-주문번호</td>
-							<td>개별상황</td>
-							<td>상품금액</td>
-							<td>진행상황</td>
+							<th width="300">일자-주문번호</th>
+							<th width="400">옷 이름</th>
+							<th width="200">컬러</th>
+							<th width="200">상품금액</th>
+							<th width="200">진행상황</th>
 						</tr>
 						
 						
@@ -287,6 +288,35 @@
         <div id="top"><a href="#"><input type="button" value="top"/></a></div>
         <div id="bottom"><a href="#footer"><input type="button" value="bottom"/></a></div>
     </div><!--wrap-->
-    
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.ajax({
+			url: '/radiant/order/getOrder.do',
+			type: 'post',
+			dataType: 'json',
+			success: function(data) {
+				$.each(data.list, function(index, items) {
+					$('#orderTable > #table').append($('<tr/>').append($('<td/>', {
+						text: items.orderNum
+					})).append($('<td/>', {
+						text: items.clName
+					})).append($('<td/>', {
+						text: items.color
+					})).append($('<td/>', {
+						text: items.price
+					})).append($('<td/>', {
+						text: items.delivery
+					})));
+					
+				});
+			},
+			error: function(error) {
+				alert('실패');
+				console.log(error);
+			}
+		});
+	});
+</script>
 </body>
 </html>
