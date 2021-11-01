@@ -103,4 +103,13 @@ public class CartDAO  {
 		return cartDTO;
 	}
 
+	public void deletecheck(String string) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		sqlSession.delete("cartSQL.delete", string);
+		sqlSession.commit();
+		sqlSession.close();
+		
+	}
+
+
 }

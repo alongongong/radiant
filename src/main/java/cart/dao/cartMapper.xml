@@ -46,4 +46,12 @@
 	<select id="cartPayList" parameterType="String" resultType="cart">
 		select * from cart where cart_id=#{cart_id}
 	</select>
+	
+ 	<!--선택상품 삭제 -->
+ 	 <delete id="deletecheck" parameterType="java.util.List">
+ 		delete  cart 
+ 		<where>
+ 		find_in_set(cart_id, ${cart_id})
+ 		</where>   
+ 	</delete> 
  </mapper>
