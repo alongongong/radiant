@@ -1,6 +1,6 @@
 -- 결제 테이블
 create table radiantorder (
-	oredernum varchar(20), -- 주문번호
+	ordernum varchar(20), -- 주문번호
 	id varchar(15),
 	shipMoney number, -- 배송비
 	shipName varchar(20),
@@ -16,7 +16,7 @@ create table radiantorder (
 );
 
 create table radiantorderproduct (
-	oredernum varchar(20), -- 주문번호
+	ordernum varchar(20), -- 주문번호
 	clNum number,
 	color varchar(30),
 	outCount number

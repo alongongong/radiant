@@ -64,7 +64,7 @@ $('form div select').change(function() {
 			$('.exec').append($('<div>'))
 			$('.exec > div').append($('<div>', {
 				align: 'left',
-				background: 'red'
+				class: 'colorSize'
 			}).append($('<span>', {
 				text: $('#colorSelect').val() + ' / ' + $('#sizeSelect').val()
 			})));
@@ -76,7 +76,8 @@ $('form div select').change(function() {
 			}))
 			$('.exec > div').append($('<div>',{ 
 				margin: '10px',
-				style: "float:right; margin-right: 110px;"}).append($('<input>',{
+				class: 'amount'
+			}).append($('<input>',{
 				type: 'button',
 				class: 'minus',
 				value: '<'

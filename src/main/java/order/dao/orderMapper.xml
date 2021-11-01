@@ -17,4 +17,13 @@
  	<insert id="payDelivery">
  		insert into radiantdelivery(ordernum) values(to_char(sysdate, 'yyyymmdd')||'-R00'||seq_ordernum.currval)
  	</insert>
+ 	
+ 	<!-- 주문내역 불러오기 -->
+ 	<select id="getOrderHistory" parameterType="String" resultType="order.bean.OrderHistoryDTO">
+ 		select ordernum,clName,color, price, delivery from radiantorder 
+		join radiantorderproduct using(ordernum) 
+		join radiantdelivery using(ordernum) 
+		join radiantInfo using(clNum)
+		where id = #{id}
+ 	</select>
 </mapper>

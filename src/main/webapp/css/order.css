@@ -230,6 +230,10 @@
 	padding: 30px;
 }
 
+#section #order #shipping {
+	display: inline-block;
+}
+
 #section #order #shipping > span {
 	margin-right: 20px;
 }
@@ -242,14 +246,26 @@
 
 #section #order #shipping > table td {
 	width: 100px;
+	text-align: center;
+	font-size: 10pt;
 }
 
 #section #order img {
 	width: 700px;
 }
 
+#section #order #info {
+	float:right;
+}
+
+#section #order #info:after {
+	content: '';
+	display: block;
+	clear: both;
+}
 #section #order #info > table td {
-	width: 100px;
+	width: 110px;
+	font-size: 12pt;
 }
 
 #section #content #orderCompleteDiv{
@@ -403,10 +419,11 @@
 	width: 80%;
 }
 #section #content #orderTable table  tr {
-	border-top: solid; 
+	border-top: 1px solid; 
+	border-bottom: 1px solid;
 }
 
-#section #content #orderTable > table tr > td {
-	padding: 0 20px;
-
+#section #content #orderTable > table * {
+	text-align: center;
+	font-size: 10pt;
 }

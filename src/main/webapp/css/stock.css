@@ -241,3 +241,14 @@ div.exec{
 	margin: 0 15px;
 }
 
+.exec > div > div.colorSize {
+	width:200px;
+}
+.exec > div > div.amount {
+	margin-left: 175px;
+	margin-right: 110px;
+}
+
+
+
+
