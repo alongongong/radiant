@@ -200,7 +200,7 @@ public class BoardDAO {
 	} // qnaDelete()
 
 	public void qnaUpdate(BoardDTO boardDTO) {
-		String sql = "update radiantboard set subject=?, content=? where boardseq=?";
+		String sql = "update radiantboard set subject=?, content=?, logtime=sysdate where boardseq=?";
 		
 		try {
 			conn = ds.getConnection();

@@ -96,4 +96,11 @@ public class CartDAO  {
 		
 	}
 
+	public CartDTO cartPayList(String cart_id) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		CartDTO cartDTO = sqlSession.selectOne("cartSQL.cartPayList",cart_id);
+		sqlSession.close();
+		return cartDTO;
+	}
+
 }

@@ -75,6 +75,6 @@
 
 	<!-- 상품판매 -->
 	<update id="sellStock" parameterType="stock">
-		update radiantstock set outcount=#{outCount} where clnum=#{clNum} and color=#{color}
+		update radiantstock set outcount=outcount+#{outCount} where clnum=#{clNum} and color=#{color}
 	</update>
  </mapper>

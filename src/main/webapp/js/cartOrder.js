@@ -1,4 +1,47 @@
-$(function() {
+// 결제하기 버튼(장바구니에서 결제하기 버튼)
+$(function(){
+	$('#cart_all_order').click(function(){
+		$('.productCheck').prop('checked', true);
+		
+		if(document.querySelector('.productCheck') == false){ // 선택한 상품 div가 없을 때
+			alert('상품을 선택해주세요.');
+		} else { 
+			var i = parseInt($('.productCheck:checked').length);
+			var cart_id='';
+			for(j=0; j<i; j++) {
+				cart_id += '&cart_id'+j+'=';
+				cart_id += $('.cart_id:eq(' + j +')').val();
+				
+			} // for
+			
+			location.href='/radiant/order/cartOrderPay.do?i='+i+cart_id;
+		}
+
+	});
+	
+	
+	$('#cart_order').click(function(){
+		
+		if(document.querySelector('.productCheck') == false){ // 선택한 상품 div가 없을 때
+			alert('상품을 선택해주세요.');
+		} else { 
+			var i = parseInt($('.productCheck:checked').length);
+			var length = parseInt($('.productCheck').length); 
+			var cart_id='';
+			var k=0;
+			for(j=0; j<length; j++) {
+				if($('.productCheck:eq('+j+')').prop('checked')) {
+					cart_id += '&cart_id'+k+'=';
+					cart_id += $('.productCheck:eq(' + j +')').val();
+					k++;
+				}
+			} // for
+			
+			location.href='/radiant/order/cartOrderPay.do?i='+i+cart_id;
+		}
+
+	});
+
 	$('.paymentLi:eq(1)').prop('style','background: #3E3E3E');
 	
 	$('.paymentLi').click(function(){
@@ -18,27 +61,6 @@ $(function() {
 			$('#paymentCheck').val($(this).find('img:eq(1)').attr('alt'));
 		}
 		
-	});
-
-	// 결제하기 버튼(상세페이지에서 결제하기 버튼)
-	$('.like-buy-mycart #buyBtn').click(function(){
-		if(document.querySelector('.exec > div') == null){ // 선택한 상품 div가 없을 때
-			alert('상품을 선택해주세요.');
-		} else { 
-			var i = parseInt($('.exec #i').val());
-			var color='';
-			var outcount='';
-			for(j=0; j<i; j++) {
-				color += '&color'+j+'=';
-				color += $('.exec #color'+j).val();
-				
-				outcount += '&outcount' + j + '=';
-				outcount += $('.outcount:eq(' + j +')').text();
-			}
-			
-			location.href='/radiant/order/orderPay.do?mainFileList='+$('#mainFileList').val()+color+ outcount +'&i='+i;
-		}
-
 	});
 
 	

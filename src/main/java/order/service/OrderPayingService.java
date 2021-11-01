@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
+import cart.dao.CartDAO;
 import order.bean.OrderDTO;
 import order.dao.OrderDAO;
 import stock.bean.StockDTO;
@@ -23,12 +24,21 @@ public class OrderPayingService implements CommandProcess {
 		int[] clNum = new int[i];
 		String[] color = new String[i];
 		int[] outCount = new int[i];
+		int[] cart_id = new int[i];
 		
 		for(int j=0; j<i; j++) {
 			clNum[j] = Integer.parseInt(request.getParameter("clNum"+j));
 			color[j] = request.getParameter("color"+j);
 			outCount[j] = Integer.parseInt(request.getParameter("productAmount"+j));
-
+			if(request.getParameter("cart_id"+j) != null)
+			cart_id[j] = Integer.parseInt(request.getParameter("cart_id"+j));
+		}
+		
+		if(cart_id != null) {
+			for(int j=0; j<i; j++) {
+				CartDAO cartDAO = CartDAO.getInstance();
+				cartDAO.delete(cart_id[j]);
+			}
 		}
 		
 		int shipMoney = Integer.parseInt(request.getParameter("hiddenShipMoney"));

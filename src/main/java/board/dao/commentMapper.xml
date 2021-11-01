@@ -17,7 +17,7 @@
 	</select>
 	
 	<update id="commentUpdate" parameterType="comment">
-		update radiantcomment set commenttext=#{commentText} where commentSeq=#{commentSeq}
+		update radiantcomment set commenttext=#{commentText}, commentDate=sysdate where commentSeq=#{commentSeq}
 	</update>
 	
 	<delete id="commentDelete">

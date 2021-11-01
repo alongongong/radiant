@@ -41,4 +41,9 @@
  		set     amount  = #{amount} 
  		where   cart_id = #{cart_id} 
  	</update>
+ 	
+	<!-- 장바구니 결제 --> 	
+	<select id="cartPayList" parameterType="String" resultType="cart">
+		select * from cart where cart_id=#{cart_id}
+	</select>
  </mapper>

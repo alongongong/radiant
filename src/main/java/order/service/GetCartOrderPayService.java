@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
+import cart.bean.CartDTO;
+import cart.dao.CartDAO;
 import member.bean.MemberDTO;
 import member.dao.MemberDAO;
 import mypage.bean.ShipDTO;
@@ -18,7 +20,7 @@ import staticFile.StaticFile;
 import stock.bean.StockDTO;
 import stock.dao.StockDAO;
 
-public class GetOrderPayService implements CommandProcess {
+public class GetCartOrderPayService implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -27,66 +29,56 @@ public class GetOrderPayService implements CommandProcess {
 		String memId = (String) session.getAttribute("memId");
 		
 		int i = Integer.parseInt(request.getParameter("i"));
-		int[] clNum = new int[i];
-		
-		String[] color = new String[i];
-		int[] outcount = new int[i];
+
+		String[] cart_id = new String[i];
 		for(int j=0; j<i; j++) {
-			clNum[j] = Integer.parseInt(request.getParameter("clNum"+j));
-			color[j] = request.getParameter("color"+j);
-			outcount[j] = Integer.parseInt(request.getParameter("outcount" + j));
-			System.out.println("color[" + j + "]" + color[j]);
-			System.out.println("outcount[" + j + "]" + outcount[j]);
+			cart_id[j] = request.getParameter("cart_id"+j);
 		}
 		
-		
-		StockDTO stockDTO = new StockDTO();
-		stockDTO = new StockDTO();
-		stockDTO.setClNum(clNum[0]);
-		stockDTO.setColor(color[0]);
-		
 		// DB
+		CartDAO cartDAO = CartDAO.getInstance();
+		List<CartDTO> cartList = new ArrayList<CartDTO>();
 		StockDAO stockDAO = StockDAO.getInstance();
-		stockDTO = stockDAO.getStockDTO(stockDTO);
-		
+		List<StockDTO> stockList = new ArrayList<StockDTO>();
+		for(int j=0; j<i; j++) {
+			CartDTO cartDTO = cartDAO.cartPayList(cart_id[j]);
+			cartList.add(cartDTO);
+			StockDTO stockDTO = new StockDTO();
+			stockDTO.setClNum(cartDTO.getProduct_id());
+			stockDTO.setColor(cartDTO.getColor());
+			stockDTO = stockDAO.getStockDTO(stockDTO);
+			cartDTO.setSalerate(stockDTO.getSalerate());
+		}
 		
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberDTO memberDTO = memberDAO.getMember(memId);
 		
 		
 		ShipDAO shipDAO = ShipDAO.getInstance();
-		List<ShipDTO> list = shipDAO.getShipList(memId);
+		List<ShipDTO> shipList = shipDAO.getShipList(memId);
 		
 		
 		String[] fileList = StaticFile.path.list();
 		
-		String img = null;
-		
 		for(String data : fileList) {
 			int temp = Integer.parseInt(data.substring(0, data.lastIndexOf(".")));
-			
-			if(temp == clNum[0]) {
-				img = data;
+
+			for(CartDTO cartDTO : cartList) {
+				if(temp == cartDTO.getProduct_id()) {
+					cartDTO.setImg(data);
+				}
 			}
 		} // for
 		
 		JSONObject json = new JSONObject();
 		json.put("i", i);
-		json.put("stockList", clNum[0]);
-		json.put("color", color);
-		json.put("clName", stockDTO.getClName());
-		json.put("category", stockDTO.getCategory());
-		json.put("price", stockDTO.getPrice());
-		json.put("salerate", stockDTO.getSalerate());
-		json.put("clDetail", stockDTO.getClDetail());
-		json.put("img", img);
-		json.put("outcount", outcount);
+		json.put("cartList", cartList);
 		json.put("userName", memberDTO.getName());
 		json.put("userTel1", memberDTO.getTel1());
 		json.put("userTel2", memberDTO.getTel2());
 		json.put("userTel3", memberDTO.getTel3());
 		json.put("userEmail", memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
-		json.put("list", list);
+		json.put("shipList", shipList);
 
 		request.setAttribute("list", json);
 		

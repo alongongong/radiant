@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/radiant/css/order.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="/radiant/js/member.js"></script>
-    <script type="text/javascript" src="/radiant/js/order.js"></script>
-    <script type="text/javascript" src="/radiant/js/orderOnload.js"></script>
+    <script type="text/javascript" src="/radiant/js/cartOrder.js"></script>
+    <script type="text/javascript" src="/radiant/js/cartOrderOnload.js"></script>
 </head>
 <body>
     <div id="wrap">
@@ -178,9 +178,7 @@
         	<form id="payForm" name="payForm" method="post" action="/radiant/order/orderComplete.do">
         		<input type="hidden" id="i" name="i" value="${i }">
 				<c:forEach var="j" begin="1" end="${i }" step="1">
-        			<input type="hidden" id="clNum" name="clNum${j-1 }" value="${clNum }">
-        			<input type="hidden" id="color${j-1 }" name="color${j-1 }" value="${color[j-1]}">
-        			<input type="hidden" id="outcount${j-1 }" name="outcount${j-1 }" value="${outcount[j-1]}">
+        			<input type="hidden" id="cart_id${j-1 }" name="cart_id${j-1 }" value="${cart_id[j-1] }">
         		</c:forEach>
         		<div id="orderTopDiv">
         			<table id="orderTopTable">

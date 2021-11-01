@@ -13,6 +13,7 @@
 <script type="text/javascript" src="/radiant/js/member.js"></script>
 <script type="text/javascript" src="/radiant/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="/radiant/js/cart.js"></script>
+<script type="text/javascript" src="/radiant/js/cartOrder.js"></script>
 
 <style type="text/css">
 #cart_order, #cart_delete, #cart_clean, #cart_like, #count_plus, #count_minus{
@@ -153,8 +154,8 @@
                     </ul>
  
  			<ul	class="table_product">
- 				<input type="hidden" id="userid" value="${userid}"/>
  				<form>
+ 				<input type="hidden" id="userid" value="${userid}"/>
  					<table class="cart">
  						<tr align="center" id="topline">
  							<th scope="col" colspan="2" width="550px" >상품정보</th><!--해당 셀이 열을 위한 헤더 셀임을 명시함  -->
@@ -166,8 +167,10 @@
  				<c:forEach var="cartDTO" items="${requestScope.cartlist }">	
  					
 					<tr id="bottomline">
-						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
-						<td width="400px"><input type="checkbox" name="checkbox"/><br>${cartDTO.product_name}<br><br>
+						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img">
+							<input type="hidden" class="cart_id" value="${cartDTO.cart_id}">
+						</td>
+						<td width="400px"><input type="checkbox" class="productCheck" name="checkbox" value="${cartDTO.cart_id }"/><br>${cartDTO.product_name}<br><br>
 						</td>
 						<td align="center">${cartDTO.color }</td>
 						<td id="countline" width="150px" align="center">
@@ -239,7 +242,7 @@
  						 입니다. 
  					</div>
  					<div>
- 						<button class="btn"  id ="cart_all_order" type="button" onclick="" >전체상품 주문</button>
+ 						<button class="btn" id="cart_all_order" type="button">전체상품 주문</button>
  					</div>
  				</div>
  			</ul>
