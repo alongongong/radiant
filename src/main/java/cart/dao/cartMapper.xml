@@ -41,4 +41,11 @@
  		set     amount  = #{amount} 
  		where   cart_id = #{cart_id} 
  	</update>
+ 	<!--선택상품 삭제 -->
+ 	 <delete id="deletecheck" parameterType="java.util.List">
+ 		delete  cart 
+ 		<where>
+ 		find_in_set(cart_id, ${cart_id})
+ 		</where>   
+ 	</delete> 
  </mapper>

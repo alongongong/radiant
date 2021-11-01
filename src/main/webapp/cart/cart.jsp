@@ -167,7 +167,7 @@
  					
 					<tr id="bottomline">
 						<td width="150px" height="130px"><img src="../img/clothes/${cartDTO.img}" style="width:100px; height:130px;"alt="img"></td>
-						<td width="400px"><input type="checkbox" name="checkbox"/><br>${cartDTO.product_name}<br><br>
+						<td width="400px"><input type="checkbox" name="checkbox" value="${cartDTO.cart_id }"/><br>${cartDTO.product_name}<br><br>
 						</td>
 						<td align="center">${cartDTO.color }</td>
 						<td id="countline" width="150px" align="center">
@@ -183,7 +183,7 @@
 				<tr>
 					<td colspan="2" height="50px">
 		 				<button class="btn" id="cart_order" type="button" onclick="" >선택상품 주문</button>
-		               	<button class="btn" id="cart_delete" type="button" onclick="" >선택상품 삭제</button>
+		               	<button class="btn" id="cart_delete" type="button" onclick="deleteValue();" >선택상품 삭제</button>
 		               	<button class="btn" id="cart_clean" type="button">장바구니 비우기</button>
 		            </td>
                	<tr>
